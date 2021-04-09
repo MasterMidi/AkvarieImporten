@@ -72,14 +72,22 @@ public class DBConnection {
 		DBConnection.password = password;
 	}
 
+	/**
+	 * 
+	 * @throws DataAccessException - if the transaction could not be started (connection problem)
+	 */
 	public void startTransaction() throws DataAccessException {
 		try {
 			connection.setAutoCommit(false);
 		} catch (SQLException e) {
-			throw new DataAccessException("Could not start transaction.", e);
+			throw new DataAccessException("Connection error. Could not start transaction.", e);
 		}
 	}
 
+	/**
+	 * 
+	 * @throws DataAccessException - if the transaction could not be committed (connection problem)
+	 */
 	public void commitTransaction() throws DataAccessException {
 		try {
 			try {
@@ -90,7 +98,7 @@ public class DBConnection {
 				connection.setAutoCommit(true);
 			}
 		} catch (SQLException e) {
-			throw new DataAccessException("Could not commit transaction", e);
+			throw new DataAccessException("Connection error. Could not commit transaction", e);
 		}
 	}
 
