@@ -12,17 +12,13 @@ import exception.DataAccessException;
 /**
  * 
  * @author knol, Michael, Magnus, Julius, Mike
- * @version 2021-04-09
+ * @version 2021-04-20
  */
 public class DBConnection {
 	private Connection connection = null;
 	private static DBConnection dbConnection;
 
 	private static final String DRIVER_CLASS = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-	private static final String DEFAULT_SERVER_ADDRESS = "localhost";
-	private static final int DEFAULT_SERVER_PORT = 1433;
-	private static final String DEFAULT_USERNAME = "sa";
-	private static final String DEFAULT_PASSWORD = "secret";
 
 	private static String dbName = null;
 	private static String serverAddress = null;
@@ -39,6 +35,7 @@ public class DBConnection {
 		try {
 			Class.forName(DRIVER_CLASS);
 			connection = DriverManager.getConnection(connectionString);
+			throw new SQLException();
 		} catch (ClassNotFoundException e) {
 			throw new DataAccessException("Missing JDBC driver", e);
 
@@ -54,22 +51,18 @@ public class DBConnection {
 		}
 		return dbConnection;
 	}
-
-	public static void setDBName(String dbName) {
-		DBConnection.dbName = dbName;
-	}
-
-	public static void setServerAddress(String serverAddress) {
+	
+	public static void setupDB(String serverAddress, int serverPort, String dbName, String userName, String password) {
 		DBConnection.serverAddress = serverAddress;
-	}
-
-	public static void setServerPort(int port) {
-		DBConnection.serverPort = port;
-	}
-
-	public static void setDBLogin(String username, String password) {
-		DBConnection.userName = username;
+		DBConnection.serverPort = serverPort;
+		DBConnection.dbName = dbName;
+		DBConnection.userName = userName;
 		DBConnection.password = password;
+	}
+	
+	public static synchronized DBConnection resetDB() throws DataAccessException {
+		dbConnection = new DBConnection();
+		return dbConnection;
 	}
 
 	/**
