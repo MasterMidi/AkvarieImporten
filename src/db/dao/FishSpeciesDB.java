@@ -1,4 +1,4 @@
-package db;
+package db.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import db.DBConnection;
+import db.IFishSpeciesDB;
 import exception.DataAccessException;
 import model.FishSpecies;
 
@@ -16,21 +17,27 @@ public class FishSpeciesDB implements IFishSpeciesDB {
 	static final String Q_GET_FISH_SPECIES = "SELECT * FROM fishSpecies WHERE name LIKE ?";
 	private PreparedStatement psGetFishSpecies;
 
+	public FishSpeciesDB() throws DataAccessException {
+		Connection connection = DBConnection.getInstance().getConnection();
+
+		try {
+			psGetFishSpecies = connection.prepareStatement(Q_GET_FISH_SPECIES);
+		} catch (SQLException e) {
+			throw new DataAccessException("could not create preparedstatement, check your query", null);
+		}
+	}
 	@Override
 	public List<FishSpecies> getFishSpecies(String searchInput) {
 		List<FishSpecies> res = null;
 		
 		try {
-			Connection con = DBConnection.getInstance().getConnection();
-			
-			psGetFishSpecies = con.prepareStatement(Q_GET_FISH_SPECIES);
 			
 			psGetFishSpecies.setString(1, searchInput);
 			
 			ResultSet rs = psGetFishSpecies.executeQuery();
 			
 			res = buildObjects(rs);
-		} catch (DataAccessException | SQLException e) {
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

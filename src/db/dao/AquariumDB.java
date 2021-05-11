@@ -1,4 +1,4 @@
-package db;
+package db.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import db.DBConnection;
+import db.IAquariumDB;
 import exception.DataAccessException;
 import model.Aquarium;
 
@@ -15,21 +17,28 @@ public class AquariumDB implements IAquariumDB {
     private static final String Q_GET_AQUARIUM = "TODO";
     private PreparedStatement psGetAquarium;
 
+    public AquariumDB() throws DataAccessException {
+		Connection connection = DBConnection.getInstance().getConnection();
+
+		try {
+			psGetAquarium = connection.prepareStatement(Q_GET_AQUARIUM);
+		} catch (SQLException e) {
+			throw new DataAccessException("could not create preparedstatement, check your query", null);
+		}
+	}
+    
     @Override
     public List<Aquarium> getAquarium(String searchInput) {
 	List<Aquarium> res = null;
 
 	try {
-	    Connection con = DBConnection.getInstance().getConnection();
-
-	    psGetAquarium = con.prepareStatement(Q_GET_AQUARIUM);
 
 	    psGetAquarium.setString(1, searchInput);
 
 	    ResultSet rs = psGetAquarium.executeQuery();
 
 	    res = buildObjects(rs);
-	} catch (DataAccessException | SQLException e) {
+	} catch (SQLException e) {
 	    // TODO Auto-generated catch block
 	    e.printStackTrace();
 	}
