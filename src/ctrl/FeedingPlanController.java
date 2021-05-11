@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import db.IFeedingPlanDB;
+import db.dao.FeedingPlanDB;
 import exception.DataAccessException;
 import model.FeedingPlan;
 
@@ -12,6 +13,10 @@ public class FeedingPlanController {
 	private IFeedingPlanDB feedingPlanDB;
 	private List<FeedingPlan> feedingPlanMatches;
 
+	public FeedingPlanController() throws DataAccessException {
+		this.feedingPlanDB = new FeedingPlanDB();
+	}
+	
 	public List<FeedingPlan> searchFeedingPlan(String searchInput) throws DataAccessException {
 		feedingPlanMatches = feedingPlanDB.getFeedingPlan(searchInput);
 

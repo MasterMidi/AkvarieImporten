@@ -21,9 +21,9 @@ public class FeedingPlanDB implements IFeedingPlanDB {
 		Connection connection = DBConnection.getInstance().getConnection();
 
 		try {
-			psGetFeedingPlan = connection.prepareStatement(FeedingPlanDB.Q_GET_FEEDING_PLAN);
+			psGetFeedingPlan = connection.prepareStatement(Q_GET_FEEDING_PLAN);
 		} catch (SQLException e) {
-			throw new DataAccessException("mike lugter could not create preparedstatement, check your query", null);
+			throw new DataAccessException("could not create preparedstatement, check your query", null);
 		}
 	}
 
@@ -40,7 +40,7 @@ public class FeedingPlanDB implements IFeedingPlanDB {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+		
 		return returnList;
 	}
 
