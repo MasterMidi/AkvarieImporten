@@ -21,6 +21,7 @@ public class FeedingPlanController {
 	public FeedingPlan getFeedingPlan(int feedingPlanId) {
 		return feedingPlanMatches.parallelStream()
 				.filter(feedingPlan -> feedingPlan.getID() == feedingPlanId)
-				.collect(Collectors.toList()).get(0);
+				.findFirst().get();
+//				.collect(Collectors.toList()).get(0);
 	}
 }
