@@ -23,11 +23,11 @@ public class FishSpeciesDB implements IFishSpeciesDB {
 		try {
 			Connection con = DBConnection.getInstance().getConnection();
 			
-			PreparedStatement stmt = con.prepareStatement(Q_GET_FISH_SPECIES);
+			psGetFishSpecies = con.prepareStatement(Q_GET_FISH_SPECIES);
 			
-			stmt.setString(1, searchInput);
+			psGetFishSpecies.setString(1, searchInput);
 			
-			ResultSet rs = stmt.executeQuery();
+			ResultSet rs = psGetFishSpecies.executeQuery();
 			
 			res = buildObjects(rs);
 		} catch (DataAccessException | SQLException e) {
