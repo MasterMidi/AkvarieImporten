@@ -18,7 +18,6 @@ public class FeedingPlanDB implements IFeedingPlanDB {
 	private PreparedStatement psGetFeedingPlan;
 
 	public FeedingPlanDB() throws DataAccessException {
-		DBConnection.getInstance().startTransaction();
 		Connection connection = DBConnection.getInstance().getConnection();
 
 		try {
@@ -33,7 +32,6 @@ public class FeedingPlanDB implements IFeedingPlanDB {
 
 		List<FeedingPlan> returnList = null;
 		try {
-
 			psGetFeedingPlan.setString(1, "%" + searchInput + "%");
 
 			ResultSet rs = psGetFeedingPlan.executeQuery();
