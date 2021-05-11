@@ -132,7 +132,7 @@ create table [period](
 create table fish_pack_period(
     fish_specie_id int not null,
     period_id int not null,
-    unique(fishSpecie_id, period_id),
+    unique(fish_specie_id, period_id),
     constraint fk_fish_specie_fishPack_period_id foreign key(fish_specie_id) references fish_species(id),
     constraint fk_period_fishPack_period_id foreign key(period_id) references [period](id),
 );
