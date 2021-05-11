@@ -11,7 +11,7 @@ import exception.DataAccessException;
 
 /**
  * 
- * @author knol, Michael, Magnus, Julius, Mike
+ * @author knol, Julius Håland Bendt, Magnus Baggesen, Michael Andreas Graversen, Mike Johansson
  * @version 2021-04-20
  */
 public class DBConnection {
