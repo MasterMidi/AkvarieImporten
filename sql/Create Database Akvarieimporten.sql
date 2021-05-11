@@ -47,10 +47,10 @@ create table supplier(
 create table food(
 	id int primary key identity(1,1),
 	name varchar(50) not null,
-	price_pr_gram float not null,
+	price_pr_kilo float not null,
     date date not null,
     supplier_id int not null,
-    seria_number int unique not null,
+    serial_number int unique not null,
     constraint fk_supplier_id foreign key(supplier_id) references supplier(id),
 );
 
@@ -85,12 +85,13 @@ create table fish_species(
 
 create table fish_purchase(
 	id int primary key identity(1,1),
-	date date unique not null,
+	date date not null,
 	price int not null,
     amount int not null,
     fish_specie_id int not null,
     supplier_id int not null,
 
+	unique(date, fish_specie_id, supplier_id),
     constraint fk_fish_specie_id foreign key(fish_specie_id) references fish_species(id),
     constraint fk_supplier_fish_purchase foreign key(supplier_id) references supplier(id),
 );
@@ -111,7 +112,7 @@ create table aquarium(
     id int primary key identity(1,1),
     location_id int not null,
     expense_id int not null,
-    number int not null,
+    number varchar(50) not null,
     size int not null,
     unique(location_id, number),
 );
@@ -165,7 +166,7 @@ create table [location](
 );
 
 create table employee(
-    person_id int primary key identity(1,1),
+    person_id int primary key not null,
     role varchar(25) not null,
     location_id int not null,
     constraint fk_location_id foreign key(location_id) references [location](id),
