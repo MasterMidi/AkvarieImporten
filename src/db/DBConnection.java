@@ -1,4 +1,4 @@
-package tools;
+package db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,14 +16,14 @@ import exception.DataAccessException;
  */
 public class DBConnection {
 	private Connection connection = null;
-	private static DBConnection dbConnection;
+	private static DBConnection instance;
 
 	private static final String DRIVER_CLASS = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 
 	private static String dbName = null;
 	private static String serverAddress = null;
 	private static int serverPort = -1;
-	private static String userName = null;
+	private static String username = null;
 	private static String password = null;
 
 	private DBConnection() throws DataAccessException {
@@ -31,43 +31,47 @@ public class DBConnection {
 		// String.format() method
 		// http://alvinalexander.com/programming/printf-format-cheat-sheet
 		String connectionString = String.format("jdbc:sqlserver://%s:%d;databaseName=%s;user=%s;password=%s",
-				serverAddress, serverPort, dbName, userName, password);
+				serverAddress, serverPort, dbName, username, password);
 		try {
 			Class.forName(DRIVER_CLASS);
 			connection = DriverManager.getConnection(connectionString);
-			throw new SQLException();
 		} catch (ClassNotFoundException e) {
 			throw new DataAccessException("Missing JDBC driver", e);
 
 		} catch (SQLException e) {
 			throw new DataAccessException(String.format("Could not connect to database %s@%s:%d user %s", dbName,
-					serverAddress, serverPort, userName), e);
+					serverAddress, serverPort, username), e);
 		}
 	}
 
 	public static synchronized DBConnection getInstance() throws DataAccessException {
-		if (dbConnection == null) {
-			dbConnection = new DBConnection();
+		if (instance == null) {
+			instance = new DBConnection();
 		}
-		return dbConnection;
+		return instance;
 	}
-	
-	public static void setupDB(String serverAddress, int serverPort, String dbName, String userName, String password) {
+
+	public static DBConnection startConnection(String serverAddress, int serverPort, String dbName, String username,
+			String password) throws DataAccessException {
 		DBConnection.serverAddress = serverAddress;
 		DBConnection.serverPort = serverPort;
 		DBConnection.dbName = dbName;
-		DBConnection.userName = userName;
+		DBConnection.username = username;
 		DBConnection.password = password;
+
+		// Remove any existing instance
+		return resetConnection();
 	}
-	
-	public static synchronized DBConnection resetDB() throws DataAccessException {
-		dbConnection = new DBConnection();
-		return dbConnection;
+
+	public static synchronized DBConnection resetConnection() throws DataAccessException {
+		instance = null;
+		return getInstance();
 	}
 
 	/**
 	 * 
-	 * @throws DataAccessException - if the transaction could not be started (connection problem)
+	 * @throws DataAccessException - if the transaction could not be started
+	 *                             (connection problem)
 	 */
 	public void startTransaction() throws DataAccessException {
 		try {
@@ -79,7 +83,8 @@ public class DBConnection {
 
 	/**
 	 * 
-	 * @throws DataAccessException - if the transaction could not be committed (connection problem)
+	 * @throws DataAccessException - if the transaction could not be committed
+	 *                             (connection problem)
 	 */
 	public void commitTransaction() throws DataAccessException {
 		try {
@@ -158,12 +163,13 @@ public class DBConnection {
 	}
 
 	public Connection getConnection() {
-		//TODO: ability to reopen connection?
+		// TODO: ability to reopen connection?
 		return connection;
 	}
 
 	/**
-	 * Closes connection object. Use when the program wont need the connection anymore (can't be reopened)
+	 * Closes connection object. Use when the program wont need the connection
+	 * anymore (can't be reopened)
 	 */
 	public void disconnect() {
 		try {
