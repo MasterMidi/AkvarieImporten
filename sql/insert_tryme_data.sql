@@ -33,11 +33,11 @@ INSERT INTO price_category VALUES (20, 300, '2021-01-01');
 INSERT INTO price_category VALUES (5, 150, '2021-01-01');
 INSERT INTO price_category VALUES (34, 150, '2021-01-01');
 
-INSERT INTO fish_species VALUES ('fiskeart', 10, 5, 2, 20, 1);
-INSERT INTO fish_species VALUES ('fiskeart', 10, 5, 2, 20, 2);
-INSERT INTO fish_species VALUES ('fiskeart', 10, 5, 2, 20, 3);
-INSERT INTO fish_species VALUES ('fiskeart', 10, 5, 2, 20, 4);
-INSERT INTO fish_species VALUES ('fiskeart', 10, 5, 2, 20, 2);
+INSERT INTO fish_species VALUES ('Nemo', 10, 5, 2, 20, 1);
+INSERT INTO fish_species VALUES ('Haj', 10, 5, 2, 20, 2);
+INSERT INTO fish_species VALUES ('Delfin', 10, 5, 2, 20, 3);
+INSERT INTO fish_species VALUES ('Cichlide', 10, 5, 2, 20, 4);
+INSERT INTO fish_species VALUES ('Fiskeart', 10, 5, 2, 20, 2);
 
 
 
@@ -48,9 +48,9 @@ INSERT INTO fish_pack VALUES ('2021-01-02', 1, 'KLAR tiL SALG', 1, 1);
 INSERT INTO fish_pack VALUES ('2021-05-06', 2, 'KLAR tiL SALG', 2, 1);
 INSERT INTO fish_pack VALUES ('2021-03-04', 3, 'KLAR tiL SALG', 2, 3);
 
-INSERT INTO aquarium VALUES (1, 1, 1, 50);
-INSERT INTO aquarium VALUES (1, 2, 2, 150);
-INSERT INTO aquarium VALUES (1, 3, 3, 200);
+INSERT INTO aquarium VALUES (1, 1, 'akvarie 1', 50);
+INSERT INTO aquarium VALUES (1, 2, 'akvarie 2', 150);
+INSERT INTO aquarium VALUES (1, 3, 'akvarie 3', 200);
 
 
 INSERT INTO fish_pack_period VALUES ('2021-01-01', null, 1,1);
