@@ -2,7 +2,6 @@ package ctrl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import db.IFeedingPlanDB;
 import db.dao.FeedingPlanDB;
@@ -26,6 +25,5 @@ public class FeedingPlanController {
 		return feedingPlanMatches.parallelStream()
 				.filter(feedingPlan -> feedingPlan.getID() == feedingPlanId)
 				.findFirst().get();
-//				.collect(Collectors.toList()).get(0);
 	}
 }
