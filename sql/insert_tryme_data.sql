@@ -1,5 +1,6 @@
 use dmab0920_1086225;
 
+
 INSERT INTO equipment VALUES ('Pumpe', 'En pumpe, som er episk! denne satan kan trække med hele 50 watt!', 50, 123456);
 INSERT INTO equipment VALUES ('Varme lampe', 'En lampe, som (you gussed it) varmer!', 100, 123457);
 INSERT INTO equipment VALUES ('En lidt større pumpe', 'En pumpe som er lidt større', 75, 123458);
@@ -36,10 +37,12 @@ INSERT INTO fish_species VALUES ('fiskeart', 10, 5, 2, 20, 1);
 INSERT INTO fish_species VALUES ('fiskeart', 10, 5, 2, 20, 2);
 INSERT INTO fish_species VALUES ('fiskeart', 10, 5, 2, 20, 3);
 INSERT INTO fish_species VALUES ('fiskeart', 10, 5, 2, 20, 4);
-INSERT INTO fish_species VALUES ('fiskeart', 10, 5, 2, 20, 5);
+INSERT INTO fish_species VALUES ('fiskeart', 10, 5, 2, 20, 2);
+
+
 
 INSERT INTO fish_purchase VALUES ('2021-01-01', 200, 2, 1, 1);
-INSERT INTO fish_purchase VALUES ('2021-01-01', 350, 4, 2, 3);
+INSERT INTO fish_purchase VALUES ('2021-02-01', 350, 4, 2, 3);
 
 INSERT INTO fish_pack VALUES ('2021-01-02', 1, 'KLAR tiL SALG', 1, 1);
 INSERT INTO fish_pack VALUES ('2021-05-06', 2, 'KLAR tiL SALG', 2, 1);
@@ -49,17 +52,13 @@ INSERT INTO aquarium VALUES (1, 1, 1, 50);
 INSERT INTO aquarium VALUES (1, 2, 2, 150);
 INSERT INTO aquarium VALUES (1, 3, 3, 200);
 
-INSERT INTO [period] VALUES ('2021-01-01', '2021-05-01', 1,null, 'equipment');
-INSERT INTO [period] VALUES ('2021-02-01', '2021-07-01', null,1, 'aquarium');
-INSERT INTO [period] VALUES ('2021-02-01', '2021-07-01', null,2, 'aquarium');
-INSERT INTO [period] VALUES ('2021-02-01', '2021-07-01', null,3, 'aquarium');
 
-INSERT INTO fish_pack_period VALUES (1,1);
-INSERT INTO fish_pack_period VALUES (1,2);
+INSERT INTO fish_pack_period VALUES ('2021-01-01', null, 1,1);
+INSERT INTO fish_pack_period VALUES ('2021-01-01', '2021-05-01', 1,2);
 
-INSERT INTO aquarium_period VALUES (1, 2);
-INSERT INTO aquarium_period VALUES (2, 3);
-INSERT INTO aquarium_period VALUES (3, 4);
+INSERT INTO aquarium_period VALUES ('2020-01-01', '2021-03-01', 1, 2);
+INSERT INTO aquarium_period VALUES ('2021-03-05', null, 2, 3);
+INSERT INTO aquarium_period VALUES ('2021-06-02', '2021-09-01', 3, 3);
 
 INSERT INTO expense VALUES ('kWh', 0.5, '2021-05-10');
 INSERT INTO expense VALUES ('kWh', 0.4, '2021-05-08');
@@ -71,7 +70,7 @@ INSERT INTO [location] VALUES ('Vesterbro 76', 9000);
 INSERT INTO [location] VALUES ('getto', 9210);
 INSERT INTO [location] VALUES ('planteskole sted', 9220);
 
-INSERT INTO employee  VALUES (1, 'Avler', 1);
-INSERT INTO employee VALUES (2, 'Butik', 1);
-INSERT INTO employee VALUES (3, 'Avler', 2);
-INSERT INTO employee VALUES (4, 'Avler', 3);
+INSERT INTO employee  VALUES (1, 'breeder', 1);
+INSERT INTO employee VALUES (2, 'cashier', 1);
+INSERT INTO employee VALUES (3, 'breeder', 2);
+INSERT INTO employee VALUES (4, 'breeder', 3);
