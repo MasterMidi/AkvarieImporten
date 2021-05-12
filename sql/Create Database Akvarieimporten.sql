@@ -117,33 +117,28 @@ create table aquarium(
     unique(location_id, number),
 );
 
-create table [period](
+create table fish_pack_period(
+    id int primary key identity(1,1),
+    start_date date not null,
+    end_date date,
+    aquarium_id int,
+	fish_pack_id int,
+    unique(start_date, aquarium_id, fish_pack_id),
+
+    constraint fk_aquarium_fish_pack_period foreign key(aquarium_id) references aquarium(id),
+	constraint fk_fish_pack_id foreign key(fish_pack_id) references fish_pack(id),
+);
+
+create table aquarium_period(
     id int primary key identity(1,1),
     start_date date not null,
     end_date date,
     equipment_id int,
     aquarium_id int,
-    type varchar(25) not null,
-    unique(start_date, equipment_id, aquarium_id, type),
+    unique(start_date, equipment_id, aquarium_id),
 
-    constraint fk_equipment_id foreign key(equipment_id) references equipment(id),
+    constraint fk_equipment_aquarium_period foreign key(equipment_id) references equipment(id),
     constraint fk_aquarium_id foreign key(aquarium_id) references aquarium(id),
-);
-
-create table fish_pack_period(
-    fish_specie_id int not null,
-    period_id int not null,
-    unique(fish_specie_id, period_id),
-    constraint fk_fish_specie_fishPack_period_id foreign key(fish_specie_id) references fish_species(id),
-    constraint fk_period_fishPack_period_id foreign key(period_id) references [period](id),
-);
-
-create table aquarium_period(
-    aquarium_id int not null,
-    period_id int not null,
-    unique(aquarium_id, period_id),
-    constraint fk_aquarium_aquarium_period_id foreign key(aquarium_id) references aquarium(id),
-    constraint fk_period_aquarium_period_id foreign key(period_id) references period(id),
 );
 
 create table expense(
