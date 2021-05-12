@@ -10,7 +10,7 @@ import db.dao.FishSpeciesDB;
 import exception.DataAccessException;
 
 public class Database {
-	public static final int NUMBER_OF_THREADS = 2;
+	public static final int NUMBER_OF_THREADS = 4;
 	public static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
 	private static Database instance;
@@ -19,7 +19,7 @@ public class Database {
 	private static IFishPackDB fishPackDB;
 	private static IFishSpeciesDB fishSpeciesDB;
 
-	public static synchronized Database getInstance() {
+	public static Database getInstance() {
 		if (instance == null) {
 			synchronized (Database.class) {
 				if (instance == null) {
