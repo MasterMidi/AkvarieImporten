@@ -33,11 +33,11 @@ INSERT INTO price_category VALUES (20, 300, '2021-01-01');
 INSERT INTO price_category VALUES (5, 150, '2021-01-01');
 INSERT INTO price_category VALUES (34, 150, '2021-01-01');
 
-INSERT INTO fish_species VALUES ('fiskeart', 10, 5, 2, 20, 1);
-INSERT INTO fish_species VALUES ('fiskeart', 10, 5, 2, 20, 2);
-INSERT INTO fish_species VALUES ('fiskeart', 10, 5, 2, 20, 3);
-INSERT INTO fish_species VALUES ('fiskeart', 10, 5, 2, 20, 4);
-INSERT INTO fish_species VALUES ('fiskeart', 10, 5, 2, 20, 2);
+INSERT INTO fish_species VALUES ('Nemo', 10, 5, 2, 20, 1);
+INSERT INTO fish_species VALUES ('Haj', 10, 5, 2, 20, 2);
+INSERT INTO fish_species VALUES ('Delfin', 10, 5, 2, 20, 3);
+INSERT INTO fish_species VALUES ('Cichlide', 10, 5, 2, 20, 4);
+INSERT INTO fish_species VALUES ('Fiskeart', 10, 5, 2, 20, 2);
 
 
 
