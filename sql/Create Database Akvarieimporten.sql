@@ -99,7 +99,7 @@ create table fish_purchase(
 create table fish_pack(
     id int primary key identity(1,1),
     birthday date not null,
-    pack_number int unique not null,
+    pack_number int unique, --removed not null (because of insert)
     status varchar(25) not null,
     fish_specie_id int not null,
     feeding_plan_id int not null,
