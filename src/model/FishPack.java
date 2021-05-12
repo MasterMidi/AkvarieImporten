@@ -30,4 +30,28 @@ public class FishPack {
 		Period<Aquarium> res = new Period<Aquarium>(aquarium, LocalDate.now());
 		this.aquariumPeriods.add(res);
 	}
+
+	public LocalDate getBirthDate() {
+		return birthDate;
+	}
+
+	public FeedingPlan getFeedingPlan() {
+		return feedingPlan;
+	}
+
+	public FishSpecies getSpecies() {
+		return species;
+	}
+
+	public List<Period<Aquarium>> getAquariumPeriods() {
+		return aquariumPeriods;
+	}
+
+	public FishPack(LocalDate birthDate, FeedingPlan feedingPlan, FishSpecies species) {
+		super();
+		this.birthDate = birthDate;
+		this.feedingPlan = feedingPlan;
+		this.species = species;
+	}
+	
 }

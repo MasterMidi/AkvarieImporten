@@ -36,7 +36,7 @@ INSERT INTO fish_species VALUES ('fiskeart', 10, 5, 2, 20, 1);
 INSERT INTO fish_species VALUES ('fiskeart', 10, 5, 2, 20, 2);
 INSERT INTO fish_species VALUES ('fiskeart', 10, 5, 2, 20, 3);
 INSERT INTO fish_species VALUES ('fiskeart', 10, 5, 2, 20, 4);
-INSERT INTO fish_species VALUES ('fiskeart', 10, 5, 2, 20, 3);
+INSERT INTO fish_species VALUES ('fiskeart', 10, 5, 2, 20, 5);
 
 INSERT INTO fish_purchase VALUES ('2021-01-01', 200, 2, 1, 1);
 INSERT INTO fish_purchase VALUES ('2021-01-01', 350, 4, 2, 3);
