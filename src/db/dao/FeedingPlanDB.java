@@ -29,7 +29,7 @@ public class FeedingPlanDB implements IFeedingPlanDB {
 
 	@Override
 	public List<FeedingPlan> getFeedingPlan(String searchInput) {
-		
+
 		List<FeedingPlan> returnList = null;
 		try {
 			psGetFeedingPlan.setString(1, "%" + searchInput + "%");
@@ -43,7 +43,6 @@ public class FeedingPlanDB implements IFeedingPlanDB {
 		return returnList;
 	}
 
-
 	private List<FeedingPlan> buildObjects(ResultSet rs) throws SQLException {
 		List<FeedingPlan> feedingPlanList = new ArrayList<>();
 		while (rs.next()) {
@@ -54,13 +53,10 @@ public class FeedingPlanDB implements IFeedingPlanDB {
 	}
 
 	private FeedingPlan buildObject(ResultSet rs) throws SQLException {
-
-		FeedingPlan plan = new FeedingPlan(rs.getString("name"), rs.getInt("interval"), rs.getInt("amount"), null); //Food-parameter is null, as that is out of this use case.
+		// Food-parameter is null, as that is out of this use case.
+		FeedingPlan plan = new FeedingPlan(rs.getString("name"), rs.getInt("interval"), rs.getInt("amount"), null);
 		plan.setID(rs.getInt("id"));
 		return plan;
 	}
-
-
-
 
 }
