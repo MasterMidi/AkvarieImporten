@@ -14,6 +14,7 @@ import db.dao.FeedingPlanDB;
 import db.dao.FishPackDB;
 import env.ENV;
 import exception.DataAccessException;
+import model.Aquarium;
 import model.FeedingPlan;
 import model.FishPack;
 import model.FishSpecies;
@@ -42,11 +43,16 @@ public class SQLcheck {
 	public void testFishPackInsert() throws DataAccessException, SQLException {
 		FeedingPlan plan = new FeedingPlan("Normal fisk", 3, 35, null);
 		FishSpecies fs = new FishSpecies("fiskeart", 10, 5, 2, 20);
+		Aquarium aq = new Aquarium("123", 200.0);
+		aq.setId(3);
 		fs.setId(1);
 		plan.setID(1);
 		FishPack fp = new FishPack(LocalDate.now(), plan, fs);
+		fp.setAquarium(aq);
 		FishPackDB fpDB = new FishPackDB();
 		fpDB.insertFishPack(fp);
 		
 	}
+	
+	
 }

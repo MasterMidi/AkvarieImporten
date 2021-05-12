@@ -52,6 +52,8 @@ public class FishPack {
 		this.birthDate = birthDate;
 		this.feedingPlan = feedingPlan;
 		this.species = species;
+		this.aquariumPeriods = new ArrayList<Period<Aquarium>>();
 	}
+
 	
 }
