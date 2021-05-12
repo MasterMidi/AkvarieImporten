@@ -34,7 +34,7 @@ public class FishPackDB implements IFishPackDB {
 	
 
 	@Override
-	public void insertFishPack(FishPack fishPack) throws SQLException, DataAccessException {
+	public boolean insertFishPack(FishPack fishPack) throws SQLException, DataAccessException {
 		DBConnection.getInstance().startTransaction();
 		
 		prepareStatementFishPack(fishPack);
@@ -48,6 +48,8 @@ public class FishPackDB implements IFishPackDB {
 		insertPeriod(fishPack.getAquariumPeriods().get(0), fishPackID);
 		
 		DBConnection.getInstance().commitTransaction();
+		
+		return true;
 	}
 
 
