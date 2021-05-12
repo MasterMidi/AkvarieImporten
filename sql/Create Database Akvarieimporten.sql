@@ -120,7 +120,7 @@ create table aquarium(
 create table [period](
     id int primary key identity(1,1),
     start_date date not null,
-    end_date date not null,
+    end_date date,
     equipment_id int,
     aquarium_id int,
     type varchar(25) not null,
