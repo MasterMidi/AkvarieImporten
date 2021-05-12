@@ -22,7 +22,10 @@ public class AquariumController {
     }
 
     public Aquarium getAquarium(int aquariumID) {
-	Aquarium res = aquariumMatches.parallelStream().filter(x -> x.getId() == aquariumID).findFirst().get();
+	Aquarium res = aquariumMatches
+			.parallelStream()
+			.filter(x -> x.getId() == aquariumID)
+			.findFirst().get();
 	return res;
     }
 }

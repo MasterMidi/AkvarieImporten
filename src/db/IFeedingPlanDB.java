@@ -7,6 +7,6 @@ import model.FeedingPlan;
 
 public interface IFeedingPlanDB {
 
-	List<FeedingPlan> getFeedingPlan(String searchInput) throws DataAccessException;
+	List<FeedingPlan> getFeedingPlan(String searchInput);
 	
 }

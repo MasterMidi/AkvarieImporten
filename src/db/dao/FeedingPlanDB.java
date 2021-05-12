@@ -28,7 +28,7 @@ public class FeedingPlanDB implements IFeedingPlanDB {
 	}
 
 	@Override
-	public List<FeedingPlan> getFeedingPlan(String searchInput) throws DataAccessException {
+	public List<FeedingPlan> getFeedingPlan(String searchInput) {
 		
 		List<FeedingPlan> returnList = null;
 		try {
@@ -57,7 +57,6 @@ public class FeedingPlanDB implements IFeedingPlanDB {
 
 		FeedingPlan plan = new FeedingPlan(rs.getString("name"), rs.getInt("interval"), rs.getInt("amount"), null); //Food-parameter is null, as that is out of this use case.
 		plan.setID(rs.getInt("id"));
-
 		return plan;
 	}
 

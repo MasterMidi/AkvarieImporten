@@ -36,8 +36,8 @@ public class FishPackController {
 	public List<Aquarium> searchAquarium(String searchInput) {
 		return aquariumController.searchAquarium(searchInput);
 	}
-	//TODO shoudnt throw anything
-	public List<FeedingPlan> searchFeedingplans(String searchInput) throws DataAccessException {
+	
+	public List<FeedingPlan> searchFeedingplans(String searchInput) {
 		return feedingPlanController.searchFeedingPlan(searchInput);
 	}
 	
