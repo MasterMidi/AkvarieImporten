@@ -48,9 +48,9 @@ INSERT INTO fish_pack VALUES ('2021-01-02', 1, 'KLAR tiL SALG', 1, 1);
 INSERT INTO fish_pack VALUES ('2021-05-06', 2, 'KLAR tiL SALG', 2, 1);
 INSERT INTO fish_pack VALUES ('2021-03-04', 3, 'KLAR tiL SALG', 2, 3);
 
-INSERT INTO aquarium VALUES (1, 1, 1, 50);
-INSERT INTO aquarium VALUES (1, 2, 2, 150);
-INSERT INTO aquarium VALUES (1, 3, 3, 200);
+INSERT INTO aquarium VALUES (1, 1, 'akvarie 1', 50);
+INSERT INTO aquarium VALUES (1, 2, 'akvarie 2', 150);
+INSERT INTO aquarium VALUES (1, 3, 'akvarie 3', 200);
 
 
 INSERT INTO fish_pack_period VALUES ('2021-01-01', null, 1,1);
