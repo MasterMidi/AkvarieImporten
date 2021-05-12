@@ -1,6 +1,6 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -54,5 +54,19 @@ public class SQLcheck {
 		
 	}
 	
-	
+	@Test
+	public void testFishPackInsertController() throws DataAccessException, SQLException {
+		
+		FishPackController ctrl = new FishPackController();
+		ctrl.createEmptyFishPack();
+		ctrl.searchAquarium("1");
+		ctrl.setAquarium(1);
+		ctrl.searchFishSpecies("fiskeart");
+		ctrl.setFishSpecies(1);
+		ctrl.searchFeedingplans("normal fisk");
+		ctrl.setFeedingPlan(1);
+		ctrl.setFishPackBirthday(LocalDate.now());
+		ctrl.finishFishPack();
+		
+	}
 }

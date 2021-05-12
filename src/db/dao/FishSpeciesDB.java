@@ -14,7 +14,7 @@ import model.FishSpecies;
 
 public class FishSpeciesDB implements IFishSpeciesDB {
 	//TODO
-	static final String Q_GET_FISH_SPECIES = "SELECT * FROM fishSpecies WHERE name LIKE ?";
+	static final String Q_GET_FISH_SPECIES = "SELECT * FROM fish_species WHERE name LIKE ?";
 	private PreparedStatement psGetFishSpecies;
 
 	public FishSpeciesDB() throws DataAccessException {
@@ -32,7 +32,7 @@ public class FishSpeciesDB implements IFishSpeciesDB {
 		
 		try {
 			
-			psGetFishSpecies.setString(1, searchInput);
+			psGetFishSpecies.setString(1, "%" + searchInput + "%");
 			
 			ResultSet rs = psGetFishSpecies.executeQuery();
 			
@@ -55,7 +55,7 @@ public class FishSpeciesDB implements IFishSpeciesDB {
 	}
 	private FishSpecies buildObject(ResultSet rs) throws SQLException {
 		FishSpecies res = null;
-		res = new FishSpecies(rs.getString("name"), rs.getInt("average_eggs"), rs.getDouble("birth_size"), rs.getDouble("grow_rate"), rs.getDouble("minimum_sales_size"));
+		res = new FishSpecies(rs.getString("name"), rs.getInt("average_eggs"), rs.getDouble("birth_size"), rs.getDouble("grow_rate"), rs.getInt("minimum_sale_size"));
 		res.setId(rs.getInt("id"));
 		return res;
 	}

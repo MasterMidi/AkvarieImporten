@@ -44,7 +44,7 @@ public class Database {
 		}
 		return aquariumDB;
 	}
-	
+
 	public IFeedingPlanDB feedingPlanDB() {
 		if (feedingPlanDB == null) {
 			synchronized (FeedingPlanDB.class) {
@@ -59,7 +59,7 @@ public class Database {
 		}
 		return feedingPlanDB;
 	}
-	
+
 	public IFishPackDB fishPackDB() {
 		if (fishPackDB == null) {
 			synchronized (FishPackDB.class) {
@@ -74,7 +74,7 @@ public class Database {
 		}
 		return fishPackDB;
 	}
-	
+
 	public IFishSpeciesDB fishSpeciesDB() {
 		if (fishSpeciesDB == null) {
 			synchronized (FishSpeciesDB.class) {
