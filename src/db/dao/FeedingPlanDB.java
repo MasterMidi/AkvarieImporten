@@ -29,7 +29,7 @@ public class FeedingPlanDB implements IFeedingPlanDB {
 
 	@Override
 	public List<FeedingPlan> getFeedingPlan(String searchInput) throws DataAccessException {
-
+		
 		List<FeedingPlan> returnList = null;
 		try {
 			psGetFeedingPlan.setString(1, "%" + searchInput + "%");
@@ -40,9 +40,9 @@ public class FeedingPlanDB implements IFeedingPlanDB {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 		return returnList;
 	}
+
 
 	private List<FeedingPlan> buildObjects(ResultSet rs) throws SQLException {
 		List<FeedingPlan> feedingPlanList = new ArrayList<>();
@@ -60,5 +60,8 @@ public class FeedingPlanDB implements IFeedingPlanDB {
 
 		return plan;
 	}
+
+
+
 
 }

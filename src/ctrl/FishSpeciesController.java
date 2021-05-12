@@ -1,5 +1,6 @@
 package ctrl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import db.IFishSpeciesDB;
@@ -17,7 +18,7 @@ public class FishSpeciesController {
 
 	public List<FishSpecies> searchFishSpecies(String searchInput) {
 		this.speciesMatches = fishSpeciesDB.getFishSpecies(searchInput);
-		return speciesMatches;
+		return new ArrayList<>(speciesMatches);
 
 	}
 

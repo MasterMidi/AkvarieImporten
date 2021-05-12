@@ -25,8 +25,9 @@ public class FishPack {
 	public void setSpecies(FishSpecies species) {
 		this.species = species;
 	}
-
-	public void setAquariumPeriods(List<Period<Aquarium>> aquariumPeriods) {
-		this.aquariumPeriods = aquariumPeriods;
+	//Always sets startdate to LocalDate.now() 
+	public void setAquarium(Aquarium aquarium) {
+		Period<Aquarium> res = new Period<Aquarium>(aquarium, LocalDate.now());
+		this.aquariumPeriods.add(res);
 	}
 }

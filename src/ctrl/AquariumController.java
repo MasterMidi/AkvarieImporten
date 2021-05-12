@@ -1,5 +1,6 @@
 package ctrl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import db.IAquariumDB;
@@ -17,7 +18,7 @@ public class AquariumController {
 
     public List<Aquarium> searchAquarium(String searchInput) {
 	aquariumMatches = aquariumDB.getAquarium(searchInput);
-	return aquariumMatches;
+	return new ArrayList<>(aquariumMatches);
     }
 
     public Aquarium getAquarium(int aquariumID) {

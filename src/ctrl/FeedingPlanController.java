@@ -19,7 +19,6 @@ public class FeedingPlanController {
 	
 	public List<FeedingPlan> searchFeedingPlan(String searchInput) throws DataAccessException {
 		feedingPlanMatches = feedingPlanDB.getFeedingPlan(searchInput);
-
 		return new ArrayList<>(feedingPlanMatches);
 	}
 
