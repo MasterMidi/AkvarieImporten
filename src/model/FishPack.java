@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FishPack {
+	private int id;
     private LocalDate birthDate;
     private FeedingPlan feedingPlan;
     private FishSpecies species;
@@ -58,17 +59,22 @@ public class FishPack {
 
     // TODO Make the calculate for the correct amount of days.
     public Integer getStatus() {
-	return 25;
+    	return 25;
     }
 
     // TODO Get the current aquarium for the fishpack
     public Aquarium getCurrentAquarium() {
-	return aquariumPeriods.get(0).getObject();
+    	return aquariumPeriods.get(0).getObject();
     }
 
     // TODO Fetch fishpack number
     public String getFishPackNumber() {
-	return "TestNummer222";
+    	return "TestNummer222";
     }
+
+	public void setID(Integer id) {
+		this.id = id;
+		
+	}
 
 }
