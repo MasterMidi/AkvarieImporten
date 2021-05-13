@@ -113,6 +113,10 @@ public class DBConnection {
 			throw new DataAccessException("Could not rollback transaction", e);
 		}
 	}
+	
+	public void setIsolationLevel(int level) throws SQLException {
+		connection.setTransactionIsolation(level);
+	}
 
 	public int executeInsertWithIdentity(String sql) throws DataAccessException {
 		System.out.println("DBConnection, Inserting: " + sql);

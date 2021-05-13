@@ -1,4 +1,4 @@
-package db;
+package db.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,31 +7,37 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import db.DBConnection;
+import db.IFishSpeciesDB;
 import exception.DataAccessException;
 import model.FishSpecies;
 
 public class FishSpeciesDB implements IFishSpeciesDB {
 	//TODO
-	static final String Q_GET_FISH_SPECIES = "SELECT * FROM fishSpecies WHERE name LIKE ?";
+	static final String Q_GET_FISH_SPECIES = "SELECT * FROM fish_species WHERE name LIKE ?";
 	private PreparedStatement psGetFishSpecies;
 
+	public FishSpeciesDB() throws DataAccessException {
+		Connection connection = DBConnection.getInstance().getConnection();
+
+		try {
+			psGetFishSpecies = connection.prepareStatement(Q_GET_FISH_SPECIES);
+		} catch (SQLException e) {
+			throw new DataAccessException("could not create preparedstatement, check your query", null);
+		}
+	}
 	@Override
 	public List<FishSpecies> getFishSpecies(String searchInput) {
 		List<FishSpecies> res = null;
 		
 		try {
-			Connection con = DBConnection.getInstance().getConnection();
 			
-			PreparedStatement stmt = con.prepareStatement(Q_GET_FISH_SPECIES);
+			psGetFishSpecies.setString(1, "%" + searchInput + "%");
 			
-			stmt.setString(1, searchInput);
-			
-			ResultSet rs = stmt.executeQuery();
+			ResultSet rs = psGetFishSpecies.executeQuery();
 			
 			res = buildObjects(rs);
-		} catch (DataAccessException | SQLException e) {
-			// TODO Auto-generated catch block
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
@@ -49,7 +55,7 @@ public class FishSpeciesDB implements IFishSpeciesDB {
 	}
 	private FishSpecies buildObject(ResultSet rs) throws SQLException {
 		FishSpecies res = null;
-		res = new FishSpecies(rs.getString("name"), rs.getInt("average_eggs"), rs.getDouble("birth_size"), rs.getDouble("grow_rate"), rs.getDouble("minimum_sales_size"));
+		res = new FishSpecies(rs.getString("name"), rs.getInt("average_eggs"), rs.getDouble("birth_size"), rs.getDouble("grow_rate"), rs.getInt("minimum_sale_size"));
 		res.setId(rs.getInt("id"));
 		return res;
 	}

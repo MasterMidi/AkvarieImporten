@@ -1,22 +1,24 @@
 package ctrl;
 
+import java.util.ArrayList;
 import java.util.List;
-import db.FishSpeciesDB;
+
 import db.IFishSpeciesDB;
+import db.dao.FishSpeciesDB;
 import exception.DataAccessException;
 import model.FishSpecies;
 
 public class FishSpeciesController {
 	private List<FishSpecies> speciesMatches;
-	private IFishSpeciesDB fishSpeciesDb;
+	private IFishSpeciesDB fishSpeciesDB;
 
 	public FishSpeciesController() throws DataAccessException {
-		this.fishSpeciesDb = new FishSpeciesDB();
+		this.fishSpeciesDB = new FishSpeciesDB();
 	}
 
 	public List<FishSpecies> searchFishSpecies(String searchInput) {
-		this.speciesMatches = fishSpeciesDb.getFishSpecies(searchInput);
-		return speciesMatches;
+		this.speciesMatches = fishSpeciesDB.getFishSpecies(searchInput);
+		return new ArrayList<>(speciesMatches);
 
 	}
 
