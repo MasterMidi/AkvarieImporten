@@ -18,4 +18,25 @@ public class Aquarium {
     public void setId(int id) {
 	this.id = id;
     }
+
+    public String getNumber() {
+	return number;
+    }
+
+    public void setNumber(String number) {
+	this.number = number;
+    }
+
+    public Double getSize() {
+	return size;
+    }
+
+    public void setSize(Double size) {
+	this.size = size;
+    }
+
+    // TODO Make aquarium fetch location
+    public String getLocation() {
+	return "BonBonLand";
+    }
 }
