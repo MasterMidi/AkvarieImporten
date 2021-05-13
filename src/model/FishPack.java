@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FishPack {
+	private int id;
 	private LocalDate birthDate;
 	private FeedingPlan feedingPlan;
 	private FishSpecies species;
@@ -53,6 +54,11 @@ public class FishPack {
 		this.feedingPlan = feedingPlan;
 		this.species = species;
 		this.aquariumPeriods = new ArrayList<Period<Aquarium>>();
+	}
+
+	public void setID(Integer id) {
+		this.id = id;
+		
 	}
 
 	
