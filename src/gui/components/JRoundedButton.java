@@ -30,6 +30,9 @@ public class JRoundedButton extends JButton {
 	private double rounding;
 	private int sizeRounding;
 	private static double DEFAULT_ROUNDING = 1;
+	
+	private Color normal = new Color(114, 219, 242);
+	private Color onClick = new Color(4, 138, 191);
 
 	public JRoundedButton(String label) {
 		this(label, DEFAULT_ROUNDING);
@@ -56,13 +59,21 @@ public class JRoundedButton extends JButton {
 	public void setRounding(double rounding) {
 		this.rounding = rounding;
 	}
+	
+	public void setColorDefault(Color normal) {
+		this.normal = normal;
+	}
+	
+	public void setColorClick(Color hover) {
+		this.onClick = hover;
+	}
 
 	protected void paintComponent(Graphics g) {
 		((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		if (getModel().isArmed()) {
-			g.setColor(new Color(114, 219, 242));
+			g.setColor(onClick);
 		} else {
-			g.setColor(new Color(4, 138, 191));
+			g.setColor(normal);
 		}
 		
 		int minSide = Math.min(getSize().height, getSize().width);
