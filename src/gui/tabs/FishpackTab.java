@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 import ctrl.FishPackController;
 import exception.DataAccessException;
 import gui.components.FishPackTableModel;
+import gui.components.JRoundedButton;
 import model.FishPack;
 
 public class FishpackTab extends JPanel {
@@ -31,15 +32,22 @@ public class FishpackTab extends JPanel {
 
 	JPanel HeaderPane = new JPanel();
 	add(HeaderPane, BorderLayout.NORTH);
-
-	JButton btnCreateFishpack = new JButton("Opret Kuld");
-	HeaderPane.add(btnCreateFishpack);
-
-	JButton btnUpdateFishpack = new JButton("Rediger Kuld");
-	HeaderPane.add(btnUpdateFishpack);
-
-	JButton btnRemoveFishpack = new JButton("Fjern Kuld");
-	HeaderPane.add(btnRemoveFishpack);
+	HeaderPane.setLayout(new BorderLayout(0, 0));
+	
+	JPanel panel = new JPanel();
+	HeaderPane.add(panel, BorderLayout.WEST);
+	
+	JButton btnCreateFishpack = new JRoundedButton("Opret Kuld");
+	panel.add(btnCreateFishpack);
+	
+	JButton btnUpdateFishpack = new JRoundedButton("Rediger Kuld");
+	panel.add(btnUpdateFishpack);
+	
+	JPanel panel_1 = new JPanel();
+	HeaderPane.add(panel_1, BorderLayout.EAST);
+	
+	JButton btnRemoveFishpack = new JRoundedButton("Fjern Kuld");
+	panel_1.add(btnRemoveFishpack);
 
 	JPanel InfoPane = new JPanel();
 	InfoPane.setBackground(Color.YELLOW);
@@ -53,10 +61,10 @@ public class FishpackTab extends JPanel {
 	JPanel FooterPane = new JPanel();
 	add(FooterPane, BorderLayout.SOUTH);
 
-	JButton btnCancel = new JButton("Anuller");
+	JButton btnCancel = new JRoundedButton("Anuller");
 	FooterPane.add(btnCancel);
 
-	JButton btnFinish = new JButton("Færdig");
+	JButton btnFinish = new JRoundedButton("Færdig");
 	FooterPane.add(btnFinish);
 
 	JPanel ContentPane = new JPanel();
