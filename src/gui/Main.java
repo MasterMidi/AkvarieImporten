@@ -32,7 +32,7 @@ public class Main extends JFrame implements CallbackIF {
 
 	private JPanel contentPane;
 	private JPanel fishpackTab;
-	private JPanel viewPort;
+	private JPanel viewport;
 
 	/**
 	 * Launch the application.
@@ -73,7 +73,7 @@ public class Main extends JFrame implements CallbackIF {
 		JPanel menuPane = new JPanel();
 		contentPane.add(menuPane, BorderLayout.WEST);
 		GridBagLayout gbl_menuPane = new GridBagLayout();
-		gbl_menuPane.columnWidths = new int[] { 0 };
+		gbl_menuPane.columnWidths = new int[] { 150 };
 		gbl_menuPane.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 		gbl_menuPane.columnWeights = new double[] { Double.MIN_VALUE };
 		gbl_menuPane.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
@@ -160,10 +160,6 @@ public class Main extends JFrame implements CallbackIF {
 		menuPane.add(btnCalender, gbc_btnCalender);
 
 		JButton btnFeedingPlan = new JRoundedButton("Fodreplan");
-		btnFeedingPlan.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		btnFeedingPlan.setPreferredSize(new Dimension(120, 30));
 		btnFeedingPlan.setBorderPainted(false);
 		btnFeedingPlan.setHorizontalAlignment(SwingConstants.LEFT);
@@ -173,10 +169,10 @@ public class Main extends JFrame implements CallbackIF {
 		gbc_btnFeedingPlan.gridy = 7;
 		menuPane.add(btnFeedingPlan, gbc_btnFeedingPlan);
 
-		viewPort = new JPanel();
-		viewPort.setBackground(Color.GREEN);
-		contentPane.add(viewPort, BorderLayout.CENTER);
-		viewPort.setLayout(new BorderLayout(0, 0));
+		viewport = new JPanel();
+		viewport.setBackground(Color.GREEN);
+		contentPane.add(viewport, BorderLayout.CENTER);
+		viewport.setLayout(new BorderLayout(0, 0));
 
 		init();
 	}
@@ -188,6 +184,8 @@ public class Main extends JFrame implements CallbackIF {
 			// Make error message
 			e.printStackTrace();
 		}
+		
+		btnFishpackPressed();
 	}
 
 	private void btnFishpackPressed() {
@@ -196,10 +194,10 @@ public class Main extends JFrame implements CallbackIF {
 
 	private void newView(Class view) {
 		try {
-			viewPort.removeAll();
+			viewport.removeAll();
 			JPanel panel = (JPanel) view.getDeclaredConstructor().newInstance();
-			viewPort.add(panel, BorderLayout.CENTER);
-			viewPort.updateUI();
+			viewport.add(panel, BorderLayout.CENTER);
+			viewport.updateUI();
 		} catch (InstantiationException e) {
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
