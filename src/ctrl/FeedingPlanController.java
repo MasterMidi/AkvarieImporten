@@ -3,17 +3,18 @@ package ctrl;
 import java.util.ArrayList;
 import java.util.List;
 
+import db.Database;
 import db.IFeedingPlanDB;
 import db.dao.FeedingPlanDB;
 import exception.DataAccessException;
 import model.FeedingPlan;
 
 public class FeedingPlanController {
-	private IFeedingPlanDB feedingPlanDB;
 	private List<FeedingPlan> feedingPlanMatches;
+	private IFeedingPlanDB feedingPlanDB;
 
 	public FeedingPlanController() throws DataAccessException {
-		this.feedingPlanDB = new FeedingPlanDB();
+		this.feedingPlanDB = Database.getInstance().feedingPlanDB();
 	}
 	
 	public List<FeedingPlan> searchFeedingPlan(String searchInput) {
