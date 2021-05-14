@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import db.DBConnection;
 import db.IFeedingPlanDB;
@@ -28,9 +30,9 @@ public class FeedingPlanDB implements IFeedingPlanDB {
 	}
 
 	@Override
-	public List<FeedingPlan> getFeedingPlan(String searchInput) {
+	public Map<Integer, FeedingPlan> getFeedingPlan(String searchInput) {
 
-		List<FeedingPlan> returnList = null;
+		Map<Integer, FeedingPlan> returnList = null;
 		try {
 			psGetFeedingPlan.setString(1, "%" + searchInput + "%");
 
@@ -43,10 +45,11 @@ public class FeedingPlanDB implements IFeedingPlanDB {
 		return returnList;
 	}
 
-	private List<FeedingPlan> buildObjects(ResultSet rs) throws SQLException {
-		List<FeedingPlan> feedingPlanList = new ArrayList<>();
+	private Map<Integer, FeedingPlan> buildObjects(ResultSet rs) throws SQLException {
+		Map<Integer, FeedingPlan> feedingPlanList = new HashMap<Integer, FeedingPlan>();
 		while (rs.next()) {
-			feedingPlanList.add(buildObject(rs));
+			FeedingPlan current = buildObject(rs);
+			feedingPlanList.put(current.getID(), current);
 		}
 
 		return feedingPlanList;

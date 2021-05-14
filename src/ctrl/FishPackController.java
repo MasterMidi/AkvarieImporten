@@ -3,6 +3,7 @@ package ctrl;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.Future;
 
 import db.Database;
@@ -31,7 +32,7 @@ public class FishPackController {
 	this.fishPack = new FishPack();
     }
 
-    public List<FishSpecies> searchFishSpecies(String searchInput) {
+    public Map<Integer, FishSpecies> searchFishSpecies(String searchInput) {
 	return fishSpeciesController.searchFishSpecies(searchInput);
     }
 
@@ -44,7 +45,7 @@ public class FishPackController {
 	this.fishPack.setSpecies(fishSpecies);
 	}
 
-	public List<Aquarium> searchAquarium(String searchInput) {
+	public Map<Integer, Aquarium> searchAquarium(String searchInput) {
 	return aquariumController.searchAquarium(searchInput);
     }
 
@@ -54,7 +55,7 @@ public class FishPackController {
 	
 	}
 
-	public List<FeedingPlan> searchFeedingplans(String searchInput) {
+	public Map<Integer, FeedingPlan> searchFeedingplans(String searchInput) {
 	return feedingPlanController.searchFeedingPlan(searchInput);
     }
 
