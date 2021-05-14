@@ -1,0 +1,1188 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>3</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>291</x>
+      <y>84</y>
+      <w>120</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>FishPackController
+-
+- aquariumController: AquariumController
+- feedingPlanController: FeedingPlanController
+- fishSpeciesController: FishSpeciesController
+- fishPackDB: IFishPackDB
+- fishPack: FishPack
+-
++ createEmptyFishPack():void
++ searchFishSpecies(String searchInput): List&lt;FishSpecies&gt;
++ setFishSpecies(int fishSpeciesID): void
++ setFishPackBirthday(LocalDate date): void
++ searchAquarium(String searchInput): List&lt;Aquarium&gt;
++ setAquarium(int aquariumID): void
++ searchFeedingPlans(String searchInput): List&lt;FeedingPlan&gt;
++ setFeedingPlan(int feedingPlanID): void
++ finishFishPack(): void
++ searchFishPack(String searchInput): List&lt;FishPack&gt; </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>156</x>
+      <y>9</y>
+      <w>264</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>ctrl
+fg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>156</x>
+      <y>177</y>
+      <w>495</w>
+      <h>429</h>
+    </coordinates>
+    <panel_attributes>db
+fg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>105</x>
+      <y>615</y>
+      <w>597</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>model
+fg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>162</x>
+      <y>96</y>
+      <w>117</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>FishSpeciesController
+-
+- speciesMatches: List&lt;FishSpecies&gt;
+- IFishSpeciesDB: fishSpeciesDB
+-
++ searchFishSpecies(String searchInput): List&lt;FishSpecies&gt;
++ getFishSpecies(String fishSpecieesID): FishSpecies
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>162</x>
+      <y>348</y>
+      <w>111</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>IFishSpeciesDB
+-
+-
++ getFishSpecies(String searchInput): List&lt;FishSpecies&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>213</x>
+      <y>393</y>
+      <w>9</w>
+      <h>156</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;500.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>285</x>
+      <y>414</y>
+      <w>234</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>DBConnection
+-
+- connection: Connection
+_- instance: DBConnection_
+_- DRIVER_CLASS: String_
+_- dbName: String_
+_- serverAddress: String_
+_- serverPort: int_
+_- username: String_
+_- password: String_
+-
+- &lt;&lt;create&gt;&gt;DBConnection()
+_+ getInstance(): DBConnection_
+_+ startConnection(String ServerAddress,int serverPort,String dbName,String username,String password): DBConnection_
+_+ resetConnection(): DBConnection_
++ startTransaction(): void
++ commitTransaction(): void
++ rollbackTransaction(): void
++ executeInsertWithIdentity(String sql): int
++ executeInsertWithIdentity(PreparedStatement ps): int
++ executerInsert(PreparedStatement ps): void
++ getConnection(): Connection
++ disconnect(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>165</x>
+      <y>21</y>
+      <w>108</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>AquariumController
+-
+- aquariumMatches: List&lt;Aquarium&gt;
+- IAquariumDB: aquariumDB
+-
++ searchAquarium(String searchInput): List&lt;Aquarium&gt;
++ getAquarium(String aquariumID): Aquarium</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>291</x>
+      <y>21</y>
+      <w>120</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>FeedingPlanController
+-
+- feedingPlanMatches: List&lt;FeedingPlan&gt;
+- IFeedingPlanDB: feedingPlanDB
+-
++ searchFeedingPlant(String searchInput): List&lt;FeedingPlan&gt;
++ getFeedingPlan(String feedingPlanID): FeedinPlan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>411</x>
+      <y>348</y>
+      <w>111</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>IFishPackDB
+-
+-
++ insertFishPack(FishPack fishPack): boolean
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>462</x>
+      <y>393</y>
+      <w>72</w>
+      <h>156</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0;220.0;40.0;220.0;460.0;10.0;460.0;10.0;500.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>534</x>
+      <y>348</y>
+      <w>111</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>IFeedingPlan
+-
+-
++ getFeedingPlan(String searchInput):List&lt;FeedingPlan&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>585</x>
+      <y>393</y>
+      <w>9</w>
+      <h>156</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;500.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>108</x>
+      <y>627</y>
+      <w>222</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>FishSpecies
+-
+- id : int
+- name : String
+- averageEggs : int
+- birthSize : double
+- growthRate : double
+- minimumSalesSize : double
+-
++ &lt;&lt;create&gt;&gt;FishPack(String name, int averageEggs, double birthSize, double growthRate, double minimumSalesSize)
++ getId(): int
++ setId(int id): void
++ getName(): String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>333</x>
+      <y>627</y>
+      <w>111</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Aquarium
+-
+- number: String
+- size: double
+-
++ &lt;&lt;create&gt;&gt;Aquarium(String number,double size)
++ getId():int
++ setId(int): void
++ getNumber(): String
++ setNumber(String number): void
++ getSize(): double
++ setSize(Double size): void
++ getLocation(): String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>453</x>
+      <y>627</y>
+      <w>111</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>FishPack
+-
+- birthDate: LocalDate
+- feedingPlan: FeedingPlan
+- species: FishSpecies
+- aquariumPeriods: List&lt;Period&lt;Aquarium&gt; &gt;
+-
++ &lt;&lt;create&gt;&gt;FishPack(): void
++ setBirthDate(LocalDate birthDate): void
++ setFeedingPlan(FeedingPlan feedingPlan): void
++ setSpecies(FishSpecies species): void
++ setAquarium(Aquarium aquarium): void
++ getBirthDate(): LocalDate
++ getFeedingPlan(): FeedingPlan
++ getSpecies(): FishSpeciel
++ getAquariumPeriods(): List&lt;Period&lt;Aquarium&gt;&gt;
++ FishPack(LocalDate birthDate, FeedingPlan feedingPlan, FishSpecies species)
++ getStatus(): Integer
++ getCurrentAquarium(): Aquarium
++ getFishPackNumber(): String
++ setID(Integer): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>573</x>
+      <y>663</y>
+      <w>123</w>
+      <h>51</h>
+    </coordinates>
+    <panel_attributes>FeedingPlan
+-
+- name: String
+- interval: int
+- amount: double
+- food: Food 
+-
++ &lt;&lt;create&gt;&gt;FeedingPlan(int interval,double Amount,Food food)
++ getID(): int
++ setID(int id):void
++ getName(): String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>282</x>
+      <y>348</y>
+      <w>114</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>IAquariumDB
+-
+-
++ getAquarium(String searchInput):List&lt;Aquarium&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>273</x>
+      <y>393</y>
+      <w>75</w>
+      <h>156</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>230.0;10.0;230.0;40.0;10.0;40.0;10.0;460.0;230.0;460.0;230.0;500.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>351</x>
+      <y>519</y>
+      <w>9</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>450</x>
+      <y>519</y>
+      <w>9</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>240</x>
+      <y>453</y>
+      <w>51</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>150.0;10.0;10.0;10.0;10.0;300.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>516</x>
+      <y>453</y>
+      <w>54</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;160.0;10.0;160.0;300.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>213</x>
+      <y>588</y>
+      <w>12</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>20.0;130.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>342</x>
+      <y>588</y>
+      <w>54</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>160.0;130.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>462</x>
+      <y>597</y>
+      <w>51</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>150.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>585</x>
+      <y>588</y>
+      <w>9</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;250.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>408</x>
+      <y>48</y>
+      <w>186</w>
+      <h>306</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>600.0;1000.0;600.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>342</x>
+      <y>168</y>
+      <w>132</w>
+      <h>186</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>420.0;600.0;420.0;540.0;10.0;540.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>213</x>
+      <y>66</y>
+      <w>132</w>
+      <h>288</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>420.0;940.0;420.0;880.0;240.0;880.0;240.0;60.0;10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>216</x>
+      <y>141</y>
+      <w>9</w>
+      <h>213</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;690.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>345</x>
+      <y>66</y>
+      <w>9</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>276</x>
+      <y>117</y>
+      <w>21</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;50.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>240</x>
+      <y>66</y>
+      <w>78</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0;240.0;40.0;240.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>408</x>
+      <y>105</y>
+      <w>264</w>
+      <h>528</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>410.0;1740.0;410.0;1680.0;860.0;1680.0;860.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>138</x>
+      <y>45</y>
+      <w>225</w>
+      <h>588</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>730.0;1940.0;730.0;1880.0;20.0;1880.0;10.0;10.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>129</x>
+      <y>120</y>
+      <w>39</w>
+      <h>513</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;1690.0;10.0;10.0;110.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>408</x>
+      <y>36</y>
+      <w>282</w>
+      <h>633</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>920.0;2090.0;920.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>561</x>
+      <y>675</y>
+      <w>18</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>40.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>294</x>
+      <y>684</y>
+      <w>216</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;190.0;700.0;190.0;700.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>162</x>
+      <y>543</y>
+      <w>111</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>FishSpeciesDB
+-
+_- Q_GET_FISH_SPECIES: String_
+- psGetFishSpecies: PreparedStatement
+-
++ &lt;&lt;create&gt;&gt;FishSpeciesDB()
+- buildObjects(ResultSet rs): List&lt;FishSpecies&gt;
+- buildObject(ResultSet rs): FishSpecies
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>411</x>
+      <y>543</y>
+      <w>111</w>
+      <h>57</h>
+    </coordinates>
+    <panel_attributes>FishPackDB
+-
+_- Q_INSERT_FISH_PACK: String_
+_- Q_UPDATE_FISH_PACK: String_
+_- Q_INSERT_PERIOD : String_
+- psInsertFishPack: PreparedStatement
+- psUpdateFishPack : PreparedStatement
+- psInsertPeriod : PreparedStatement
+-
++ insertFishPack(FishPack): boolean
+- insertPeriod(Period&lt;Aquarium&gt;, Integer): void
+- prepareStatementFishPack(FishPack): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>534</x>
+      <y>543</y>
+      <w>111</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>FeedingPlanDB
+-
+_- Q_GET_FEEDING_PLAN: String_
+- psGetFeedingPlan: PreparedStatement
+-
++ &lt;&lt;create&gt;&gt;FeedingPlanDB()
+- buildObjects(ResultSet rs): List&lt;FeedingPlan&gt;
+- buildObject(ResultSet rs): FeedingPlan
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>285</x>
+      <y>543</y>
+      <w>114</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>AquariumDB
+-
+_- Q_GET_AQUARIUM: String_
+- psGetAquarium: PreparedStatement
+-
++ &lt;&lt;create&gt;&gt;AquariumDB()
+- buildObjects(ResultSet rs): List&lt;Aquarium&gt;
+- buildObject(ResultSet rs): Aquarium
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>819</x>
+      <y>492</y>
+      <w>111</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>FishSpeciesDB
+-
+_- Q_GET_FISH_SPECIES: String_
+- psGetFishSpecies: PreparedStatement
+-
+- buildObjects(ResultSet rs): List&lt;FishSpecies&gt;
+- buildObject(ResultSet rs): FishSpecies
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>870</x>
+      <y>468</y>
+      <w>9</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>819</x>
+      <y>423</y>
+      <w>111</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>IFishSpeciesDB
+-
+-
++ getFishSpecies(String searchInput): List&lt;FishSpecies&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>816</x>
+      <y>360</y>
+      <w>117</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>FishSpeciesController
+-
+- speciesMatches: List&lt;FishSpecies&gt;
+-
++ searchFishSpecies(String searchInput): List&lt;FishSpecies&gt;
++ getFishSpecies(String fishSpecieesID): FishSpecies
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>870</x>
+      <y>405</y>
+      <w>9</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>762</x>
+      <y>558</y>
+      <w>222</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>FishSpecies
+-
+- name: String
+- averageEggs: int
+- birthSize: double
+- growthRate: double
+- minimumSalesSize: double
+-
++ &lt;&lt;create&gt;&gt;FishPack(String name, int averageEggs, double birthSize, double growthRate, double minimumSalesSize)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>870</x>
+      <y>537</y>
+      <w>9</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>630</x>
+      <y>624</y>
+      <w>51</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>Food
+-
+
+-
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>633</x>
+      <y>588</y>
+      <w>9</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>654</x>
+      <y>648</y>
+      <w>9</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>318</x>
+      <y>693</y>
+      <w>93</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>Period&lt;T&gt;
+-
+- object: T
+- startDate: LocalDate
+- endDate: LocalDate
+-
++ &lt;&lt;create&gt;&gt;Period(T object, LocalDate startDate)
++ getObject(): T
++ getStartDate(): LocalDate
++ getEndDate(): LocalDate</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>408</x>
+      <y>711</y>
+      <w>51</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;150.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>381</x>
+      <y>684</y>
+      <w>9</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1170</x>
+      <y>321</y>
+      <w>111</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>FishPack
+-
+- birthDate: LocalDate
+- feedingPlan: FeedingPlan
+- species: FishSpecies
+- aquariumPeriods: List&lt;Period&lt;Aquarium&gt; &gt;
+-
++ &lt;&lt;create&gt;&gt;FishPack()
++ setFishSpecies(FishSpecies fishSpecies):void
++ setBirhtday(LocalDate date):void
++ setAquarium(Aquarium aquarium):void
++ setFeedingPlan(FeedingPlan feedingPlant):void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1050</x>
+      <y>321</y>
+      <w>111</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Aquarium
+-
+- number: String
+- size: double
+-
++ &lt;&lt;create&gt;&gt;Aquarium(String number,double size)
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1077</x>
+      <y>378</y>
+      <w>51</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Period&lt;T&gt;
+-
+- object: T
+- startDate: LocalDate
+- endDate: LocalDate
+-
++ set(T t): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1098</x>
+      <y>366</y>
+      <w>9</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1125</x>
+      <y>378</y>
+      <w>78</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;50.0;240.0;50.0;240.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>753</x>
+      <y>351</y>
+      <w>240</w>
+      <h>261</h>
+    </coordinates>
+    <panel_attributes>Highlight DAO pattern</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1029</x>
+      <y>300</y>
+      <w>267</w>
+      <h>123</h>
+    </coordinates>
+    <panel_attributes>Highlight type-paramatrisering</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1182</x>
+      <y>528</y>
+      <w>120</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>FishPackController
+-
+- aquariumController: AquariumController
+- feedingPlanController: FeedingPlanController
+- fishSpeciesController: FishSpeciesController
+- fishPackDB: IFishPackDB
+- fishPack: FishPack
+-
++ createEmptyFishPack():void
++ searchFishSpecies(String searchInput): List&lt;FishSpecies&gt;
++ setFishSpecies(String fishSpeciesID): void
++ setFishPackBirthday(LocalDate date): void
++ searchAquarium(String searchInput): List&lt;Aquarium&gt;
++ setAquarium(String aquariumID): void
++ searchFeedingPlant(String searchInput): List&lt;FeedingPlan&gt;
++ setFeedingPlan(String feedingPlanID): void
++ finishFishPack(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1044</x>
+      <y>546</y>
+      <w>108</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>AquariumController
+-
+- aquariumMatches: List&lt;Aquarium&gt;
+-
++ searchAquarium(String searchInput): List&lt;Aquarium&gt;
++ getAquarium(String aquariumID): Aquarium</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1044</x>
+      <y>483</y>
+      <w>120</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>FeedingPlanController
+-
+- feedingPlanMatches: List&lt;FeedingPlan&gt;
+-
++ searchFeedingPlant(String searchInput): List&lt;FeedingPlan&gt;
++ getFeedingPlan(String feedingPlanID): FeedinPlan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1044</x>
+      <y>606</y>
+      <w>117</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>FishSpeciesController
+-
+- speciesMatches: List&lt;FishSpecies&gt;
+-
++ searchFishSpecies(String searchInput): List&lt;FishSpecies&gt;
++ getFishSpecies(String fishSpecieesID): FishSpecies
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1149</x>
+      <y>564</y>
+      <w>39</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;110.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1161</x>
+      <y>504</y>
+      <w>84</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;260.0;10.0;260.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1158</x>
+      <y>603</y>
+      <w>90</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;90.0;280.0;90.0;280.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1029</x>
+      <y>456</y>
+      <w>282</w>
+      <h>207</h>
+    </coordinates>
+    <panel_attributes>Highlight brug af controllers</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>360</x>
+      <y>222</y>
+      <w>84</w>
+      <h>69</h>
+    </coordinates>
+    <panel_attributes>DataBase
+-
+- NUMBER_OF_THREADS : int
+- databaseWriteExecutor : ExecutorService
+- instance : Database
+- aquariumDB : IAquariumDB
+- feedingPlanDB : IFeedingPlanDB
+- fishPackDB : IFishPackDB
+- fishSpeciesDB : IFishSpeciesDB
+-
++ getInstance(): Database
++ aquariumDB(): IAquariumDB
++ feedingPlanDB(): IFeedingPlanDB
++ fishPackDB(): IFishPackDB
++ fishSpeciesDB(): IFishSpeciesDB</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>228</x>
+      <y>261</y>
+      <w>138</w>
+      <h>93</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;290.0;440.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>351</x>
+      <y>288</y>
+      <w>36</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;200.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>417</x>
+      <y>288</y>
+      <w>30</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>80.0;200.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>441</x>
+      <y>261</y>
+      <w>126</w>
+      <h>93</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>400.0;290.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>408</x>
+      <y>57</y>
+      <w>36</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0;100.0;550.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>408</x>
+      <y>120</y>
+      <w>27</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0;70.0;340.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>270</x>
+      <y>6</y>
+      <w>192</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;120.0;40.0;120.0;40.0;10.0;620.0;10.0;620.0;780.0;580.0;780.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>264</x>
+      <y>141</y>
+      <w>102</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;330.0;320.0;330.0</additional_attributes>
+  </element>
+</diagram>
