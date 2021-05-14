@@ -1,11 +1,12 @@
 package db;
 
 import java.util.List;
+import java.util.Map;
 
 import model.FeedingPlan;
 
 public interface IFeedingPlanDB {
 
-	List<FeedingPlan> getFeedingPlan(String searchInput);
+	Map<Integer, FeedingPlan> getFeedingPlan(String searchInput);
 	
 }

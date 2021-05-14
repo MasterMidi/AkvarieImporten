@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import db.DBConnection;
 import db.IAquariumDB;
@@ -28,8 +30,8 @@ public class AquariumDB implements IAquariumDB {
 	}
 
 	@Override
-	public List<Aquarium> getAquarium(String searchInput) {
-		List<Aquarium> res = null;
+	public Map<Integer, Aquarium> getAquarium(String searchInput) {
+		Map<Integer, Aquarium> res = null;
 
 		try {
 			psGetAquarium.setString(1, "%" + searchInput + "%");
@@ -45,12 +47,12 @@ public class AquariumDB implements IAquariumDB {
 		return res;
 	}
 
-	private List<Aquarium> buildObjects(ResultSet rs) throws SQLException {
-		List<Aquarium> res = new ArrayList<>();
+	private Map<Integer, Aquarium> buildObjects(ResultSet rs) throws SQLException {
+		Map<Integer, Aquarium> res = new HashMap<Integer, Aquarium>();
 		Aquarium current = null;
 		while (rs.next()) {
 			current = buildObject(rs);
-			res.add(current);
+			res.put(current.getId(), current);
 		}
 		return res;
 	}
