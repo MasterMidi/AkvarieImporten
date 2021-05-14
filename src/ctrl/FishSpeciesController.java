@@ -1,33 +1,33 @@
 package ctrl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import db.Database;
 import db.IFishSpeciesDB;
 import db.dao.FishSpeciesDB;
 import exception.DataAccessException;
 import model.FishSpecies;
 
 public class FishSpeciesController {
-	private List<FishSpecies> speciesMatches;
+	private Map<Integer, FishSpecies> speciesMatches;
 	private IFishSpeciesDB fishSpeciesDB;
 
 	public FishSpeciesController() throws DataAccessException {
-		this.fishSpeciesDB = new FishSpeciesDB();
+		this.fishSpeciesDB = Database.getInstance().fishSpeciesDB();
 	}
 
-	public List<FishSpecies> searchFishSpecies(String searchInput) {
+	public Map<Integer, FishSpecies> searchFishSpecies(String searchInput) {
 		this.speciesMatches = fishSpeciesDB.getFishSpecies(searchInput);
-		return new ArrayList<>(speciesMatches);
+		return new HashMap<Integer, FishSpecies>(speciesMatches);
 
 	}
 
 	public FishSpecies getFishSpecies(int fishSpeciesId){
 		FishSpecies res = null;
-		res = speciesMatches
-				.parallelStream()
-				.filter((x) -> x.getId()== fishSpeciesId)
-				.findFirst().get();
+		res = speciesMatches.get(fishSpeciesId);
 		return res;
 	}
 }

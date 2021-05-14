@@ -7,6 +7,12 @@ public class Period<T> {
 	private LocalDate startDate;
 	private LocalDate endDate;
 
+	public Period(T object, LocalDate startDate) {
+		super();
+		this.object = object;
+		this.startDate = startDate;
+	}
+
 	public T getObject() {
 		return object;
 	}
@@ -17,12 +23,6 @@ public class Period<T> {
 
 	public LocalDate getEndDate() {
 		return endDate;
-	}
-
-	public Period(T object, LocalDate startDate) {
-		super();
-		this.object = object;
-		this.startDate = startDate;
 	}
 
 }

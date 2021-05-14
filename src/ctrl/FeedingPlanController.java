@@ -1,29 +1,31 @@
 package ctrl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import db.Database;
 import db.IFeedingPlanDB;
 import db.dao.FeedingPlanDB;
 import exception.DataAccessException;
 import model.FeedingPlan;
+import model.FishSpecies;
 
 public class FeedingPlanController {
+	private Map<Integer, FeedingPlan> feedingPlanMatches;
 	private IFeedingPlanDB feedingPlanDB;
-	private List<FeedingPlan> feedingPlanMatches;
 
 	public FeedingPlanController() throws DataAccessException {
-		this.feedingPlanDB = new FeedingPlanDB();
+		this.feedingPlanDB = Database.getInstance().feedingPlanDB();
 	}
 	
-	public List<FeedingPlan> searchFeedingPlan(String searchInput) {
+	public Map<Integer, FeedingPlan> searchFeedingPlan(String searchInput) {
 		feedingPlanMatches = feedingPlanDB.getFeedingPlan(searchInput);
-		return new ArrayList<>(feedingPlanMatches);
+		return new HashMap<Integer, FeedingPlan>(feedingPlanMatches);
 	}
 
 	public FeedingPlan getFeedingPlan(int feedingPlanId) {
-		return feedingPlanMatches.parallelStream()
-				.filter(feedingPlan -> feedingPlan.getID() == feedingPlanId)
-				.findFirst().get();
+		return feedingPlanMatches.get(feedingPlanId);
 	}
 }
