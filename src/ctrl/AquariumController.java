@@ -3,6 +3,7 @@ package ctrl;
 import java.util.ArrayList;
 import java.util.List;
 
+import db.Database;
 import db.IAquariumDB;
 import db.dao.AquariumDB;
 import exception.DataAccessException;
@@ -13,7 +14,7 @@ public class AquariumController {
     private IAquariumDB aquariumDB;
 
     public AquariumController() throws DataAccessException {
-	this.aquariumDB = new AquariumDB();
+	this.aquariumDB = Database.getInstance().aquariumDB();
     }
 
     public List<Aquarium> searchAquarium(String searchInput) {
