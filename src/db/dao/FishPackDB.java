@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Map;
 
 import db.DBConnection;
 import db.IFishPackDB;
@@ -16,6 +17,7 @@ public class FishPackDB implements IFishPackDB {
 	private static final String Q_INSERT_FISH_PACK = "INSERT INTO fish_pack (birthday, fish_specie_id, feeding_plan_id, status) VALUES (?, ?, ?, ?)";
 	private static final String Q_UPDATE_FISH_PACK = "UPDATE fish_pack SET pack_number = ? WHERE id = ?";
 	private static final String Q_INSERT_PERIOD = "INSERT INTO fish_pack_period (start_date, aquarium_id, fish_pack_id) VALUES (?,?,?)";
+	private static final String Q_GET_FISH_PACK = "";
 
 	private PreparedStatement psInsertFishPack;
 	private PreparedStatement psUpdateFishPack;
@@ -53,6 +55,12 @@ public class FishPackDB implements IFishPackDB {
 
 		return true;
 	}
+	
+	@Override
+	public Map<Integer, FishPack> getFishPack(String searchInput) throws SQLException, DataAccessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	private void insertPeriod(Period<Aquarium> period, Integer fishPackID) throws SQLException, DataAccessException {
 		psInsertPeriod.setDate(1, Date.valueOf(period.getStartDate()));
@@ -70,4 +78,6 @@ public class FishPackDB implements IFishPackDB {
 		psInsertFishPack.setInt(3, feedingPlan);
 		psInsertFishPack.setString(4, "not ready");
 	}
+
+
 }
