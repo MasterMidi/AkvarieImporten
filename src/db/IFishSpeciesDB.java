@@ -6,4 +6,5 @@ import model.FishSpecies;
 
 public interface IFishSpeciesDB {
 	public List<FishSpecies> getFishSpecies(String searchInput);
+	public FishSpecies getFishSpeciesWithID(int id);
 }

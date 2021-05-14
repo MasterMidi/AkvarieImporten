@@ -13,49 +13,75 @@ import exception.DataAccessException;
 import model.FishSpecies;
 
 public class FishSpeciesDB implements IFishSpeciesDB {
-	//TODO
+	// TODO
 	static final String Q_GET_FISH_SPECIES = "SELECT * FROM fish_species WHERE name LIKE ?";
+	static final String Q_GET_FISH_SPECIES_ID = "SELECT * FROM fish_species WHERE id = ?";
+
 	private PreparedStatement psGetFishSpecies;
+	private PreparedStatement psGetFishSpeciesID;
 
 	public FishSpeciesDB() throws DataAccessException {
 		Connection connection = DBConnection.getInstance().getConnection();
 
 		try {
 			psGetFishSpecies = connection.prepareStatement(Q_GET_FISH_SPECIES);
+			psGetFishSpeciesID = connection.prepareStatement(Q_GET_FISH_SPECIES_ID);
 		} catch (SQLException e) {
 			throw new DataAccessException("could not create preparedstatement, check your query", null);
 		}
 	}
+
 	@Override
 	public List<FishSpecies> getFishSpecies(String searchInput) {
 		List<FishSpecies> res = null;
-		
+
 		try {
-			
+
 			psGetFishSpecies.setString(1, "%" + searchInput + "%");
-			
+
 			ResultSet rs = psGetFishSpecies.executeQuery();
-			
+
 			res = buildObjects(rs);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return res;
 	}
+
+	@Override
+	public FishSpecies getFishSpeciesWithID(int id) {
+		FishSpecies res = null;
+
+		try {
+			psGetFishSpeciesID.setInt(1, id);
+
+			ResultSet rs = psGetFishSpeciesID.executeQuery();
+
+			rs.next();
+			res = buildObject(rs);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return res;
+	}
+
 	private List<FishSpecies> buildObjects(ResultSet rs) throws SQLException {
 		List<FishSpecies> res = new ArrayList<FishSpecies>();
 		FishSpecies current = null;
-		
-		while(rs.next()) {
+
+		while (rs.next()) {
 			current = buildObject(rs);
 			res.add(current);
 		}
 		return res;
 	}
+
 	private FishSpecies buildObject(ResultSet rs) throws SQLException {
 		FishSpecies res = null;
-		res = new FishSpecies(rs.getString("name"), rs.getInt("average_eggs"), rs.getDouble("birth_size"), rs.getDouble("grow_rate"), rs.getInt("minimum_sale_size"));
+		res = new FishSpecies(rs.getString("name"), rs.getInt("average_eggs"), rs.getDouble("birth_size"),
+				rs.getDouble("grow_rate"), rs.getInt("minimum_sale_size"));
 		res.setId(rs.getInt("id"));
 		return res;
 	}
