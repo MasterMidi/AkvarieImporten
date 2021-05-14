@@ -15,13 +15,16 @@ import model.Aquarium;
 public class AquariumDB implements IAquariumDB {
 
 	private static final String Q_GET_AQUARIUM = "SELECT * FROM aquarium WHERE number LIKE ?";
+	private static final String Q_GET_PERIOD = "SELECT * FROM fish_pack_period WHERE id = ?";
 	private PreparedStatement psGetAquarium;
+	private PreparedStatement psGetPeriod;
 
 	public AquariumDB() throws DataAccessException {
 		Connection connection = DBConnection.getInstance().getConnection();
 
 		try {
 			psGetAquarium = connection.prepareStatement(Q_GET_AQUARIUM);
+			psGetPeriod = connection.prepareStatement(Q_GET_PERIOD);
 		} catch (SQLException e) {
 			throw new DataAccessException("could not create preparedstatement, check your query", null);
 		}
@@ -44,6 +47,8 @@ public class AquariumDB implements IAquariumDB {
 
 		return res;
 	}
+	
+	
 
 	private Map<Integer, Aquarium> buildObjects(ResultSet rs) throws SQLException {
 		Map<Integer, Aquarium> res = new HashMap<Integer, Aquarium>();

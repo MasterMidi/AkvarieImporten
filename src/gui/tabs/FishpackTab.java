@@ -88,7 +88,7 @@ public class FishpackTab extends JPanel {
     }
 
     private void refreshFishPackTable() {
-	List<FishPack> lists = fishPackController.searchFishPack("");
+	List<FishPack> lists = fishPackController.searchFishPack("");;
 
 	fishPackTableModel.setData(lists);
     }
