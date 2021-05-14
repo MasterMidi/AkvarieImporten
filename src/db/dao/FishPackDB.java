@@ -4,18 +4,25 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 
 import db.DBConnection;
 import db.IFishPackDB;
 import exception.DataAccessException;
 import model.Aquarium;
+import model.FeedingPlan;
 import model.FishPack;
+import model.FishSpecies;
+import model.Food;
 import model.Period;
 
 public class FishPackDB implements IFishPackDB {
 	private static final String Q_INSERT_FISH_PACK = "INSERT INTO fish_pack (birthday, fish_specie_id, feeding_plan_id, status) VALUES (?, ?, ?, ?)";
 	private static final String Q_UPDATE_FISH_PACK = "UPDATE fish_pack SET pack_number = ? WHERE id = ?";
 	private static final String Q_INSERT_PERIOD = "INSERT INTO fish_pack_period (start_date, aquarium_id, fish_pack_id) VALUES (?,?,?)";
+	private static final String Q_GET_FISH_PACK = "SELECT fish_pack.id AS fish_pack_id, fish_pack.birthday, fish_pack.pack_number AS fish_pack_number, fish_pack.status, fish_pack.fish_specie_id, fish_pack.feeding_plan_id, fish_pack_period.id as period_id, fish_pack_period.aquarium_id, fish_pack_period.end_date, fish_pack_period.start_date FROM fish_pack JOIN fish_pack_period ON fish_pack_period.id = (SELECT TOP 1  id FROM fish_pack_period WHERE end_date is null AND fish_pack_id = fish_pack.id ORDER BY fish_pack_period.start_date DESC) WHERE pack_number like ?";
 
 	private PreparedStatement psInsertFishPack;
 	private PreparedStatement psUpdateFishPack;
@@ -28,6 +35,8 @@ public class FishPackDB implements IFishPackDB {
 			psInsertFishPack = connection.prepareStatement(Q_INSERT_FISH_PACK, PreparedStatement.RETURN_GENERATED_KEYS);
 			psUpdateFishPack = connection.prepareStatement(Q_UPDATE_FISH_PACK);
 			psInsertPeriod = connection.prepareStatement(Q_INSERT_PERIOD, PreparedStatement.RETURN_GENERATED_KEYS);
+			psGetFishpack = connection.prepareStatement(Q_GET_FISH_PACK);
+
 		} catch (SQLException e) {
 			throw new DataAccessException("could not create preparedstatement, check your query", null);
 		}
@@ -52,6 +61,49 @@ public class FishPackDB implements IFishPackDB {
 		DBConnection.getInstance().commitTransaction();
 
 		return true;
+	}
+
+	@Override
+	public Map<Integer, FishPack> getFishPack(String searchInput) throws SQLException, DataAccessException {
+		Map<Integer, FishPack> fishpacks = new HashMap<Integer, FishPack>();
+		
+		
+		psGetFishpack.setString(1, "%" + searchInput + "%");
+		ResultSet rs = psGetFishpack.executeQuery();
+
+		// TODO: join fish specie, feeding plan and aquarium instead of hitting the
+		// database n*3+1 times.
+		// This should be done be sharing the resultset with the relevant DB classes.
+		while (rs.next()) {
+			int fishSpecieId = rs.getInt("fish_specie_id");
+			int feedplanId = rs.getInt("feeding_plan_id");
+			int aquariumId = rs.getInt("aquarium_id");
+			int fishPackId = rs.getInt("fish_pack_id");
+			int periodId = rs.getInt("period_id");
+
+			LocalDate birthday = rs.getDate("birthday").toLocalDate();
+			LocalDate periodStartDay = rs.getDate("start_date").toLocalDate();
+
+			Date endDate = rs.getDate("end_date");
+			LocalDate periodEndDate = null;
+			if (endDate != null) {
+				periodEndDate = endDate.toLocalDate();
+			}
+			String fishPackNumber = rs.getString("fish_pack_number");
+			String status = rs.getString("status");
+			
+			Food food = new Food();
+			FeedingPlan feedingPlan = new FeedingPlan("name", 10, 10, food);
+			FishSpecies fishSpecie = new FishSpecies("name", 10, 5, 10, 10);
+			FishPack fishPack = new FishPack(birthday, feedingPlan, fishSpecie);
+			
+			
+			fishpacks.put(fishPackId, fishPack);
+
+		}
+
+		System.out.println("PLEASE NOTICE! FishPackDB.getFishPack havent been implemented yet. ");
+		return fishpacks;
 	}
 
 	private void insertPeriod(Period<Aquarium> period, Integer fishPackID) throws SQLException, DataAccessException {
