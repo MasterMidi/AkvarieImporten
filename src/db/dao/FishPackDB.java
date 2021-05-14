@@ -3,6 +3,7 @@ package db.dao;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -27,6 +28,7 @@ public class FishPackDB implements IFishPackDB {
 	private PreparedStatement psInsertFishPack;
 	private PreparedStatement psUpdateFishPack;
 	private PreparedStatement psInsertPeriod;
+	private PreparedStatement psGetFishpack;
 
 	public FishPackDB() throws DataAccessException {
 		Connection connection = DBConnection.getInstance().getConnection();
@@ -36,7 +38,6 @@ public class FishPackDB implements IFishPackDB {
 			psUpdateFishPack = connection.prepareStatement(Q_UPDATE_FISH_PACK);
 			psInsertPeriod = connection.prepareStatement(Q_INSERT_PERIOD, PreparedStatement.RETURN_GENERATED_KEYS);
 			psGetFishpack = connection.prepareStatement(Q_GET_FISH_PACK);
-
 		} catch (SQLException e) {
 			throw new DataAccessException("could not create preparedstatement, check your query", null);
 		}
@@ -61,6 +62,34 @@ public class FishPackDB implements IFishPackDB {
 		DBConnection.getInstance().commitTransaction();
 
 		return true;
+	}
+	
+	@Override
+	public Map<Integer, FishPack> getFishPack(String searchInput) throws SQLException, DataAccessException {
+		psGetFishpack.setString(1, "%" + searchInput + "%");
+		ResultSet rs = psGetFishpack.executeQuery();
+		
+		//TODO: join fish specie, feeding plan and aquarium instead of hitting the database n*3+1 times. 
+		//This should be done be sharing the resultset with the relevant DB classes. 
+		while(rs.next())
+		{
+			int fishSpecieId = rs.getInt("fish_specie_id");
+			int feedplanId = rs.getInt("feeding_plan_id");
+			int aquariumId = rs.getInt("aquarium_id");
+			int fishPackId = rs.getInt("fish_pack_id");
+			int periodId = rs.getInt("period_id");
+			
+			LocalDate birhday = rs.getDate("birthday").toLocalDate();
+			LocalDate periodStartDay = rs.getDate("start_date").toLocalDate();
+			LocalDate periodEndDate = rs.getDate("end_date").toLocalDate();
+			String fishPackNumber = rs.getString("fish_pack_number");
+			String status = rs.getString("status");
+			
+			
+		}
+		
+		
+		return null;
 	}
 
 	@Override
@@ -122,4 +151,6 @@ public class FishPackDB implements IFishPackDB {
 		psInsertFishPack.setInt(3, feedingPlan);
 		psInsertFishPack.setString(4, "not ready");
 	}
+
+
 }

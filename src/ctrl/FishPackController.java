@@ -1,5 +1,6 @@
 package ctrl;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -73,15 +74,8 @@ public class FishPackController {
 	return Database.databaseWriteExecutor.submit(() -> fishPackDB.insertFishPack(fishPack));
     }
 
-	// TODO Get Fishpacks
-	public List<FishPack> searchFishPack(String searchInput) {
-	ArrayList<FishPack> list = new ArrayList<>();
-	FeedingPlan fplan = feedingPlanController.searchFeedingPlan("").get(0);
-	FishSpecies fspec = fishSpeciesController.searchFishSpecies("").get(0);
-	Aquarium fAqua = aquariumController.searchAquarium("").get(0);
-	FishPack fishpack = new FishPack(LocalDate.now(), fplan, fspec);
-	fishpack.setAquarium(fAqua);
-	list.add(fishpack);
-	return list;
+
+	public Map<Integer, FishPack> searchFishPack(String searchInput) throws SQLException, DataAccessException {
+		return fishPackDB.getFishPack(searchInput);
 	}
 }

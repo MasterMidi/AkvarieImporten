@@ -1,15 +1,11 @@
 package ctrl;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import db.Database;
 import db.IAquariumDB;
-import db.dao.AquariumDB;
 import exception.DataAccessException;
-import model.Aquarium;
 import model.Aquarium;
 
 public class AquariumController {

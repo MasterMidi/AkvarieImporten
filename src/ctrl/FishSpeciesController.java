@@ -1,13 +1,10 @@
 package ctrl;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import db.Database;
 import db.IFishSpeciesDB;
-import db.dao.FishSpeciesDB;
 import exception.DataAccessException;
 import model.FishSpecies;
 
