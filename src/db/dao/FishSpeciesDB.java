@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import db.DBConnection;
 import db.IFishSpeciesDB;
@@ -27,8 +29,8 @@ public class FishSpeciesDB implements IFishSpeciesDB {
 		}
 	}
 	@Override
-	public List<FishSpecies> getFishSpecies(String searchInput) {
-		List<FishSpecies> res = null;
+	public Map<Integer, FishSpecies> getFishSpecies(String searchInput) {
+		Map<Integer, FishSpecies> res = null;
 		
 		try {
 			
@@ -43,13 +45,12 @@ public class FishSpeciesDB implements IFishSpeciesDB {
 		
 		return res;
 	}
-	private List<FishSpecies> buildObjects(ResultSet rs) throws SQLException {
-		List<FishSpecies> res = new ArrayList<FishSpecies>();
+	private Map<Integer, FishSpecies> buildObjects(ResultSet rs) throws SQLException {
+		Map<Integer, FishSpecies> res = new HashMap<Integer, FishSpecies>();
 		FishSpecies current = null;
-		
 		while(rs.next()) {
 			current = buildObject(rs);
-			res.add(current);
+			res.put(current.getId(), current);
 		}
 		return res;
 	}
