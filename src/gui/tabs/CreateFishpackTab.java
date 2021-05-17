@@ -1,13 +1,11 @@
 package gui.tabs;
 
+import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -22,16 +20,9 @@ import gui.components.AquariumListCellRenderer;
 import gui.components.AutoCompletion;
 import gui.components.FeedingPlanListCellRenderer;
 import gui.components.JHintTextField;
-import gui.components.SpeciesListCellRenderer;
 import model.Aquarium;
 import model.FeedingPlan;
 import model.FishSpecies;
-
-import java.awt.BorderLayout;
-import javax.swing.JPopupMenu;
-import java.awt.Component;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class CreateFishpackTab extends JPanel {
 	private JPanel viewport;
@@ -193,23 +184,5 @@ public class CreateFishpackTab extends JPanel {
 
 		List<FeedingPlan> feedingPlanList = new ArrayList<>(fishPackController.searchFeedingplans("").values());
 		feedingPlanList.parallelStream().forEach(fp -> comboBoxFeedingPlan.addItem(fp));
-	}
-
-	private static void addPopup(Component component, final JPopupMenu popup) {
-		component.addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
-				}
-			}
-			public void mouseReleased(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
-				}
-			}
-			private void showMenu(MouseEvent e) {
-				popup.show(e.getComponent(), e.getX(), e.getY());
-			}
-		});
 	}
 }
