@@ -14,7 +14,7 @@ import model.FeedingPlan;
 
 public class FeedingPlanDB implements IFeedingPlanDB {
 
-	private static final String Q_GET_FEEDING_PLAN = "SELECT id, name, interval, amount FROM feeding_plan WHERE name LIKE ?";
+	private static final String Q_GET_FEEDING_PLAN = "SELECT id AS feeding_plan_id, name AS feeding_plan_name, interval AS feeding_plan_interval, amount AS feeding_plan_amount FROM feeding_plan WHERE name LIKE ?";
 	private PreparedStatement psGetFeedingPlan;
 
 	public FeedingPlanDB() throws DataAccessException {
@@ -43,7 +43,7 @@ public class FeedingPlanDB implements IFeedingPlanDB {
 		return returnList;
 	}
 
-	private Map<Integer, FeedingPlan> buildObjects(ResultSet rs) throws SQLException {
+	protected static Map<Integer, FeedingPlan> buildObjects(ResultSet rs) throws SQLException {
 		Map<Integer, FeedingPlan> feedingPlanList = new HashMap<Integer, FeedingPlan>();
 		while (rs.next()) {
 			FeedingPlan current = buildObject(rs);
@@ -53,10 +53,10 @@ public class FeedingPlanDB implements IFeedingPlanDB {
 		return feedingPlanList;
 	}
 
-	private FeedingPlan buildObject(ResultSet rs) throws SQLException {
+	protected static FeedingPlan buildObject(ResultSet rs) throws SQLException {
 		// Food-parameter is null, as that is out of this use case.
-		FeedingPlan plan = new FeedingPlan(rs.getString("name"), rs.getInt("interval"), rs.getInt("amount"), null);
-		plan.setID(rs.getInt("id"));
+		FeedingPlan plan = new FeedingPlan(rs.getString("feeding_plan_name"), rs.getInt("feeding_plan_interval"), rs.getInt("feeding_plan_amount"), null);
+		plan.setID(rs.getInt("feeding_plan_id"));
 		return plan;
 	}
 
