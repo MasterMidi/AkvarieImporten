@@ -31,7 +31,7 @@ public class Main extends JFrame implements CallbackIF {
 
     private JPanel contentPane;
     private JPanel fishpackTab;
-    private JPanel viewport;
+    private static JPanel viewport;
 
     /**
      * Launch the application.
@@ -178,7 +178,7 @@ public class Main extends JFrame implements CallbackIF {
 	EventQueue.invokeLater(() -> newView(FishpackTab.class));
     }
 
-    private void newView(Class view) {
+    public static void newView(Class view) {
 	try {
 	    viewport.removeAll();
 	    JPanel panel = (JPanel) view.getDeclaredConstructor().newInstance();
