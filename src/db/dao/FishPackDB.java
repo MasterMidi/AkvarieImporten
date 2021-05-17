@@ -63,34 +63,6 @@ public class FishPackDB implements IFishPackDB {
 
 		return true;
 	}
-	
-	@Override
-	public Map<Integer, FishPack> getFishPack(String searchInput) throws SQLException, DataAccessException {
-		psGetFishpack.setString(1, "%" + searchInput + "%");
-		ResultSet rs = psGetFishpack.executeQuery();
-		
-		//TODO: join fish specie, feeding plan and aquarium instead of hitting the database n*3+1 times. 
-		//This should be done be sharing the resultset with the relevant DB classes. 
-		while(rs.next())
-		{
-			int fishSpecieId = rs.getInt("fish_specie_id");
-			int feedplanId = rs.getInt("feeding_plan_id");
-			int aquariumId = rs.getInt("aquarium_id");
-			int fishPackId = rs.getInt("fish_pack_id");
-			int periodId = rs.getInt("period_id");
-			
-			LocalDate birhday = rs.getDate("birthday").toLocalDate();
-			LocalDate periodStartDay = rs.getDate("start_date").toLocalDate();
-			LocalDate periodEndDate = rs.getDate("end_date").toLocalDate();
-			String fishPackNumber = rs.getString("fish_pack_number");
-			String status = rs.getString("status");
-			
-			
-		}
-		
-		
-		return null;
-	}
 
 	@Override
 	public Map<Integer, FishPack> getFishPack(String searchInput) throws SQLException, DataAccessException {
