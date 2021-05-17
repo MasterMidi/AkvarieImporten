@@ -67,14 +67,15 @@ INSERT INTO aquarium VALUES (1, 2, 'Mælkedunk', 3);
 
 
 INSERT INTO fish_pack_period VALUES ('2021-04-01', null, 8,1);
-INSERT INTO fish_pack_period VALUES ('2021-01-07', '2021-05-01', 7,2);
+INSERT INTO fish_pack_period VALUES ('2021-01-07', null, 7,2);
 INSERT INTO fish_pack_period VALUES ('2021-06-01', null, 6,9);
-INSERT INTO fish_pack_period VALUES ('2021-08-05', '2021-05-01', 5,3);
+INSERT INTO fish_pack_period VALUES ('2021-08-05', null, 5,3);
 INSERT INTO fish_pack_period VALUES ('2021-02-12', null, 4,4);
-INSERT INTO fish_pack_period VALUES ('2021-05-26', '2021-05-01', 3,5);
+INSERT INTO fish_pack_period VALUES ('2021-05-26', null, 3,5);
 INSERT INTO fish_pack_period VALUES ('2021-07-17', null, 2,8);
-INSERT INTO fish_pack_period VALUES ('2021-01-03', '2021-05-01', 1,6);
-INSERT INTO fish_pack_period VALUES ('2021-08-21', '2021-05-01', 5,7);
+INSERT INTO fish_pack_period VALUES ('2021-01-03', null, 1,6);
+INSERT INTO fish_pack_period VALUES ('2021-02-21', '2021-05-01', 5,7);
+INSERT INTO fish_pack_period VALUES ('2021-05-01', null, 5,7);
 
 INSERT INTO aquarium_period VALUES ('2020-01-01', '2021-03-01', 1, 2);
 INSERT INTO aquarium_period VALUES ('2021-03-05', null, 2, 3);
