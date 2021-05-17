@@ -45,16 +45,36 @@ INSERT INTO fish_purchase VALUES ('2021-01-01', 200, 2, 1, 1);
 INSERT INTO fish_purchase VALUES ('2021-02-01', 350, 4, 2, 3);
 
 INSERT INTO fish_pack VALUES ('2021-01-02', 1, 'KLAR tiL SALG', 1, 1);
-INSERT INTO fish_pack VALUES ('2021-05-06', 2, 'KLAR tiL SALG', 2, 1);
-INSERT INTO fish_pack VALUES ('2021-03-04', 3, 'KLAR tiL SALG', 2, 3);
+INSERT INTO fish_pack VALUES ('2021-05-06', 2, 'KLAR tiL SALG', 2, 2);
+INSERT INTO fish_pack VALUES ('2021-03-04', 3, 'KLAR tiL SALG', 3, 3);
 
-INSERT INTO aquarium VALUES (1, 1, 'akvarie 1', 50);
-INSERT INTO aquarium VALUES (1, 2, 'akvarie 2', 150);
-INSERT INTO aquarium VALUES (1, 3, 'akvarie 3', 200);
+INSERT INTO fish_pack VALUES ('2021-01-02', 4, 'SALGSKLAR', 4, 1);
+INSERT INTO fish_pack VALUES ('2021-05-06', 5, 'DØD', 5, 1);
+INSERT INTO fish_pack VALUES ('2021-03-04', 6, 'NYFØDT', 2, 3);
+
+INSERT INTO fish_pack VALUES ('2021-01-02', 7, 'IKKE KLAR TIL SALG', 3, 1);
+INSERT INTO fish_pack VALUES ('2021-05-06', 8, 'KLAR tiL SALG', 5, 2);
+INSERT INTO fish_pack VALUES ('2021-03-04', 9, 'SALGSKLAR', 4, 3);
+
+INSERT INTO aquarium VALUES (1, 1, 'Rusten spand', 50);
+INSERT INTO aquarium VALUES (2, 2, 'Badekar', 150);
+INSERT INTO aquarium VALUES (3, 3, 'Stort akvarie', 200);
+INSERT INTO aquarium VALUES (4, 4, 'akvarie 4', 250);
+INSERT INTO aquarium VALUES (4, 2, 'Mellem jacuzzi', 300);
+INSERT INTO aquarium VALUES (3, 3, 'akvarie 6', 350);
+INSERT INTO aquarium VALUES (2, 1, 'Lille pool', 450);
+INSERT INTO aquarium VALUES (1, 2, 'Mælkedunk', 3);
 
 
-INSERT INTO fish_pack_period VALUES ('2021-01-01', null, 1,1);
-INSERT INTO fish_pack_period VALUES ('2021-01-01', '2021-05-01', 1,2);
+INSERT INTO fish_pack_period VALUES ('2021-04-01', null, 8,1);
+INSERT INTO fish_pack_period VALUES ('2021-01-07', '2021-05-01', 7,2);
+INSERT INTO fish_pack_period VALUES ('2021-06-01', null, 6,9);
+INSERT INTO fish_pack_period VALUES ('2021-08-05', '2021-05-01', 5,3);
+INSERT INTO fish_pack_period VALUES ('2021-02-12', null, 4,4);
+INSERT INTO fish_pack_period VALUES ('2021-05-26', '2021-05-01', 3,5);
+INSERT INTO fish_pack_period VALUES ('2021-07-17', null, 2,8);
+INSERT INTO fish_pack_period VALUES ('2021-01-03', '2021-05-01', 1,6);
+INSERT INTO fish_pack_period VALUES ('2021-08-21', '2021-05-01', 5,7);
 
 INSERT INTO aquarium_period VALUES ('2020-01-01', '2021-03-01', 1, 2);
 INSERT INTO aquarium_period VALUES ('2021-03-05', null, 2, 3);

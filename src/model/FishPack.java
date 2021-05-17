@@ -11,6 +11,7 @@ public class FishPack {
 	private FishSpecies species;
 	private List<Period<Aquarium>> aquariumPeriods;
 	private String status;
+	private String packNumber;
 
 	public FishPack() {
 		this.aquariumPeriods = new ArrayList<Period<Aquarium>>();
@@ -23,10 +24,11 @@ public class FishPack {
 		this.species = species;
 	}
 
-	public FishPack(int id, String status, LocalDate birthday, FeedingPlan feedingPlan, FishSpecies fishSpecies,
+	public FishPack(int id, String packNumber,String status, LocalDate birthday, FeedingPlan feedingPlan, FishSpecies fishSpecies,
 			Period<Aquarium> aquarium) {
 
 		this(birthday, feedingPlan, fishSpecies);
+		this.packNumber = packNumber;
 		this.id = id;
 		this.status = status;
 		this.aquariumPeriods.add(aquarium);
@@ -78,7 +80,7 @@ public class FishPack {
 
 	// TODO Fetch fishpack number
 	public String getFishPackNumber() {
-		return "TestNummer222";
+		return this.packNumber;
 	}
 
 	public void setID(Integer id) {
