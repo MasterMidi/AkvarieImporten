@@ -5,6 +5,9 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -13,153 +16,200 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import ctrl.FishPackController;
+import exception.DataAccessException;
+import gui.components.AquariumListCellRenderer;
+import gui.components.AutoCompletion;
+import gui.components.FeedingPlanListCellRenderer;
+import gui.components.JHintTextField;
+import gui.components.SpeciesListCellRenderer;
+import model.Aquarium;
+import model.FeedingPlan;
+import model.FishSpecies;
+
+import java.awt.BorderLayout;
+import javax.swing.JPopupMenu;
+import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 public class CreateFishpackTab extends JPanel {
-    private JTextField txtDate;
-    private JLabel lblSpecies;
-    private JLabel lblNewLabel;
-    private JComboBox comboBoxSpecies;
-    private JLabel lblAquarium;
-    private JComboBox comboBoxAquarium;
-    private JLabel lblFeedingPlan;
-    private JComboBox comboBoxFeedingPlan;
-    private JButton btnNewButton_1;
-    private JButton btnCreateAquarium;
-    private JButton btnCancel;
-    private JButton btnCreate;
+	private JPanel viewport;
+	private JLabel lblSpecies;
+	private JComboBox<FishSpecies> comboBoxSpecies;
+	private JButton btnCreateSpecies;
+	private JLabel lblNewLabel;
+	private JTextField textField;
+	private JLabel lblAquarium;
+	private JComboBox<Aquarium> comboBoxAquarium;
+	private JButton btnCreateAquarium;
+	private JLabel lblFeedingPlan;
+	private JComboBox<FeedingPlan> comboBoxFeedingPlan;
+	private JButton btnNewButton;
+	private JPanel footer;
+	private JButton btnCancel;
+	private JButton btnCreate;
+	
+	
+	private FishPackController fishPackController;
 
-    /**
-     * Create the panel.
-     */
-    public CreateFishpackTab() {
-	GridBagLayout gridBagLayout = new GridBagLayout();
-	gridBagLayout.columnWidths = new int[] { 0, 101, 0, 0, 0, 0 };
-	gridBagLayout.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-	gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 1.0, Double.MIN_VALUE };
-	gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-		Double.MIN_VALUE };
-	setLayout(gridBagLayout);
+	/**
+	 * Create the panel.
+	 * @throws DataAccessException 
+	 */
+	public CreateFishpackTab() throws DataAccessException {
+		setLayout(new BorderLayout(0, 0));
 
-	lblSpecies = new JLabel("Art:");
-	GridBagConstraints gbc_lblSpecies = new GridBagConstraints();
-	gbc_lblSpecies.insets = new Insets(0, 0, 5, 5);
-	gbc_lblSpecies.anchor = GridBagConstraints.EAST;
-	gbc_lblSpecies.gridx = 1;
-	gbc_lblSpecies.gridy = 2;
-	add(lblSpecies, gbc_lblSpecies);
+		viewport = new JPanel();
+		add(viewport);
+		GridBagLayout gbl_viewport = new GridBagLayout();
+		gbl_viewport.columnWidths = new int[] { 0, 0, 0, 0, 0, 0 };
+		gbl_viewport.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0 };
+		gbl_viewport.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_viewport.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		viewport.setLayout(gbl_viewport);
 
-	comboBoxSpecies = new JComboBox();
-	GridBagConstraints gbc_comboBoxSpecies = new GridBagConstraints();
-	gbc_comboBoxSpecies.insets = new Insets(0, 0, 5, 5);
-	gbc_comboBoxSpecies.fill = GridBagConstraints.HORIZONTAL;
-	gbc_comboBoxSpecies.gridx = 2;
-	gbc_comboBoxSpecies.gridy = 2;
-	add(comboBoxSpecies, gbc_comboBoxSpecies);
+		lblSpecies = new JLabel("Art:");
+		GridBagConstraints gbc_lblSpecies = new GridBagConstraints();
+		gbc_lblSpecies.anchor = GridBagConstraints.EAST;
+		gbc_lblSpecies.insets = new Insets(0, 0, 5, 5);
+		gbc_lblSpecies.gridx = 1;
+		gbc_lblSpecies.gridy = 1;
+		viewport.add(lblSpecies, gbc_lblSpecies);
 
-	JButton btnCreateSpecies = new JButton("Opret Art");
-	btnCreateSpecies.setEnabled(false);
-	btnCreateSpecies.addActionListener(new ActionListener() {
-	    public void actionPerformed(ActionEvent e) {
-	    }
-	});
-	GridBagConstraints gbc_btnCreateSpecies = new GridBagConstraints();
-	gbc_btnCreateSpecies.fill = GridBagConstraints.HORIZONTAL;
-	gbc_btnCreateSpecies.insets = new Insets(0, 0, 5, 5);
-	gbc_btnCreateSpecies.gridx = 3;
-	gbc_btnCreateSpecies.gridy = 2;
-	add(btnCreateSpecies, gbc_btnCreateSpecies);
+		comboBoxSpecies = new JComboBox<>();
+		comboBoxSpecies.setEditable(true);
+		GridBagConstraints gbc_comboBoxSpecies = new GridBagConstraints();
+		gbc_comboBoxSpecies.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxSpecies.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxSpecies.gridx = 2;
+		gbc_comboBoxSpecies.gridy = 1;
+		viewport.add(comboBoxSpecies, gbc_comboBoxSpecies);
 
-	lblNewLabel = new JLabel("Dato");
-	GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-	gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
-	gbc_lblNewLabel.anchor = GridBagConstraints.EAST;
-	gbc_lblNewLabel.gridx = 1;
-	gbc_lblNewLabel.gridy = 3;
-	add(lblNewLabel, gbc_lblNewLabel);
+		btnCreateSpecies = new JButton("Opret Art");
+		btnCreateSpecies.setEnabled(false);
+		GridBagConstraints gbc_btnCreateSpecies = new GridBagConstraints();
+		gbc_btnCreateSpecies.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnCreateSpecies.insets = new Insets(0, 0, 5, 5);
+		gbc_btnCreateSpecies.gridx = 3;
+		gbc_btnCreateSpecies.gridy = 1;
+		viewport.add(btnCreateSpecies, gbc_btnCreateSpecies);
 
-	txtDate = new JTextField();
-	GridBagConstraints gbc_txtDate = new GridBagConstraints();
-	gbc_txtDate.insets = new Insets(0, 0, 5, 5);
-	gbc_txtDate.fill = GridBagConstraints.HORIZONTAL;
-	gbc_txtDate.gridx = 2;
-	gbc_txtDate.gridy = 3;
-	add(txtDate, gbc_txtDate);
-	txtDate.setColumns(10);
+		lblNewLabel = new JLabel("Dato");
+		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+		gbc_lblNewLabel.anchor = GridBagConstraints.EAST;
+		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel.gridx = 1;
+		gbc_lblNewLabel.gridy = 2;
+		viewport.add(lblNewLabel, gbc_lblNewLabel);
 
-	lblAquarium = new JLabel("Akvarie:");
-	lblAquarium.setHorizontalTextPosition(SwingConstants.RIGHT);
-	lblAquarium.setHorizontalAlignment(SwingConstants.RIGHT);
-	GridBagConstraints gbc_lblAquarium = new GridBagConstraints();
-	gbc_lblAquarium.anchor = GridBagConstraints.EAST;
-	gbc_lblAquarium.insets = new Insets(0, 0, 5, 5);
-	gbc_lblAquarium.gridx = 1;
-	gbc_lblAquarium.gridy = 4;
-	add(lblAquarium, gbc_lblAquarium);
+		textField = new JHintTextField("yyyy-mm-dd");
+		textField.setColumns(10);
+		GridBagConstraints gbc_textField = new GridBagConstraints();
+		gbc_textField.insets = new Insets(0, 0, 5, 5);
+		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textField.gridx = 2;
+		gbc_textField.gridy = 2;
+		viewport.add(textField, gbc_textField);
 
-	comboBoxAquarium = new JComboBox();
-	GridBagConstraints gbc_comboBoxAquarium = new GridBagConstraints();
-	gbc_comboBoxAquarium.insets = new Insets(0, 0, 5, 5);
-	gbc_comboBoxAquarium.fill = GridBagConstraints.HORIZONTAL;
-	gbc_comboBoxAquarium.gridx = 2;
-	gbc_comboBoxAquarium.gridy = 4;
-	add(comboBoxAquarium, gbc_comboBoxAquarium);
+		lblAquarium = new JLabel("Akvarie:");
+		lblAquarium.setHorizontalTextPosition(SwingConstants.RIGHT);
+		lblAquarium.setHorizontalAlignment(SwingConstants.RIGHT);
+		GridBagConstraints gbc_lblAquarium = new GridBagConstraints();
+		gbc_lblAquarium.anchor = GridBagConstraints.EAST;
+		gbc_lblAquarium.insets = new Insets(0, 0, 5, 5);
+		gbc_lblAquarium.gridx = 1;
+		gbc_lblAquarium.gridy = 3;
+		viewport.add(lblAquarium, gbc_lblAquarium);
 
-	btnCreateAquarium = new JButton("Opret Akvarie");
-	btnCreateAquarium.setEnabled(false);
-	GridBagConstraints gbc_btnCreateAquarium = new GridBagConstraints();
-	gbc_btnCreateAquarium.fill = GridBagConstraints.HORIZONTAL;
-	gbc_btnCreateAquarium.insets = new Insets(0, 0, 5, 5);
-	gbc_btnCreateAquarium.gridx = 3;
-	gbc_btnCreateAquarium.gridy = 4;
-	add(btnCreateAquarium, gbc_btnCreateAquarium);
+		comboBoxAquarium = new JComboBox<>();
+		GridBagConstraints gbc_comboBoxAquarium = new GridBagConstraints();
+		gbc_comboBoxAquarium.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxAquarium.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxAquarium.gridx = 2;
+		gbc_comboBoxAquarium.gridy = 3;
+		viewport.add(comboBoxAquarium, gbc_comboBoxAquarium);
 
-	lblFeedingPlan = new JLabel("Fodderplan:");
-	GridBagConstraints gbc_lblFeedingPlan = new GridBagConstraints();
-	gbc_lblFeedingPlan.anchor = GridBagConstraints.EAST;
-	gbc_lblFeedingPlan.insets = new Insets(0, 0, 5, 5);
-	gbc_lblFeedingPlan.gridx = 1;
-	gbc_lblFeedingPlan.gridy = 5;
-	add(lblFeedingPlan, gbc_lblFeedingPlan);
+		btnCreateAquarium = new JButton("Opret Akvarie");
+		btnCreateAquarium.setEnabled(false);
+		GridBagConstraints gbc_btnCreateAquarium = new GridBagConstraints();
+		gbc_btnCreateAquarium.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnCreateAquarium.insets = new Insets(0, 0, 5, 5);
+		gbc_btnCreateAquarium.gridx = 3;
+		gbc_btnCreateAquarium.gridy = 3;
+		viewport.add(btnCreateAquarium, gbc_btnCreateAquarium);
 
-	comboBoxFeedingPlan = new JComboBox();
-	GridBagConstraints gbc_comboBoxFeedingPlan = new GridBagConstraints();
-	gbc_comboBoxFeedingPlan.insets = new Insets(0, 0, 5, 5);
-	gbc_comboBoxFeedingPlan.fill = GridBagConstraints.HORIZONTAL;
-	gbc_comboBoxFeedingPlan.gridx = 2;
-	gbc_comboBoxFeedingPlan.gridy = 5;
-	add(comboBoxFeedingPlan, gbc_comboBoxFeedingPlan);
+		lblFeedingPlan = new JLabel("Fodderplan:");
+		GridBagConstraints gbc_lblFeedingPlan = new GridBagConstraints();
+		gbc_lblFeedingPlan.anchor = GridBagConstraints.EAST;
+		gbc_lblFeedingPlan.insets = new Insets(0, 0, 5, 5);
+		gbc_lblFeedingPlan.gridx = 1;
+		gbc_lblFeedingPlan.gridy = 4;
+		viewport.add(lblFeedingPlan, gbc_lblFeedingPlan);
 
-	btnNewButton_1 = new JButton("Opret Fodderplan");
-	btnNewButton_1.setEnabled(false);
-	btnNewButton_1.addActionListener(new ActionListener() {
-	    public void actionPerformed(ActionEvent e) {
-	    }
-	});
-	GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
-	gbc_btnNewButton_1.fill = GridBagConstraints.HORIZONTAL;
-	gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 5);
-	gbc_btnNewButton_1.gridx = 3;
-	gbc_btnNewButton_1.gridy = 5;
-	add(btnNewButton_1, gbc_btnNewButton_1);
+		comboBoxFeedingPlan = new JComboBox<>();
+		GridBagConstraints gbc_comboBoxFeedingPlan = new GridBagConstraints();
+		gbc_comboBoxFeedingPlan.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxFeedingPlan.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxFeedingPlan.gridx = 2;
+		gbc_comboBoxFeedingPlan.gridy = 4;
+		viewport.add(comboBoxFeedingPlan, gbc_comboBoxFeedingPlan);
 
-	btnCancel = new JButton("Annuller");
-	GridBagConstraints gbc_btnCancel = new GridBagConstraints();
-	gbc_btnCancel.fill = GridBagConstraints.HORIZONTAL;
-	gbc_btnCancel.insets = new Insets(0, 0, 0, 5);
-	gbc_btnCancel.gridx = 3;
-	gbc_btnCancel.gridy = 10;
-	add(btnCancel, gbc_btnCancel);
+		btnNewButton = new JButton("Opret Fodderplan");
+		btnNewButton.setEnabled(false);
+		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
+		gbc_btnNewButton.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
+		gbc_btnNewButton.gridx = 3;
+		gbc_btnNewButton.gridy = 4;
+		viewport.add(btnNewButton, gbc_btnNewButton);
 
-	btnCreate = new JButton("Opret Fiskekuld");
-	btnCreate.addActionListener(new ActionListener() {
-	    public void actionPerformed(ActionEvent e) {
-	    }
-	});
-	GridBagConstraints gbc_btnCreate = new GridBagConstraints();
-	gbc_btnCreate.fill = GridBagConstraints.HORIZONTAL;
-	gbc_btnCreate.gridx = 4;
-	gbc_btnCreate.gridy = 10;
-	add(btnCreate, gbc_btnCreate);
+		footer = new JPanel();
+		add(footer, BorderLayout.SOUTH);
 
-    }
+		btnCancel = new JButton("Annuller");
+		footer.add(btnCancel);
 
+		btnCreate = new JButton("Opret Fiskekuld");
+		footer.add(btnCreate);
+
+		
+		init();
+	}
+
+	private void init() throws DataAccessException {
+		fishPackController = new FishPackController();
+//		comboBoxSpecies.setRenderer(new SpeciesListCellRenderer());
+		AutoCompletion ac = new AutoCompletion(comboBoxSpecies);
+		
+		comboBoxAquarium.setRenderer(new AquariumListCellRenderer());
+		comboBoxFeedingPlan.setRenderer(new FeedingPlanListCellRenderer());
+		
+		List<FishSpecies> speciesList = new ArrayList<>(fishPackController.searchFishSpecies("").values());
+		speciesList.parallelStream().forEach(fs -> comboBoxSpecies.addItem(fs));
+		
+		List<Aquarium> aquariumList = new ArrayList<>(fishPackController.searchAquarium("").values());
+		aquariumList.parallelStream().forEach(aq -> comboBoxAquarium.addItem(aq));
+
+		List<FeedingPlan> feedingPlanList = new ArrayList<>(fishPackController.searchFeedingplans("").values());
+		feedingPlanList.parallelStream().forEach(fp -> comboBoxFeedingPlan.addItem(fp));
+	}
+
+	private static void addPopup(Component component, final JPopupMenu popup) {
+		component.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			public void mouseReleased(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			private void showMenu(MouseEvent e) {
+				popup.show(e.getComponent(), e.getX(), e.getY());
+			}
+		});
+	}
 }

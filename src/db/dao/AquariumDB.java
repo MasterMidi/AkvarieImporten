@@ -15,7 +15,7 @@ import model.Location;
 
 public class AquariumDB implements IAquariumDB {
 
-	private static final String Q_GET_AQUARIUM = "SELECT id AS aquarium_id, location_id AS aquarium_location_id, expense_id AS aquarium_expense_id, number AS aquarium_number, size AS aquarium_size FROM aquarium WHERE number LIKE ?";
+	private static final String Q_GET_AQUARIUM = "SELECT aquarium.id AS aquarium_id, location_id AS aquarium_location_id, location.address AS aquarium_location_address, expense_id AS aquarium_expense_id, number AS aquarium_number, size AS aquarium_size FROM aquarium JOIN location ON aquarium.location_id = location.id WHERE number LIKE ?";
 	private PreparedStatement psGetAquarium;
 
 	public AquariumDB() throws DataAccessException {
@@ -60,7 +60,7 @@ public class AquariumDB implements IAquariumDB {
 	protected static Aquarium buildObject(ResultSet rs) throws SQLException {
 		Aquarium res = null;
 		// TODO - NUMBER NEEDS TO BE STRING IN DB
-		Location location = new Location(rs.getString("location_address"));
+		Location location = new Location(rs.getString("aquarium_location_address"));
 		res = new Aquarium(rs.getString("aquarium_number"), rs.getDouble("aquarium_size"), location);
 		res.setId(rs.getInt("aquarium_id"));
 		return res;
