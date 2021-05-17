@@ -6,75 +6,84 @@ import java.util.List;
 
 public class FishPack {
 	private int id;
-    private LocalDate birthDate;
-    private FeedingPlan feedingPlan;
-    private FishSpecies species;
-    private List<Period<Aquarium>> aquariumPeriods;
+	private LocalDate birthDate;
+	private FeedingPlan feedingPlan;
+	private FishSpecies species;
+	private List<Period<Aquarium>> aquariumPeriods;
+	private String status;
 
-    public FishPack() {
-	this.aquariumPeriods = new ArrayList<Period<Aquarium>>();
-    }
+	public FishPack() {
+		this.aquariumPeriods = new ArrayList<Period<Aquarium>>();
+	}
 
-    public void setBirthDate(LocalDate birthDate) {
-	this.birthDate = birthDate;
-    }
+	public FishPack(LocalDate birthDate, FeedingPlan feedingPlan, FishSpecies species) {
+		this();
+		this.birthDate = birthDate;
+		this.feedingPlan = feedingPlan;
+		this.species = species;
+	}
 
-    public void setFeedingPlan(FeedingPlan feedingPlan) {
-	this.feedingPlan = feedingPlan;
-    }
+	public FishPack(int id, String status, LocalDate birthday, FeedingPlan feedingPlan, FishSpecies fishSpecies,
+			Period<Aquarium> aquarium) {
 
-    public void setSpecies(FishSpecies species) {
-	this.species = species;
-    }
+		this(birthday, feedingPlan, fishSpecies);
+		this.id = id;
+		this.status = status;
+		this.aquariumPeriods.add(aquarium);
+	}
 
-    // Always sets startdate to LocalDate.now()
-    public void setAquarium(Aquarium aquarium) {
-	Period<Aquarium> res = new Period<Aquarium>(aquarium, LocalDate.now());
-	this.aquariumPeriods.add(res);
-    }
+	public void setBirthDate(LocalDate birthDate) {
+		this.birthDate = birthDate;
+	}
 
-    public LocalDate getBirthDate() {
-	return birthDate;
-    }
+	public void setFeedingPlan(FeedingPlan feedingPlan) {
+		this.feedingPlan = feedingPlan;
+	}
 
-    public FeedingPlan getFeedingPlan() {
-	return feedingPlan;
-    }
+	public void setSpecies(FishSpecies species) {
+		this.species = species;
+	}
 
-    public FishSpecies getSpecies() {
-	return species;
-    }
+	// Always sets startdate to LocalDate.now()
+	public void setAquarium(Aquarium aquarium) {
+		Period<Aquarium> res = new Period<Aquarium>(aquarium, LocalDate.now());
+		this.aquariumPeriods.add(res);
+	}
 
-    public List<Period<Aquarium>> getAquariumPeriods() {
-	return aquariumPeriods;
-    }
+	public LocalDate getBirthDate() {
+		return birthDate;
+	}
 
-    public FishPack(LocalDate birthDate, FeedingPlan feedingPlan, FishSpecies species) {
-	super();
-	this.birthDate = birthDate;
-	this.feedingPlan = feedingPlan;
-	this.species = species;
-	this.aquariumPeriods = new ArrayList<Period<Aquarium>>();
-    }
+	public FeedingPlan getFeedingPlan() {
+		return feedingPlan;
+	}
 
-    // TODO Make the calculate for the correct amount of days.
-    public Integer getStatus() {
-    	return 25;
-    }
+	public FishSpecies getSpecies() {
+		return species;
+	}
 
-    // TODO Get the current aquarium for the fishpack
-    public Aquarium getCurrentAquarium() {
-    	return aquariumPeriods.get(0).getObject();
-    }
+	public List<Period<Aquarium>> getAquariumPeriods() {
+		return aquariumPeriods;
+	}
 
-    // TODO Fetch fishpack number
-    public String getFishPackNumber() {
-    	return "TestNummer222";
-    }
+	// TODO Make the calculate for the correct amount of days.
+	public String getStatus() {
+		return status;
+	}
+
+	// TODO Get the current aquarium for the fishpack
+	public Aquarium getCurrentAquarium() {
+		return aquariumPeriods.get(0).getObject();
+	}
+
+	// TODO Fetch fishpack number
+	public String getFishPackNumber() {
+		return "TestNummer222";
+	}
 
 	public void setID(Integer id) {
 		this.id = id;
-		
+
 	}
 
 }
