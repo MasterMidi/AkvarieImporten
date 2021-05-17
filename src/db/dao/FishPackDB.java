@@ -50,12 +50,15 @@ public class FishPackDB implements IFishPackDB {
 			+ "fish_species.average_eggs AS species_average_eggs, \r\n"
 			+ "fish_species.birth_size AS species_birth_size, \r\n"
 			+ "fish_species.grow_rate AS species_grow_rate, \r\n"
-			+ "fish_species.minimum_sale_size AS species_minimum_sale_size\r\n"
+			+ "fish_species.minimum_sale_size AS species_minimum_sale_size,\r\n"
+			+ "--LOCATION\r\n"
+			+ "[location].address as location_address\r\n"
 			+ "FROM fish_pack\r\n"
 			+ "JOIN fish_pack_period ON fish_pack_period.id = (SELECT TOP 1 id FROM fish_pack_period WHERE end_date is null AND fish_pack_id = fish_pack.id ORDER BY fish_pack_period.start_date DESC)\r\n"
 			+ "JOIN aquarium ON aquarium.id = fish_pack_period.aquarium_id\r\n"
 			+ "JOIN feeding_plan ON fish_pack.feeding_plan_id = feeding_plan.id\r\n"
 			+ "JOIN fish_species ON fish_pack.fish_specie_id = fish_species.id\r\n"
+			+ "JOIN [location] ON [location].id = aquarium.location_id\r\n"
 			+ "WHERE pack_number LIKE ?";
 
 	private PreparedStatement psInsertFishPack;

@@ -11,6 +11,7 @@ import db.DBConnection;
 import db.IAquariumDB;
 import exception.DataAccessException;
 import model.Aquarium;
+import model.Location;
 
 public class AquariumDB implements IAquariumDB {
 
@@ -62,7 +63,8 @@ public class AquariumDB implements IAquariumDB {
 	protected static Aquarium buildObject(ResultSet rs) throws SQLException {
 		Aquarium res = null;
 		// TODO - NUMBER NEEDS TO BE STRING IN DB
-		res = new Aquarium(rs.getString("aquarium_number"), rs.getDouble("aquarium_size"));
+		Location location = new Location(rs.getString("location_address"));
+		res = new Aquarium(rs.getString("aquarium_number"), rs.getDouble("aquarium_size"), location);
 		res.setId(rs.getInt("aquarium_id"));
 		return res;
 	}

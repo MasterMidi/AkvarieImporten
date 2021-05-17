@@ -26,10 +26,13 @@ fish_species.name AS species_name,
 fish_species.average_eggs AS species_average_eggs, 
 fish_species.birth_size AS species_birth_size, 
 fish_species.grow_rate AS species_grow_rate, 
-fish_species.minimum_sale_size AS species_minimum_sale_size
+fish_species.minimum_sale_size AS species_minimum_sale_size,
+--LOCATION
+[location].address as location_address
 FROM fish_pack
 JOIN fish_pack_period ON fish_pack_period.id = (SELECT TOP 1 id FROM fish_pack_period WHERE end_date is null AND fish_pack_id = fish_pack.id ORDER BY fish_pack_period.start_date DESC)
 JOIN aquarium ON aquarium.id = fish_pack_period.aquarium_id
 JOIN feeding_plan ON fish_pack.feeding_plan_id = feeding_plan.id
 JOIN fish_species ON fish_pack.fish_specie_id = fish_species.id
-WHERE pack_number LIKE ?
+JOIN [location] ON [location].id = aquarium.location_id
+WHERE pack_number LIKE '%%'

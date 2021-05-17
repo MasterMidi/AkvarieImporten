@@ -18,6 +18,7 @@ import model.Aquarium;
 import model.FeedingPlan;
 import model.FishPack;
 import model.FishSpecies;
+import model.Location;
 
 public class SQLcheck {
 	
@@ -43,7 +44,9 @@ public class SQLcheck {
 	public void testFishPackInsert() throws DataAccessException, SQLException {
 		FeedingPlan plan = new FeedingPlan("Normal fisk", 3, 35, null);
 		FishSpecies fs = new FishSpecies("fiskeart", 10, 5, 2, 20);
-		Aquarium aq = new Aquarium("123", 200.0);
+
+		Location location = new Location("SQL CHECK LOCATION");
+		Aquarium aq = new Aquarium("123", 200.0, location);
 		aq.setId(3);
 		fs.setId(1);
 		plan.setID(1);
