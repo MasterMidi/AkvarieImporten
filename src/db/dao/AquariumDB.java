@@ -60,8 +60,8 @@ public class AquariumDB implements IAquariumDB {
 	protected static Aquarium buildObject(ResultSet rs) throws SQLException {
 		Aquarium res = null;
 		// TODO - NUMBER NEEDS TO BE STRING IN DB
-		res = new Aquarium(rs.getString("number"), rs.getDouble("size"));
-		res.setId(rs.getInt("id"));
+		res = new Aquarium(rs.getString("aquarium_number"), rs.getDouble("aquarium_size"));
+		res.setId(rs.getInt("aquarium_id"));
 		return res;
 	}
 
