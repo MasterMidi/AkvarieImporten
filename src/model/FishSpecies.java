@@ -8,7 +8,7 @@ public class FishSpecies {
 	private double birthSize;
 	private double growthRate;
 	private double minimumSalesSize;
-	
+
 	public FishSpecies(String name, int averageEggs, double birthSize, double growthRate, double minimumSalesSize) {
 		super();
 		this.name = name;
@@ -17,11 +17,11 @@ public class FishSpecies {
 		this.growthRate = growthRate;
 		this.minimumSalesSize = minimumSalesSize;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
-	
+
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -29,6 +29,5 @@ public class FishSpecies {
 	public String getName() {
 		return this.name;
 	}
-	
-	
+
 }

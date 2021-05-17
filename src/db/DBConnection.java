@@ -11,7 +11,8 @@ import exception.DataAccessException;
 
 /**
  * 
- * @author knol, Julius Håland Bendt, Magnus Baggesen, Michael Andreas Graversen, Mike Johansson
+ * @author knol, Julius Håland Bendt, Magnus Baggesen, Michael Andreas
+ *         Graversen, Mike Johansson
  * @version 2021-04-20
  */
 public class DBConnection {
@@ -113,7 +114,7 @@ public class DBConnection {
 			throw new DataAccessException("Could not rollback transaction", e);
 		}
 	}
-	
+
 	public void setIsolationLevel(int level) throws SQLException {
 		connection.setTransactionIsolation(level);
 	}

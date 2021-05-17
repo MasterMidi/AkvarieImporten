@@ -21,6 +21,7 @@ public class Period<T> {
 		this.object = object;
 		this.startDate = startDate;
 	}
+
 	public Period(T object, LocalDate startDate, LocalDate endDate) {
 		this(object, startDate);
 		this.endDate = endDate;

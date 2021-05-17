@@ -55,7 +55,8 @@ public class FeedingPlanDB implements IFeedingPlanDB {
 
 	protected static FeedingPlan buildObject(ResultSet rs) throws SQLException {
 		// Food-parameter is null, as that is out of this use case.
-		FeedingPlan plan = new FeedingPlan(rs.getString("feeding_plan_name"), rs.getInt("feeding_plan_interval"), rs.getInt("feeding_plan_amount"), null);
+		FeedingPlan plan = new FeedingPlan(rs.getString("feeding_plan_name"), rs.getInt("feeding_plan_interval"),
+				rs.getInt("feeding_plan_amount"), null);
 		plan.setID(rs.getInt("feeding_plan_id"));
 		return plan;
 	}

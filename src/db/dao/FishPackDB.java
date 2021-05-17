@@ -103,7 +103,7 @@ public class FishPackDB implements IFishPackDB {
 	@Override
 	public Map<Integer, FishPack> getFishPack(String searchInput) throws SQLException, DataAccessException {
 		Map<Integer, FishPack> fishpacks = new HashMap<Integer, FishPack>();
-		
+
 		psGetFishpack.setString(1, "%" + searchInput + "%");
 		ResultSet rs = psGetFishpack.executeQuery();
 
@@ -120,13 +120,14 @@ public class FishPackDB implements IFishPackDB {
 			}
 			String status = rs.getString("fish_pack_status");
 			String packNumber = rs.getString("fish_pack_number");
-			
+
 			FeedingPlan feedingPlan = FeedingPlanDB.buildObject(rs);
 			FishSpecies fishSpecies = FishSpeciesDB.buildObject(rs);
 			Period<Aquarium> aquarium = new Period<Aquarium>(AquariumDB.buildObject(rs), periodStartDay, periodEndDate);
-			
-			FishPack fishPack = new FishPack(fishPackId,packNumber, status, birthday, feedingPlan, fishSpecies, aquarium);
-			
+
+			FishPack fishPack = new FishPack(fishPackId, packNumber, status, birthday, feedingPlan, fishSpecies,
+					aquarium);
+
 			fishpacks.put(fishPackId, fishPack);
 		}
 
@@ -150,6 +151,5 @@ public class FishPackDB implements IFishPackDB {
 		psInsertFishPack.setInt(3, feedingPlan);
 		psInsertFishPack.setString(4, "not ready");
 	}
-
 
 }

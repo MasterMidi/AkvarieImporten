@@ -1,16 +1,12 @@
 package ctrl;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import db.Database;
 import db.IFeedingPlanDB;
-import db.dao.FeedingPlanDB;
 import exception.DataAccessException;
 import model.FeedingPlan;
-import model.FishSpecies;
 
 public class FeedingPlanController {
 	private Map<Integer, FeedingPlan> feedingPlanMatches;
@@ -19,7 +15,7 @@ public class FeedingPlanController {
 	public FeedingPlanController() throws DataAccessException {
 		this.feedingPlanDB = Database.getInstance().feedingPlanDB();
 	}
-	
+
 	public Map<Integer, FeedingPlan> searchFeedingPlan(String searchInput) {
 		feedingPlanMatches = feedingPlanDB.getFeedingPlan(searchInput);
 		return new HashMap<Integer, FeedingPlan>(feedingPlanMatches);

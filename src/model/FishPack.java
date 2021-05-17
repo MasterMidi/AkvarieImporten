@@ -24,8 +24,8 @@ public class FishPack {
 		this.species = species;
 	}
 
-	public FishPack(int id, String packNumber,String status, LocalDate birthday, FeedingPlan feedingPlan, FishSpecies fishSpecies,
-			Period<Aquarium> aquarium) {
+	public FishPack(int id, String packNumber, String status, LocalDate birthday, FeedingPlan feedingPlan,
+			FishSpecies fishSpecies, Period<Aquarium> aquarium) {
 
 		this(birthday, feedingPlan, fishSpecies);
 		this.packNumber = packNumber;
