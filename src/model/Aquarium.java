@@ -4,11 +4,13 @@ public class Aquarium {
     private String number;
     private Double size;
     private int id;
+    private Location location;
 
-    public Aquarium(String number, Double size) {
+    public Aquarium(String number, Double size, Location location) {
 	super();
 	this.number = number;
 	this.size = size;
+	this.location = location;
     }
 
     public int getId() {
@@ -37,6 +39,6 @@ public class Aquarium {
 
     // TODO Make aquarium fetch location
     public String getLocation() {
-	return "BonBonLand";
+	return location.getAddress();
     }
 }
