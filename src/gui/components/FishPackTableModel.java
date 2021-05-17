@@ -9,8 +9,7 @@ import model.FishPack;
 
 public class FishPackTableModel extends AbstractTableModel {
 
-    private static final String[] COL_NAMES = { "Art", "Dato", "Status", "Lokation", "Foderplan", "Akvarie Nr.",
-	    "Kuld Nr." };
+    private static final String[] COL_NAMES = { "Kuld Nr.", "Art", "Akvarie.", "Status", "Lokation", "Foderplan", "Dato" };
     private List<FishPack> data;
 
     public FishPackTableModel() {
@@ -54,28 +53,27 @@ public class FishPackTableModel extends AbstractTableModel {
 	FishPack fishPack = data.get(row);
 	String res = "UNDEFINED";
 	switch (column) {
-	case 0: {
-	    res = fishPack.getSpecies().getName();
-	    break;
-	}
+	case 0: 
+		res = fishPack.getFishPackNumber();
+		break;  
 	case 1:
-	    res = fishPack.getBirthDate().toString();
+		res = fishPack.getSpecies().getName();
 	    break;
 	case 2:
-	    res = String.valueOf(fishPack.getStatus());
-	    break;
+		res = fishPack.getCurrentAquarium().getNumber();
+		break;
 	case 3:
-	    res = fishPack.getCurrentAquarium().getLocation();
-	    break;
+		res = String.valueOf(fishPack.getStatus());
+		break;
 	case 4:
-	    res = fishPack.getFeedingPlan().getName();
-	    break;
+		res = fishPack.getCurrentAquarium().getLocation();
+		break;
 	case 5:
-	    res = fishPack.getCurrentAquarium().getNumber();
-	    break;
+		res = fishPack.getFeedingPlan().getName();
+		break;
 	case 6:
-	    res = fishPack.getFishPackNumber();
-	    break;
+		res = fishPack.getBirthDate().toString();
+		break;
 	default:
 	    res = "UNKNOWN COL - CONTACT ADMIN";
 	    break;
