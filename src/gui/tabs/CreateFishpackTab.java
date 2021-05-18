@@ -40,10 +40,10 @@ public class CreateFishpackTab extends JPanel {
 	private JLabel lblNewLabel;
 	private JTextField textField;
 	private JLabel lblAquarium;
-	private JComboBox<Aquarium> txtfAquarium;
+	private JTextField txtfAquarium;
 	private JButton btnCreateAquarium;
 	private JLabel lblFeedingPlan;
-	private JComboBox<FeedingPlan> txtfFeedingPlan;
+	private JTextField txtfFeedingPlan;
 	private JButton btnNewButton;
 	private JPanel footer;
 	private JButton btnCancel;
@@ -132,7 +132,13 @@ public class CreateFishpackTab extends JPanel {
 		gbc_lblAquarium.gridy = 3;
 		viewport.add(lblAquarium, gbc_lblAquarium);
 
-		txtfAquarium = new JComboBox<>();
+		txtfAquarium = new JTextField();
+		txtfAquarium.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				aquariumSearchPressed(e);
+			}
+		});
 		GridBagConstraints gbc_txtfAquarium = new GridBagConstraints();
 		gbc_txtfAquarium.insets = new Insets(0, 0, 5, 5);
 		gbc_txtfAquarium.fill = GridBagConstraints.HORIZONTAL;
@@ -157,7 +163,12 @@ public class CreateFishpackTab extends JPanel {
 		gbc_lblFeedingPlan.gridy = 4;
 		viewport.add(lblFeedingPlan, gbc_lblFeedingPlan);
 
-		txtfFeedingPlan = new JComboBox<>();
+		txtfFeedingPlan = new JTextField();
+		txtfFeedingPlan.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+			}
+		});
 		GridBagConstraints gbc_txtfFeedingPlan = new GridBagConstraints();
 		gbc_txtfFeedingPlan.insets = new Insets(0, 0, 5, 5);
 		gbc_txtfFeedingPlan.fill = GridBagConstraints.HORIZONTAL;
@@ -187,9 +198,22 @@ public class CreateFishpackTab extends JPanel {
 		init();
 	}
 
+	protected void aquariumSearchPressed(KeyEvent e) {
+		if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+			List<Aquarium> aquariumList = new ArrayList<>(fishPackController.searchAquarium(txtfAquarium.getText()).values());
+			SearchMathesChooser<Aquarium> chooser = new SearchMathesChooser<Aquarium>(new AquariumListCellRenderer(), aquariumList);
+			chooser.setVisible(true);
+			chooser.callback(() -> {
+				Aquarium res = chooser.getValue();
+				txtfSpecies.setText(res.getNumber());
+				fishPackController.setAquarium(res.getId());
+			});
+		}
+		
+	}
+
 	protected void speciesSearchPressed(KeyEvent e) throws Exception {
 		if(e.getKeyCode() == KeyEvent.VK_ENTER) {
-			System.out.println("123123");
 			List<FishSpecies> speciesList = new ArrayList<>(fishPackController.searchFishSpecies(txtfSpecies.getText()).values());
 			SearchMathesChooser<FishSpecies> chooser = new SearchMathesChooser<FishSpecies>(new SpeciesListCellRenderer(), speciesList);
 			chooser.setVisible(true);
@@ -206,11 +230,6 @@ public class CreateFishpackTab extends JPanel {
 	private void init() throws DataAccessException {
 		fishPackController = new FishPackController();
 		fishPackController.createEmptyFishPack();
-//		comboBoxSpecies.setRenderer(new SpeciesListCellRenderer());
-		
-		
-		txtfAquarium.setRenderer(new AquariumListCellRenderer());
-		txtfFeedingPlan.setRenderer(new FeedingPlanListCellRenderer());
 		
 		List<FishSpecies> speciesList = new ArrayList<>(fishPackController.searchFishSpecies("").values());
 		

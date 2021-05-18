@@ -2,13 +2,13 @@ package gui.components;
 
 import java.awt.Component;
 
+import javax.swing.DefaultListCellRenderer;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.plaf.basic.BasicComboBoxRenderer;
 
 import model.FeedingPlan;
 
-public class FeedingPlanListCellRenderer extends BasicComboBoxRenderer {
+public class FeedingPlanListCellRenderer extends DefaultListCellRenderer {
 
 	@Override
 	public Component getListCellRendererComponent(JList<? extends Object> list, Object value, int index,
