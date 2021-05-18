@@ -262,7 +262,6 @@ public class CreateFishpackTab extends JPanel {
 //		comboBoxSpecies.setRenderer(new SpeciesListCellRenderer());
 		
 		
-		txtfAquarium.setRenderer(new AquariumListCellRenderer());
 		
 		List<FishSpecies> speciesList = new ArrayList<>(fishPackController.searchFishSpecies("").values());
 		
