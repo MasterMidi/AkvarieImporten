@@ -24,7 +24,6 @@ import gui.components.AquariumListCellRenderer;
 import gui.components.AutoCompletion;
 import gui.components.FeedingPlanListCellRenderer;
 import gui.components.JHintTextField;
-import gui.components.SearchMathesChooser;
 import gui.components.SpeciesListCellRenderer;
 import model.Aquarium;
 import model.FeedingPlan;
@@ -167,6 +166,7 @@ public class CreateFishpackTab extends JPanel {
 		txtfFeedingPlan.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
+				FeedingPlanSearchpressed(e);
 			}
 		});
 		GridBagConstraints gbc_txtfFeedingPlan = new GridBagConstraints();
@@ -210,12 +210,23 @@ public class CreateFishpackTab extends JPanel {
 			});
 		}
 		
+	protected void FeedingPlanSearchpressed(KeyEvent e) {
+		if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+			List<FeedingPlan> feedingPlanList = new ArrayList<>(fishPackController.searchFeedingplans(txtfFeedingPlan.getText()).values());
+			SearchMathesChooser<FeedingPlan> chooser = new SearchMathesChooser<>(new FeedingPlanListCellRenderer(), feedingPlanList);
+			chooser.setVisible(true);
+			chooser.callback(() -> {
+				FeedingPlan res = chooser.getValue();
+				txtfFeedingPlan.setText(res.getName());
+				fishPackController.setFeedingPlan(res.getID());
+			});
+		}
 	}
 
 	protected void speciesSearchPressed(KeyEvent e) throws Exception {
 		if(e.getKeyCode() == KeyEvent.VK_ENTER) {
 			List<FishSpecies> speciesList = new ArrayList<>(fishPackController.searchFishSpecies(txtfSpecies.getText()).values());
-			SearchMathesChooser<FishSpecies> chooser = new SearchMathesChooser<FishSpecies>(new SpeciesListCellRenderer(), speciesList);
+			SearchMathesChooser<FishSpecies> chooser = new SearchMathesChooser<>(new SpeciesListCellRenderer(), speciesList);
 			chooser.setVisible(true);
 			chooser.callback(() -> {
 				FishSpecies res = chooser.getValue();
@@ -230,6 +241,10 @@ public class CreateFishpackTab extends JPanel {
 	private void init() throws DataAccessException {
 		fishPackController = new FishPackController();
 		fishPackController.createEmptyFishPack();
+//		comboBoxSpecies.setRenderer(new SpeciesListCellRenderer());
+		
+		
+		txtfAquarium.setRenderer(new AquariumListCellRenderer());
 		
 		List<FishSpecies> speciesList = new ArrayList<>(fishPackController.searchFishSpecies("").values());
 		
