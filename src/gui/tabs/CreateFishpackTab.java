@@ -6,6 +6,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -30,6 +32,8 @@ import model.FeedingPlan;
 import model.FishSpecies;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
 
 public class CreateFishpackTab extends JPanel {
 	private JPanel viewport;
@@ -37,7 +41,7 @@ public class CreateFishpackTab extends JPanel {
 	private JTextField txtfSpecies;
 	private JButton btnCreateSpecies;
 	private JLabel lblNewLabel;
-	private JTextField textField;
+	private JTextField txtfBirthdate;
 	private JLabel lblAquarium;
 	private JTextField txtfAquarium;
 	private JButton btnCreateAquarium;
@@ -78,13 +82,8 @@ public class CreateFishpackTab extends JPanel {
 		txtfSpecies = new JTextField();
 		txtfSpecies.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyPressed(KeyEvent e) {
-				try {
+			public void keyReleased(KeyEvent e) {
 					speciesSearchPressed(e);
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
 			}
 		});
 		txtfSpecies.setEditable(true);
@@ -112,14 +111,21 @@ public class CreateFishpackTab extends JPanel {
 		gbc_lblNewLabel.gridy = 2;
 		viewport.add(lblNewLabel, gbc_lblNewLabel);
 
-		textField = new JHintTextField("yyyy-mm-dd");
-		textField.setColumns(10);
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.insets = new Insets(0, 0, 5, 5);
-		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.gridx = 2;
-		gbc_textField.gridy = 2;
-		viewport.add(textField, gbc_textField);
+		txtfBirthdate = new JHintTextField("yyyy-mm-dd");
+		txtfBirthdate.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				validateDate();
+			}
+		});
+
+		txtfBirthdate.setColumns(10);
+		GridBagConstraints gbc_txtfBirthdate = new GridBagConstraints();
+		gbc_txtfBirthdate.insets = new Insets(0, 0, 5, 5);
+		gbc_txtfBirthdate.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtfBirthdate.gridx = 2;
+		gbc_txtfBirthdate.gridy = 2;
+		viewport.add(txtfBirthdate, gbc_txtfBirthdate);
 
 		lblAquarium = new JLabel("Akvarie:");
 		lblAquarium.setHorizontalTextPosition(SwingConstants.RIGHT);
@@ -134,7 +140,7 @@ public class CreateFishpackTab extends JPanel {
 		txtfAquarium = new JTextField();
 		txtfAquarium.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyPressed(KeyEvent e) {
+			public void keyReleased(KeyEvent e) {
 				aquariumSearchPressed(e);
 			}
 		});
@@ -165,7 +171,7 @@ public class CreateFishpackTab extends JPanel {
 		txtfFeedingPlan = new JTextField();
 		txtfFeedingPlan.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyPressed(KeyEvent e) {
+			public void keyReleased(KeyEvent e) {
 				FeedingPlanSearchpressed(e);
 			}
 		});
@@ -198,6 +204,17 @@ public class CreateFishpackTab extends JPanel {
 		init();
 	}
 
+	private void validateDate() {
+		Pattern pattern = Pattern.compile("^(19|20)\\d\\d([- /.])(0[1-9]|1[012])\\2(0[1-9]|[12][0-9]|3[01])$");
+		Matcher matcher = pattern.matcher(txtfBirthdate.getText());
+		if(matcher.find()) {
+			System.out.println("succes");
+		} else {
+			System.out.println("fail");
+		}
+		
+	}
+
 	protected void aquariumSearchPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_ENTER) {
 			List<Aquarium> aquariumList = new ArrayList<>(fishPackController.searchAquarium(txtfAquarium.getText()).values());
@@ -224,7 +241,7 @@ public class CreateFishpackTab extends JPanel {
 		}
 	}
 
-	protected void speciesSearchPressed(KeyEvent e) throws Exception {
+	protected void speciesSearchPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_ENTER) {
 			List<FishSpecies> speciesList = new ArrayList<>(fishPackController.searchFishSpecies(txtfSpecies.getText()).values());
 			SearchMathesChooser<FishSpecies> chooser = new SearchMathesChooser<>(new SpeciesListCellRenderer(), speciesList);
