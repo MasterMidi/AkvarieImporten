@@ -209,6 +209,7 @@ public class CreateFishpackTab extends JPanel {
 				fishPackController.setAquarium(res.getId());
 			});
 		}
+	}
 		
 	protected void FeedingPlanSearchpressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_ENTER) {
