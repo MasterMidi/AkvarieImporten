@@ -10,10 +10,13 @@ INSERT INTO person VALUES ('Magnus','1997-01-01', 'employee');
 INSERT INTO person VALUES ('Michael','2001-01-01', 'employee');
 INSERT INTO person VALUES ('Julius','2000-09-06', 'employee');
 
-INSERT INTO city VALUES (9000, 'Aalborg midtby');
-INSERT INTO city VALUES (9210, 'Aalborg øst');
-INSERT INTO city VALUES (9200, 'Aalborg syd');
-INSERT INTO city VALUES (9220, 'Gug');
+INSERT INTO city VALUES (9000, 'Aalborg C');
+INSERT INTO city VALUES (9210, 'Aalborg SØ');
+INSERT INTO city VALUES (9200, 'Aalborg SV');
+INSERT INTO city VALUES (9220, 'Aalborg Øst');
+INSERT INTO city VALUES (1200, 'København K');
+INSERT INTO city VALUES (1250, 'København K');
+INSERT INTO city VALUES (1300, 'København K');
 
 INSERT INTO supplier VALUES ('Fiske manden', '12345678', '12345678','En vej 12, tv', 9000);
 INSERT INTO supplier VALUES ('Fiske Kvinden', '12345678', '87654321','En vej 12, tv', 9210);
@@ -26,20 +29,18 @@ INSERT INTO food VALUES('Ikke god fiske mad', 10, '2021-01-01', 3, 08953445);
 
 INSERT INTO feeding_plan VALUES('Normal fisk', 3, 35, 1);
 INSERT INTO feeding_plan VALUES('Stor fisk', 4, 32, 2);
-INSERT INTO feeding_plan VALUES('Lille fisk', 2, 25, 3);
+INSERT INTO feeding_plan VALUES('Nyfødt Fisk', 2, 25, 3);
 
 INSERT INTO price_category VALUES (10, 100, '2021-01-01');
 INSERT INTO price_category VALUES (20, 300, '2021-01-01');
 INSERT INTO price_category VALUES (5, 150, '2021-01-01');
 INSERT INTO price_category VALUES (34, 150, '2021-01-01');
 
-INSERT INTO fish_species VALUES ('Nemo', 10, 5, 2, 20, 1);
-INSERT INTO fish_species VALUES ('Haj', 10, 5, 2, 20, 2);
-INSERT INTO fish_species VALUES ('Delfin', 10, 5, 2, 20, 3);
-INSERT INTO fish_species VALUES ('Cichlide', 10, 5, 2, 20, 4);
-INSERT INTO fish_species VALUES ('Fiskeart', 10, 5, 2, 20, 2);
-
-
+INSERT INTO fish_species VALUES ('Ctenochromis', 25, 7, 2, 15, 1);
+INSERT INTO fish_species VALUES ('Divandu', 30, 6, 3, 25, 2);
+INSERT INTO fish_species VALUES ('Enigmatochromis', 100, 5, 3, 25, 3);
+INSERT INTO fish_species VALUES ('Etroplus', 125, 4, 1, 11, 4);
+INSERT INTO fish_species VALUES ('Tilapi', 90, 9, 2, 20, 2);
 
 INSERT INTO fish_purchase VALUES ('2021-01-01', 200, 2, 1, 1);
 INSERT INTO fish_purchase VALUES ('2021-02-01', 350, 4, 2, 3);
@@ -88,8 +89,8 @@ INSERT INTO expense VALUES ('L', 0.2, '2021-05-09');
 
 INSERT INTO [location] VALUES ('Sofiendalsvej 231', 9200);
 INSERT INTO [location] VALUES ('Vesterbro 76', 9000);
-INSERT INTO [location] VALUES ('getto', 9210);
-INSERT INTO [location] VALUES ('planteskole sted', 9220);
+INSERT INTO [location] VALUES ('Sønder Tranders Vej 24', 9210);
+INSERT INTO [location] VALUES ('Borgergade 24', 1300);
 
 INSERT INTO employee  VALUES (1, 'breeder', 1);
 INSERT INTO employee VALUES (2, 'cashier', 1);
