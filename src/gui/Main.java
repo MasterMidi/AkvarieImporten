@@ -27,7 +27,7 @@ import exception.DataAccessException;
 import gui.components.JRoundedButton;
 import gui.tabs.FishpackTab;
 
-public class Main extends JFrame implements CallbackIF {
+public class Main extends JFrame{
 
     private JPanel contentPane;
     private JPanel fishpackTab;
@@ -199,10 +199,6 @@ public class Main extends JFrame implements CallbackIF {
 	}
     }
 
-    @Override
-    public void callback(Runnable callback) {
-	// TODO Auto-generated method stub
 
-    }
 
 }

@@ -1,5 +1,9 @@
 package gui;
 
-public interface ICallback {
-	void callback(Runnable callback);
+import java.util.concurrent.Callable;
+
+public interface ICallback<T> {
+
+	T callback(Callable<T> callback) throws Exception;
+
 }

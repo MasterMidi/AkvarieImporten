@@ -2,13 +2,13 @@ package gui.components;
 
 import java.awt.Component;
 
+import javax.swing.DefaultListCellRenderer;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.plaf.basic.BasicComboBoxRenderer;
 
 import model.FishSpecies;
 
-public class SpeciesListCellRenderer extends BasicComboBoxRenderer {
+public class SpeciesListCellRenderer extends DefaultListCellRenderer {
 
 	@Override
 	public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected,

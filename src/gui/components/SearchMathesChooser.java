@@ -3,34 +3,37 @@ package gui.components;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JScrollPane;
-import javax.swing.JList;
 
-public class SearchMathesChooser extends JDialog {
+import gui.ICallback;
+import model.FishSpecies;
+
+import javax.swing.JScrollPane;
+import javax.swing.ListModel;
+import javax.swing.JList;
+import java.awt.event.ActionListener;
+import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.function.Function;
+import java.awt.event.ActionEvent;
+
+public class SearchMathesChooser<T> extends JDialog implements ICallback<T> {
 
 	private final JPanel contentPanel = new JPanel();
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			SearchMathesChooser dialog = new SearchMathesChooser();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+	private JList<T> list;
+	private T object;
+	private DefaultListCellRenderer cellRenderer;
 
 	/**
 	 * Create the dialog.
+	 * @param speciesList 
 	 */
-	public SearchMathesChooser() {
+	public SearchMathesChooser(DefaultListCellRenderer cellRenderer, List<T> speciesList) {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -40,7 +43,7 @@ public class SearchMathesChooser extends JDialog {
 			JScrollPane scrollPane = new JScrollPane();
 			contentPanel.add(scrollPane);
 			{
-				JList list = new JList();
+				list = new JList();
 				scrollPane.setViewportView(list);
 			}
 		}
@@ -50,16 +53,63 @@ public class SearchMathesChooser extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("Vælg");
+				okButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						okClicked(e);
+					}
+				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
 				JButton cancelButton = new JButton("Annuller");
+				cancelButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						cancelClicked(e);
+					}
+				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
+			
 		}
+		init(cellRenderer, speciesList);
 	}
+	
+	protected void cancelClicked(ActionEvent e) {
+		this.setVisible(false);
+		this.dispose();
+		
+	}
+	
+
+	protected void okClicked(ActionEvent e) {
+		this.object = list.getSelectedValue();
+		this.setVisible(false);
+		
+	}
+
+	private void init(DefaultListCellRenderer cellRenderer, List<T> speciesList) {
+		this.cellRenderer= cellRenderer; 
+		list.setCellRenderer(cellRenderer);
+		DefaultListModel<T> listModel = new DefaultListModel<T>();
+		listModel.addAll(speciesList);
+		list.setModel(listModel);
+		
+	}
+
+	public T getValue() {
+		return object;
+	}
+	
+
+	@Override
+	public T callback(Callable<T> callback) throws Exception {
+		return callback.call();
+		
+	}
+	
+
 
 }
