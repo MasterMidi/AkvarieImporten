@@ -205,7 +205,7 @@ public class CreateFishpackTab extends JPanel {
 			chooser.setVisible(true);
 			chooser.callback(() -> {
 				Aquarium res = chooser.getValue();
-				txtfSpecies.setText(res.getNumber());
+				txtfAquarium.setText(res.getNumber());
 				fishPackController.setAquarium(res.getId());
 			});
 		}
