@@ -323,6 +323,10 @@ public class CreateFishpackTab extends JPanel {
 
 	private void init() throws DataAccessException {
 		fishPackController = new FishPackController();
-		fishPackController.createEmptyFishPack();
+		createFishPack();
+	}
+
+	private void createFishPack() {
+		fishPackController.createEmptyFishPack();		
 	}
 }
