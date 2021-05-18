@@ -1,4 +1,4 @@
-package gui.components;
+package gui.renderer;
 
 import java.awt.Component;
 
