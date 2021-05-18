@@ -1,4 +1,4 @@
-package gui.components;
+package gui.tabs;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;

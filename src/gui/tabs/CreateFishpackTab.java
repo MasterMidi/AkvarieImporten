@@ -24,7 +24,6 @@ import gui.components.AquariumListCellRenderer;
 import gui.components.AutoCompletion;
 import gui.components.FeedingPlanListCellRenderer;
 import gui.components.JHintTextField;
-import gui.components.SearchMathesChooser;
 import gui.components.SpeciesListCellRenderer;
 import model.Aquarium;
 import model.FeedingPlan;
