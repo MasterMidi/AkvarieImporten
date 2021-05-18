@@ -193,12 +193,10 @@ public class CreateFishpackTab extends JPanel {
 			List<FishSpecies> speciesList = new ArrayList<>(fishPackController.searchFishSpecies(txtfSpecies.getText()).values());
 			SearchMathesChooser<FishSpecies> chooser = new SearchMathesChooser<FishSpecies>(new SpeciesListCellRenderer(), speciesList);
 			chooser.setVisible(true);
-			FishSpecies choice = chooser.callback(() -> {
+			chooser.callback(() -> {
 				FishSpecies res = chooser.getValue();
-				java.awt.EventQueue.invokeLater(()->{
-					txtfSpecies.setText(res.getName());
-				});
-				return res;
+				txtfSpecies.setText(res.getName());
+				fishPackController.setFishSpecies(res.getId());
 			});
 			
 		}
@@ -207,6 +205,7 @@ public class CreateFishpackTab extends JPanel {
 
 	private void init() throws DataAccessException {
 		fishPackController = new FishPackController();
+		fishPackController.createEmptyFishPack();
 //		comboBoxSpecies.setRenderer(new SpeciesListCellRenderer());
 		
 		

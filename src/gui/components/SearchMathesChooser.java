@@ -28,6 +28,7 @@ public class SearchMathesChooser<T> extends JDialog implements ICallback<T> {
 	private JList<T> list;
 	private T object;
 	private DefaultListCellRenderer cellRenderer;
+	private Runnable callback;
 
 	/**
 	 * Create the dialog.
@@ -87,6 +88,7 @@ public class SearchMathesChooser<T> extends JDialog implements ICallback<T> {
 	protected void okClicked(ActionEvent e) {
 		this.object = list.getSelectedValue();
 		this.setVisible(false);
+		callback.run();
 		
 	}
 
@@ -105,8 +107,8 @@ public class SearchMathesChooser<T> extends JDialog implements ICallback<T> {
 	
 
 	@Override
-	public T callback(Callable<T> callback) throws Exception {
-		return callback.call();
+	public void callback(Runnable callback) {
+		this.callback = callback;
 		
 	}
 	
