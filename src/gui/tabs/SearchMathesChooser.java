@@ -1,6 +1,7 @@
 package gui.tabs;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 
 import javax.swing.DefaultListCellRenderer;
@@ -11,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import gui.ICallback;
+import gui.components.JRoundedButton;
 import model.FishSpecies;
 
 import javax.swing.JScrollPane;
@@ -53,7 +55,9 @@ public class SearchMathesChooser<T> extends JDialog implements ICallback<T> {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("Vælg");
+				JButton okButton = new JRoundedButton("Vælg");
+				okButton.setPreferredSize(new Dimension(120, 30));
+				okButton.setBorderPainted(false);
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						okClicked(e);
@@ -64,7 +68,9 @@ public class SearchMathesChooser<T> extends JDialog implements ICallback<T> {
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
-				JButton cancelButton = new JButton("Annuller");
+				JButton cancelButton = new JRoundedButton("Annuller");
+				cancelButton.setPreferredSize(new Dimension(120, 30));
+				cancelButton.setBorderPainted(false);
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						cancelClicked(e);
@@ -87,9 +93,8 @@ public class SearchMathesChooser<T> extends JDialog implements ICallback<T> {
 
 	protected void okClicked(ActionEvent e) {
 		this.object = list.getSelectedValue();
-		this.setVisible(false);
 		callback.run();
-		
+		cancelClicked(e);
 	}
 
 	private void init(DefaultListCellRenderer cellRenderer, List<T> speciesList) {

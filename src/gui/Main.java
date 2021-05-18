@@ -26,6 +26,7 @@ import env.ENV;
 import exception.DataAccessException;
 import gui.components.JRoundedButton;
 import gui.tabs.FishpackTab;
+import java.awt.Component;
 
 public class Main extends JFrame{
 
@@ -66,99 +67,93 @@ public class Main extends JFrame{
 	setContentPane(contentPane);
 	contentPane.setLayout(new BorderLayout(0, 0));
 
+	viewport = new JPanel();
+	viewport.setBackground(Color.GREEN);
+	contentPane.add(viewport, BorderLayout.CENTER);
+	viewport.setLayout(new BorderLayout(0, 0));
+	
+	JPanel panel = new JPanel();
+	contentPane.add(panel, BorderLayout.WEST);
+	panel.setLayout(new BorderLayout(0, 0));
+	
 	JPanel menuPane = new JPanel();
-	contentPane.add(menuPane, BorderLayout.WEST);
+	menuPane.setAlignmentX(Component.RIGHT_ALIGNMENT);
+	panel.add(menuPane, BorderLayout.CENTER);
 	GridBagLayout gbl_menuPane = new GridBagLayout();
-	gbl_menuPane.columnWidths = new int[] { 150 };
-	gbl_menuPane.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-	gbl_menuPane.columnWeights = new double[] { Double.MIN_VALUE };
-	gbl_menuPane.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
+	gbl_menuPane.columnWidths = new int[]{150, 0};
+	gbl_menuPane.rowHeights = new int[]{4, 0, 0, 0, 0, 0, 0, 0, 0};
+	gbl_menuPane.columnWeights = new double[]{4.9E-324, Double.MIN_VALUE};
+	gbl_menuPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 	menuPane.setLayout(gbl_menuPane);
-
+	
 	JRoundedButton btnAquarium = new JRoundedButton("Akvarier");
-	btnAquarium.addActionListener(new ActionListener() {
-	    public void actionPerformed(ActionEvent e) {
-	    }
-	});
 	btnAquarium.setPreferredSize(new Dimension(120, 30));
 	btnAquarium.setBorderPainted(false);
-//		btnAquarium.setIcon(new ImageIcon(ImageIO.read(new File("res/logo.png"))));
 	btnAquarium.setHorizontalAlignment(SwingConstants.LEFT);
 	GridBagConstraints gbc_btnAquarium = new GridBagConstraints();
 	gbc_btnAquarium.insets = new Insets(0, 0, 5, 0);
 	gbc_btnAquarium.gridx = 0;
-	gbc_btnAquarium.gridy = 0;
+	gbc_btnAquarium.gridy = 1;
 	menuPane.add(btnAquarium, gbc_btnAquarium);
-
-	JButton btnFishpack = new JRoundedButton("Kuld");
-	btnFishpack.addActionListener(new ActionListener() {
-	    public void actionPerformed(ActionEvent e) {
-		btnFishpackPressed();
-	    }
-	});
+	
+	JRoundedButton btnFishpack = new JRoundedButton("Kuld");
 	btnFishpack.setPreferredSize(new Dimension(120, 30));
 	btnFishpack.setBorderPainted(false);
 	btnFishpack.setHorizontalAlignment(SwingConstants.LEFT);
 	GridBagConstraints gbc_btnFishpack = new GridBagConstraints();
 	gbc_btnFishpack.insets = new Insets(0, 0, 5, 0);
 	gbc_btnFishpack.gridx = 0;
-	gbc_btnFishpack.gridy = 1;
+	gbc_btnFishpack.gridy = 2;
 	menuPane.add(btnFishpack, gbc_btnFishpack);
-
-	JButton btnStatistics = new JRoundedButton("Statistik");
+	
+	JRoundedButton btnStatistics = new JRoundedButton("Statistik");
 	btnStatistics.setPreferredSize(new Dimension(120, 30));
 	btnStatistics.setBorderPainted(false);
 	btnStatistics.setHorizontalAlignment(SwingConstants.LEFT);
 	GridBagConstraints gbc_btnStatistics = new GridBagConstraints();
 	gbc_btnStatistics.insets = new Insets(0, 0, 5, 0);
 	gbc_btnStatistics.gridx = 0;
-	gbc_btnStatistics.gridy = 2;
+	gbc_btnStatistics.gridy = 3;
 	menuPane.add(btnStatistics, gbc_btnStatistics);
-
-	JButton btnSpecies = new JRoundedButton("Arter");
+	
+	JRoundedButton btnSpecies = new JRoundedButton("Arter");
 	btnSpecies.setPreferredSize(new Dimension(120, 30));
 	btnSpecies.setBorderPainted(false);
 	btnSpecies.setHorizontalAlignment(SwingConstants.LEFT);
 	GridBagConstraints gbc_btnSpecies = new GridBagConstraints();
 	gbc_btnSpecies.insets = new Insets(0, 0, 5, 0);
 	gbc_btnSpecies.gridx = 0;
-	gbc_btnSpecies.gridy = 3;
+	gbc_btnSpecies.gridy = 4;
 	menuPane.add(btnSpecies, gbc_btnSpecies);
-
-	JButton btnLocation = new JRoundedButton("Lokation");
+	
+	JRoundedButton btnLocation = new JRoundedButton("Lokation");
 	btnLocation.setPreferredSize(new Dimension(120, 30));
 	btnLocation.setBorderPainted(false);
 	btnLocation.setHorizontalAlignment(SwingConstants.LEFT);
 	GridBagConstraints gbc_btnLocation = new GridBagConstraints();
 	gbc_btnLocation.insets = new Insets(0, 0, 5, 0);
 	gbc_btnLocation.gridx = 0;
-	gbc_btnLocation.gridy = 4;
+	gbc_btnLocation.gridy = 5;
 	menuPane.add(btnLocation, gbc_btnLocation);
-
-	JButton btnCalender = new JRoundedButton("Kalender");
+	
+	JRoundedButton btnCalender = new JRoundedButton("Kalender");
 	btnCalender.setPreferredSize(new Dimension(120, 30));
 	btnCalender.setBorderPainted(false);
 	btnCalender.setHorizontalAlignment(SwingConstants.LEFT);
 	GridBagConstraints gbc_btnCalender = new GridBagConstraints();
 	gbc_btnCalender.insets = new Insets(0, 0, 5, 0);
 	gbc_btnCalender.gridx = 0;
-	gbc_btnCalender.gridy = 5;
+	gbc_btnCalender.gridy = 6;
 	menuPane.add(btnCalender, gbc_btnCalender);
-
-	JButton btnFeedingPlan = new JRoundedButton("Fodreplan");
+	
+	JRoundedButton btnFeedingPlan = new JRoundedButton("Fodreplan");
 	btnFeedingPlan.setPreferredSize(new Dimension(120, 30));
 	btnFeedingPlan.setBorderPainted(false);
 	btnFeedingPlan.setHorizontalAlignment(SwingConstants.LEFT);
 	GridBagConstraints gbc_btnFeedingPlan = new GridBagConstraints();
-	gbc_btnFeedingPlan.insets = new Insets(0, 0, 5, 0);
 	gbc_btnFeedingPlan.gridx = 0;
-	gbc_btnFeedingPlan.gridy = 6;
+	gbc_btnFeedingPlan.gridy = 7;
 	menuPane.add(btnFeedingPlan, gbc_btnFeedingPlan);
-
-	viewport = new JPanel();
-	viewport.setBackground(Color.GREEN);
-	contentPane.add(viewport, BorderLayout.CENTER);
-	viewport.setLayout(new BorderLayout(0, 0));
 
 	init();
     }

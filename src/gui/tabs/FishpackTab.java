@@ -2,6 +2,7 @@ package gui.tabs;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,8 +21,8 @@ import javax.swing.JTextField;
 import ctrl.FishPackController;
 import exception.DataAccessException;
 import gui.Main;
-import gui.components.FishPackTableModel;
 import gui.components.JRoundedButton;
+import gui.renderer.FishPackTableModel;
 import model.FishPack;
 
 public class FishpackTab extends JPanel {
@@ -46,6 +47,8 @@ public class FishpackTab extends JPanel {
 		HeaderPane.add(panel, BorderLayout.WEST);
 
 		JButton btnCreateFishpack = new JRoundedButton("Opret Kuld");
+		btnCreateFishpack.setPreferredSize(new Dimension(120, 30));
+		btnCreateFishpack.setBorderPainted(false);
 		btnCreateFishpack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				createFishpackPressed();
@@ -54,12 +57,16 @@ public class FishpackTab extends JPanel {
 		panel.add(btnCreateFishpack);
 
 		JButton btnUpdateFishpack = new JRoundedButton("Rediger Kuld");
+		btnUpdateFishpack.setPreferredSize(new Dimension(120, 30));
+		btnUpdateFishpack.setBorderPainted(false);
 		panel.add(btnUpdateFishpack);
 
 		JPanel panel_1 = new JPanel();
 		HeaderPane.add(panel_1, BorderLayout.EAST);
 
 		JButton btnRemoveFishpack = new JRoundedButton("Fjern Kuld");
+		btnRemoveFishpack.setPreferredSize(new Dimension(120, 30));
+		btnRemoveFishpack.setBorderPainted(false);
 		panel_1.add(btnRemoveFishpack);
 
 		JPanel InfoPane = new JPanel();
@@ -67,18 +74,9 @@ public class FishpackTab extends JPanel {
 		add(InfoPane, BorderLayout.EAST);
 
 		txtImALittle = new JTextField();
-		txtImALittle.setText("I*M A LITTLE LITTLE FISH IN A BIG BLUE SEA");
+		txtImALittle.setText("I*M A LITTLE YELLOW FISH IN A BIG BLUE SEA");
 		InfoPane.add(txtImALittle);
 		txtImALittle.setColumns(10);
-
-		JPanel FooterPane = new JPanel();
-		add(FooterPane, BorderLayout.SOUTH);
-
-		JButton btnCancel = new JRoundedButton("Anuller");
-		FooterPane.add(btnCancel);
-
-		JButton btnFinish = new JRoundedButton("Færdig");
-		FooterPane.add(btnFinish);
 
 		JPanel ContentPane = new JPanel();
 		add(ContentPane, BorderLayout.CENTER);
