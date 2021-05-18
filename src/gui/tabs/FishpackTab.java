@@ -109,7 +109,6 @@ public class FishpackTab extends JPanel {
 
 	private void createFishpackPressed() {
 		EventQueue.invokeLater(() -> Main.newView(CreateFishpackTab.class));
-		JOptionPane.showConfirmDialog(null, "Opret nyt kuld", "", JOptionPane.YES_NO_OPTION);
 	}
 
 	private void refreshFishPackTable() throws SQLException, DataAccessException {
