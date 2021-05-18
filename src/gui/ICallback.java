@@ -1,5 +1,5 @@
 package gui;
 
-public interface CallbackIF {
+public interface ICallback {
 	void callback(Runnable callback);
 }
