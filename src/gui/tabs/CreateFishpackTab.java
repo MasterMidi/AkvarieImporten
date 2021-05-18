@@ -42,7 +42,7 @@ public class CreateFishpackTab extends JPanel {
 	private JComboBox<Aquarium> txtfAquarium;
 	private JButton btnCreateAquarium;
 	private JLabel lblFeedingPlan;
-	private JComboBox<FeedingPlan> txtfFeedingPlan;
+	private JTextField txtfFeedingPlan;
 	private JButton btnNewButton;
 	private JPanel footer;
 	private JButton btnCancel;
@@ -156,7 +156,13 @@ public class CreateFishpackTab extends JPanel {
 		gbc_lblFeedingPlan.gridy = 4;
 		viewport.add(lblFeedingPlan, gbc_lblFeedingPlan);
 
-		txtfFeedingPlan = new JComboBox<>();
+		txtfFeedingPlan = new JTextField();
+		txtfFeedingPlan.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				FeedingPlanSearchpressed(e);
+			}
+		});
 		GridBagConstraints gbc_txtfFeedingPlan = new GridBagConstraints();
 		gbc_txtfFeedingPlan.insets = new Insets(0, 0, 5, 5);
 		gbc_txtfFeedingPlan.fill = GridBagConstraints.HORIZONTAL;
@@ -186,11 +192,24 @@ public class CreateFishpackTab extends JPanel {
 		init();
 	}
 
+	protected void FeedingPlanSearchpressed(KeyEvent e) {
+		if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+			List<FeedingPlan> feedingPlanList = new ArrayList<>(fishPackController.searchFeedingplans(txtfFeedingPlan.getText()).values());
+			SearchMathesChooser<FeedingPlan> chooser = new SearchMathesChooser<>(new FeedingPlanListCellRenderer(), feedingPlanList);
+			chooser.setVisible(true);
+			chooser.callback(() -> {
+				FeedingPlan res = chooser.getValue();
+				txtfFeedingPlan.setText(res.getName());
+				fishPackController.setFeedingPlan(res.getID());
+			});
+		}
+	}
+
 	protected void speciesSearchPressed(KeyEvent e) throws Exception {
 		if(e.getKeyCode() == KeyEvent.VK_ENTER) {
 			System.out.println("123123");
 			List<FishSpecies> speciesList = new ArrayList<>(fishPackController.searchFishSpecies(txtfSpecies.getText()).values());
-			SearchMathesChooser<FishSpecies> chooser = new SearchMathesChooser<FishSpecies>(new SpeciesListCellRenderer(), speciesList);
+			SearchMathesChooser<FishSpecies> chooser = new SearchMathesChooser<>(new SpeciesListCellRenderer(), speciesList);
 			chooser.setVisible(true);
 			chooser.callback(() -> {
 				FishSpecies res = chooser.getValue();
@@ -209,7 +228,6 @@ public class CreateFishpackTab extends JPanel {
 		
 		
 		txtfAquarium.setRenderer(new AquariumListCellRenderer());
-		txtfFeedingPlan.setRenderer(new FeedingPlanListCellRenderer());
 		
 		List<FishSpecies> speciesList = new ArrayList<>(fishPackController.searchFishSpecies("").values());
 		
