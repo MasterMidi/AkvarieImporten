@@ -77,7 +77,7 @@ public class FishpackTab extends JPanel {
 		btnRemoveFishpack.setBorderPainted(false);
 		panel_1.add(btnRemoveFishpack);
 		
-		JButton btnNewButton = new JButton("Opdater");
+		JButton btnNewButton = new JRoundedButton("Opdater 🔁");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -88,7 +88,7 @@ public class FishpackTab extends JPanel {
 				}
 			}
 		});
-		HeaderPane.add(btnNewButton, BorderLayout.CENTER);
+		panel.add(btnNewButton, BorderLayout.CENTER);
 
 		JPanel ContentPane = new JPanel();
 		add(ContentPane, BorderLayout.CENTER);
