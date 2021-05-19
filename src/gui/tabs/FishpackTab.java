@@ -33,7 +33,7 @@ public class FishpackTab extends JPanel {
 	private JTable contentTable;
 	private FishPackController fishPackController;
 	private FishPackTableModel fishPackTableModel;
-	private JTextField searchPanel;
+	private JTextField txtfSearch;
 
 	
 	private SwingWorker<Void, Void> updateTableWorker;
@@ -81,7 +81,7 @@ public class FishpackTab extends JPanel {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					refreshFishPackTable("");
+					refreshFishPackTable(txtfSearch.getText());
 				} catch (SQLException | DataAccessException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -109,21 +109,21 @@ public class FishpackTab extends JPanel {
 		gbl_southPanel.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		southPanel.setLayout(gbl_southPanel);
 		
-		searchPanel = new JTextField();
-		searchPanel.addActionListener(new ActionListener() {
+		txtfSearch = new JTextField();
+		txtfSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				searchClicked();
 			}
 		});
-		searchPanel.setMargin(new Insets(2, 2, 2, 0));
-		GridBagConstraints gbc_searchPanel = new GridBagConstraints();
-		gbc_searchPanel.insets = new Insets(0, 0, 0, 5);
-		gbc_searchPanel.anchor = GridBagConstraints.NORTH;
-		gbc_searchPanel.fill = GridBagConstraints.HORIZONTAL;
-		gbc_searchPanel.gridx = 0;
-		gbc_searchPanel.gridy = 0;
-		southPanel.add(searchPanel, gbc_searchPanel);
-		searchPanel.setColumns(10);
+		txtfSearch.setMargin(new Insets(2, 2, 2, 0));
+		GridBagConstraints gbc_txtfSearch = new GridBagConstraints();
+		gbc_txtfSearch.insets = new Insets(0, 0, 0, 5);
+		gbc_txtfSearch.anchor = GridBagConstraints.NORTH;
+		gbc_txtfSearch.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtfSearch.gridx = 0;
+		gbc_txtfSearch.gridy = 0;
+		southPanel.add(txtfSearch, gbc_txtfSearch);
+		txtfSearch.setColumns(10);
 		
 		JButton btnSearchFishPack = new JRoundedButton("Søg...");
 		btnUpdateFishpack.setPreferredSize(new Dimension(120, 30));
@@ -143,7 +143,7 @@ public class FishpackTab extends JPanel {
 	}
 
 	private void searchClicked() {
-		String searchInput = searchPanel.getText();
+		String searchInput = txtfSearch.getText();
 		if(searchInput != "" || searchInput != null) {
 			try {
 				refreshFishPackTable(searchInput);
