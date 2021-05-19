@@ -60,6 +60,9 @@ public class CreateFishpackTab extends JPanel {
 
 	private FishPackController fishPackController;
 	private JButton btnGenerateDate;
+	private JButton btnSpecies;
+	private JButton btnAquarium;
+	private JButton btnFeedingPlan;
 
 	/**
 	 * Create the panel.
@@ -72,9 +75,9 @@ public class CreateFishpackTab extends JPanel {
 		viewport = new JPanel();
 		add(viewport);
 		GridBagLayout gbl_viewport = new GridBagLayout();
-		gbl_viewport.columnWidths = new int[] { 0, 0, 0, 0, 0, 0 };
+		gbl_viewport.columnWidths = new int[] { 0, 0, 0, 0, 0, 0, 0 };
 		gbl_viewport.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-		gbl_viewport.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_viewport.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		gbl_viewport.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		viewport.setLayout(gbl_viewport);
 
@@ -90,7 +93,7 @@ public class CreateFishpackTab extends JPanel {
 		txtfSpecies.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
-				speciesSearchPressed(e);
+				speciesSearchPressed(checkIfEnter(e));
 			}
 		});
 		txtfSpecies.setEditable(true);
@@ -100,6 +103,21 @@ public class CreateFishpackTab extends JPanel {
 		gbc_txtfSpecies.gridx = 2;
 		gbc_txtfSpecies.gridy = 1;
 		viewport.add(txtfSpecies, gbc_txtfSpecies);
+		
+		btnSpecies = new JRoundedButton("🔎");
+		btnSpecies.setPreferredSize(new Dimension(43, 30));
+		btnSpecies.setBorderPainted(false);
+		btnSpecies.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				speciesSearchPressed(true);
+				
+			}
+		});
+		GridBagConstraints gbc_btnSpecies = new GridBagConstraints();
+		gbc_btnSpecies.insets = new Insets(0, 0, 5, 5);
+		gbc_btnSpecies.gridx = 3;
+		gbc_btnSpecies.gridy = 1;
+		viewport.add(btnSpecies, gbc_btnSpecies);
 
 		btnCreateSpecies = new JRoundedButton("Opret Art");
 		btnCreateSpecies.setPreferredSize(new Dimension(120, 30));
@@ -108,7 +126,7 @@ public class CreateFishpackTab extends JPanel {
 		GridBagConstraints gbc_btnCreateSpecies = new GridBagConstraints();
 		gbc_btnCreateSpecies.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnCreateSpecies.insets = new Insets(0, 0, 5, 5);
-		gbc_btnCreateSpecies.gridx = 3;
+		gbc_btnCreateSpecies.gridx = 4;
 		gbc_btnCreateSpecies.gridy = 1;
 		viewport.add(btnCreateSpecies, gbc_btnCreateSpecies);
 
@@ -135,21 +153,21 @@ public class CreateFishpackTab extends JPanel {
 		gbc_txtfBirthdate.gridx = 2;
 		gbc_txtfBirthdate.gridy = 3;
 		viewport.add(txtfBirthdate, gbc_txtfBirthdate);
-
-		btnGenerateDate = new JRoundedButton("I dag");
-		btnGenerateDate.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				SetCurrentDate(e);
-			}
-		});
-		btnGenerateDate.setPreferredSize(new Dimension(120, 30));
-		btnGenerateDate.setBorderPainted(false);
-		GridBagConstraints gbc_btnGenerateDate = new GridBagConstraints();
-		gbc_btnGenerateDate.fill = GridBagConstraints.HORIZONTAL;
-		gbc_btnGenerateDate.insets = new Insets(0, 0, 5, 5);
-		gbc_btnGenerateDate.gridx = 3;
-		gbc_btnGenerateDate.gridy = 3;
-		viewport.add(btnGenerateDate, gbc_btnGenerateDate);
+		
+				btnGenerateDate = new JRoundedButton("I dag");
+				btnGenerateDate.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						SetCurrentDate(e);
+					}
+				});
+				btnGenerateDate.setPreferredSize(new Dimension(120, 30));
+				btnGenerateDate.setBorderPainted(false);
+				GridBagConstraints gbc_btnGenerateDate = new GridBagConstraints();
+				gbc_btnGenerateDate.fill = GridBagConstraints.HORIZONTAL;
+				gbc_btnGenerateDate.insets = new Insets(0, 0, 5, 5);
+				gbc_btnGenerateDate.gridx = 4;
+				gbc_btnGenerateDate.gridy = 3;
+				viewport.add(btnGenerateDate, gbc_btnGenerateDate);
 
 		lblAquarium = new JLabel("Akvarie:");
 		lblAquarium.setHorizontalTextPosition(SwingConstants.RIGHT);
@@ -165,7 +183,7 @@ public class CreateFishpackTab extends JPanel {
 		txtfAquarium.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
-				aquariumSearchPressed(e);
+				aquariumSearchPressed(checkIfEnter(e));
 			}
 		});
 		GridBagConstraints gbc_txtfAquarium = new GridBagConstraints();
@@ -174,6 +192,20 @@ public class CreateFishpackTab extends JPanel {
 		gbc_txtfAquarium.gridx = 2;
 		gbc_txtfAquarium.gridy = 5;
 		viewport.add(txtfAquarium, gbc_txtfAquarium);
+		
+		btnAquarium = new JRoundedButton("🔎");
+		btnAquarium.setPreferredSize(new Dimension(43, 30));
+		btnAquarium.setBorderPainted(false);
+		btnAquarium.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				aquariumSearchPressed(true);
+			}
+		});
+		GridBagConstraints gbc_btnAquarium = new GridBagConstraints();
+		gbc_btnAquarium.insets = new Insets(0, 0, 5, 5);
+		gbc_btnAquarium.gridx = 3;
+		gbc_btnAquarium.gridy = 5;
+		viewport.add(btnAquarium, gbc_btnAquarium);
 
 		btnCreateAquarium = new JRoundedButton("Opret Akvarie");
 		btnCreateAquarium.setPreferredSize(new Dimension(120, 30));
@@ -182,7 +214,7 @@ public class CreateFishpackTab extends JPanel {
 		GridBagConstraints gbc_btnCreateAquarium = new GridBagConstraints();
 		gbc_btnCreateAquarium.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnCreateAquarium.insets = new Insets(0, 0, 5, 5);
-		gbc_btnCreateAquarium.gridx = 3;
+		gbc_btnCreateAquarium.gridx = 4;
 		gbc_btnCreateAquarium.gridy = 5;
 		viewport.add(btnCreateAquarium, gbc_btnCreateAquarium);
 
@@ -198,7 +230,7 @@ public class CreateFishpackTab extends JPanel {
 		txtfFeedingPlan.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
-				FeedingPlanSearchpressed(e);
+				FeedingPlanSearchpressed(checkIfEnter(e));
 			}
 		});
 		GridBagConstraints gbc_txtfFeedingPlan = new GridBagConstraints();
@@ -207,6 +239,20 @@ public class CreateFishpackTab extends JPanel {
 		gbc_txtfFeedingPlan.gridx = 2;
 		gbc_txtfFeedingPlan.gridy = 7;
 		viewport.add(txtfFeedingPlan, gbc_txtfFeedingPlan);
+		
+		btnFeedingPlan = new JRoundedButton("🔎");
+		btnFeedingPlan.setPreferredSize(new Dimension(43, 30));
+		btnFeedingPlan.setBorderPainted(false);
+		btnFeedingPlan.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FeedingPlanSearchpressed(true);
+			}
+		});
+		GridBagConstraints gbc_btnFeedingPlan = new GridBagConstraints();
+		gbc_btnFeedingPlan.insets = new Insets(0, 0, 5, 5);
+		gbc_btnFeedingPlan.gridx = 3;
+		gbc_btnFeedingPlan.gridy = 7;
+		viewport.add(btnFeedingPlan, gbc_btnFeedingPlan);
 
 		btnNewButton = new JRoundedButton("Opret Fodderplan");
 		btnNewButton.setPreferredSize(new Dimension(120, 30));
@@ -215,7 +261,7 @@ public class CreateFishpackTab extends JPanel {
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
-		gbc_btnNewButton.gridx = 3;
+		gbc_btnNewButton.gridx = 4;
 		gbc_btnNewButton.gridy = 7;
 		viewport.add(btnNewButton, gbc_btnNewButton);
 
@@ -278,8 +324,11 @@ public class CreateFishpackTab extends JPanel {
 
 	}
 
-	protected void aquariumSearchPressed(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+	private boolean checkIfEnter(KeyEvent e) {
+		return e.getKeyCode() == KeyEvent.VK_ENTER;
+	}
+	private void aquariumSearchPressed(boolean wasEnter) {
+		if (wasEnter) {
 			List<Aquarium> aquariumList = new ArrayList<>(
 					// ændre metoden til at gøre det hele ud i et?
 					// eller gem stream objectet, da det måske er unødig konversion (til arraylist)
@@ -296,8 +345,8 @@ public class CreateFishpackTab extends JPanel {
 		}
 	}
 
-	protected void FeedingPlanSearchpressed(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+	private void FeedingPlanSearchpressed(boolean wasEnter) {
+		if (wasEnter) {
 			List<FeedingPlan> feedingPlanList = new ArrayList<>(
 					fishPackController.searchFeedingplans(txtfFeedingPlan.getText()).values());
 			SearchMathesChooser<FeedingPlan> chooser = new SearchMathesChooser<>(new FeedingPlanListCellRenderer(),
@@ -311,8 +360,8 @@ public class CreateFishpackTab extends JPanel {
 		}
 	}
 
-	protected void speciesSearchPressed(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+	private void speciesSearchPressed(boolean wasEnter) {
+		if (wasEnter) {
 			List<FishSpecies> speciesList = new ArrayList<>(
 					fishPackController.searchFishSpecies(txtfSpecies.getText()).values());
 			SearchMathesChooser<FishSpecies> chooser = new SearchMathesChooser<>(new SpeciesListCellRenderer(),
