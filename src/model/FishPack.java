@@ -7,11 +7,11 @@ import java.util.List;
 public class FishPack {
 	private int id;
 	private LocalDate birthDate;
+	private String status;
+	private String packNumber;
 	private FeedingPlan feedingPlan;
 	private FishSpecies species;
 	private List<Period<Aquarium>> aquariumPeriods;
-	private String status;
-	private String packNumber;
 
 	public FishPack() {
 		this.aquariumPeriods = new ArrayList<Period<Aquarium>>();

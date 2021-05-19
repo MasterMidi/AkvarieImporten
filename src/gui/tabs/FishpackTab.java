@@ -24,12 +24,15 @@ import gui.Main;
 import gui.components.JRoundedButton;
 import gui.renderer.FishPackTableModel;
 import model.FishPack;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 
 public class FishpackTab extends JPanel {
 	private JTable contentTable;
 	private FishPackController fishPackController;
 	private FishPackTableModel fishPackTableModel;
-	private JTextField txtImALittle;
+	private JTextField searchPanel;
 
 	/**
 	 * Create the panel.
@@ -69,15 +72,6 @@ public class FishpackTab extends JPanel {
 		btnRemoveFishpack.setBorderPainted(false);
 		panel_1.add(btnRemoveFishpack);
 
-		JPanel InfoPane = new JPanel();
-		InfoPane.setBackground(Color.YELLOW);
-		add(InfoPane, BorderLayout.EAST);
-
-		txtImALittle = new JTextField();
-		txtImALittle.setText("I*M A LITTLE YELLOW FISH IN A BIG BLUE SEA");
-		InfoPane.add(txtImALittle);
-		txtImALittle.setColumns(10);
-
 		JPanel ContentPane = new JPanel();
 		add(ContentPane, BorderLayout.CENTER);
 		ContentPane.setLayout(new BorderLayout(0, 0));
@@ -87,8 +81,59 @@ public class FishpackTab extends JPanel {
 
 		contentTable = new JTable();
 		scrollPane.setViewportView(contentTable);
+		
+		JPanel southPanel = new JPanel();
+		add(southPanel, BorderLayout.SOUTH);
+		GridBagLayout gbl_southPanel = new GridBagLayout();
+		gbl_southPanel.columnWidths = new int[]{324, 0, 0};
+		gbl_southPanel.rowHeights = new int[]{20, 0};
+		gbl_southPanel.columnWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
+		gbl_southPanel.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		southPanel.setLayout(gbl_southPanel);
+		
+		searchPanel = new JTextField();
+		searchPanel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				searchClicked();
+			}
+		});
+		searchPanel.setMargin(new Insets(2, 2, 2, 0));
+		GridBagConstraints gbc_searchPanel = new GridBagConstraints();
+		gbc_searchPanel.insets = new Insets(0, 0, 0, 5);
+		gbc_searchPanel.anchor = GridBagConstraints.NORTH;
+		gbc_searchPanel.fill = GridBagConstraints.HORIZONTAL;
+		gbc_searchPanel.gridx = 0;
+		gbc_searchPanel.gridy = 0;
+		southPanel.add(searchPanel, gbc_searchPanel);
+		searchPanel.setColumns(10);
+		
+		JButton btnSearchFishPack = new JRoundedButton("Søg...");
+		btnUpdateFishpack.setPreferredSize(new Dimension(120, 30));
+		btnUpdateFishpack.setBorderPainted(false);
+		btnSearchFishPack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				searchClicked();
+			}
+		});
+		GridBagConstraints gbc_btnSearchFishPack = new GridBagConstraints();
+		gbc_btnSearchFishPack.anchor = GridBagConstraints.NORTHWEST;
+		gbc_btnSearchFishPack.gridx = 1;
+		gbc_btnSearchFishPack.gridy = 0;
+		southPanel.add(btnSearchFishPack, gbc_btnSearchFishPack);
 
 		init();
+	}
+
+	private void searchClicked() {
+		String searchInput = searchPanel.getText();
+		if(searchInput != "" || searchInput != null) {
+			try {
+				refreshFishPackTable(searchInput);
+			} catch (SQLException | DataAccessException e) {
+				JOptionPane.showMessageDialog(contentTable, "Kunne ikke forbinde til databasen", "Fejl", JOptionPane.OK_OPTION);
+			}
+		}
+		
 	}
 
 	private void init() {
@@ -96,7 +141,7 @@ public class FishpackTab extends JPanel {
 			fishPackController = new FishPackController();
 			fishPackTableModel = new FishPackTableModel();
 			contentTable.setModel(fishPackTableModel);
-			refreshFishPackTable();
+			refreshFishPackTable("");
 		} catch (DataAccessException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -109,8 +154,8 @@ public class FishpackTab extends JPanel {
 		EventQueue.invokeLater(() -> Main.newView(CreateFishpackTab.class));
 	}
 
-	private void refreshFishPackTable() throws SQLException, DataAccessException {
-		Map<Integer, FishPack> FishPacks = fishPackController.searchFishPack("");
+	private void refreshFishPackTable(String search) throws SQLException, DataAccessException {
+		Map<Integer, FishPack> FishPacks = fishPackController.searchFishPack(search);
 		List<FishPack> lists = new ArrayList<>(FishPacks.values());
 
 		fishPackTableModel.setData(lists);
