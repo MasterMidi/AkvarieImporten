@@ -336,6 +336,7 @@ public class CreateFishpackTab extends JPanel {
 					fishPackController.searchAquarium(txtfAquarium.getText()).values());
 			SearchMathesChooser<Aquarium> chooser = new SearchMathesChooser<Aquarium>(new AquariumListCellRenderer(),
 					aquariumList);
+			chooser.setLocationRelativeTo(this);
 			chooser.setVisible(true);
 			chooser.callback(() -> {
 				Aquarium res = chooser.getValue();
@@ -351,6 +352,7 @@ public class CreateFishpackTab extends JPanel {
 					fishPackController.searchFeedingplans(txtfFeedingPlan.getText()).values());
 			SearchMathesChooser<FeedingPlan> chooser = new SearchMathesChooser<>(new FeedingPlanListCellRenderer(),
 					feedingPlanList);
+			chooser.setLocationRelativeTo(this);
 			chooser.setVisible(true);
 			chooser.callback(() -> {
 				FeedingPlan res = chooser.getValue();
@@ -366,6 +368,7 @@ public class CreateFishpackTab extends JPanel {
 					fishPackController.searchFishSpecies(txtfSpecies.getText()).values());
 			SearchMathesChooser<FishSpecies> chooser = new SearchMathesChooser<>(new SpeciesListCellRenderer(),
 					speciesList);
+			chooser.setLocationRelativeTo(this);
 			chooser.setVisible(true);
 			chooser.callback(() -> {
 				FishSpecies res = chooser.getValue();

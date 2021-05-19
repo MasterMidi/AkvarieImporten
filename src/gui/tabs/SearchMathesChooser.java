@@ -104,6 +104,7 @@ public class SearchMathesChooser<T> extends JDialog implements ICallback<T> {
 		listModel.addAll(speciesList);
 		list.setModel(listModel);
 		
+		
 	}
 
 	public T getValue() {
