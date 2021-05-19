@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingWorker;
 
 import ctrl.FishPackController;
 import exception.DataAccessException;
@@ -34,6 +35,8 @@ public class FishpackTab extends JPanel {
 	private FishPackTableModel fishPackTableModel;
 	private JTextField searchPanel;
 
+	
+	private SwingWorker<Void, Void> updateTableWorker;
 	/**
 	 * Create the panel.
 	 * 
@@ -60,6 +63,7 @@ public class FishpackTab extends JPanel {
 		panel.add(btnCreateFishpack);
 
 		JButton btnUpdateFishpack = new JRoundedButton("Rediger Kuld");
+		btnUpdateFishpack.setEnabled(false);
 		btnUpdateFishpack.setPreferredSize(new Dimension(120, 30));
 		btnUpdateFishpack.setBorderPainted(false);
 		panel.add(btnUpdateFishpack);
@@ -68,9 +72,23 @@ public class FishpackTab extends JPanel {
 		HeaderPane.add(panel_1, BorderLayout.EAST);
 
 		JButton btnRemoveFishpack = new JRoundedButton("Fjern Kuld");
+		btnRemoveFishpack.setEnabled(false);
 		btnRemoveFishpack.setPreferredSize(new Dimension(120, 30));
 		btnRemoveFishpack.setBorderPainted(false);
 		panel_1.add(btnRemoveFishpack);
+		
+		JButton btnNewButton = new JButton("Opdater");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					refreshFishPackTable("");
+				} catch (SQLException | DataAccessException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		HeaderPane.add(btnNewButton, BorderLayout.CENTER);
 
 		JPanel ContentPane = new JPanel();
 		add(ContentPane, BorderLayout.CENTER);
@@ -78,7 +96,7 @@ public class FishpackTab extends JPanel {
 
 		JScrollPane scrollPane = new JScrollPane();
 		ContentPane.add(scrollPane);
-
+		
 		contentTable = new JTable();
 		scrollPane.setViewportView(contentTable);
 		
@@ -155,10 +173,24 @@ public class FishpackTab extends JPanel {
 	}
 
 	private void refreshFishPackTable(String search) throws SQLException, DataAccessException {
-		Map<Integer, FishPack> FishPacks = fishPackController.searchFishPack(search);
-		List<FishPack> lists = new ArrayList<>(FishPacks.values());
+		if(updateTableWorker != null && !updateTableWorker.isDone()) {
+			updateTableWorker.cancel(true);
+		}
+		
+		updateTableWorker = new SwingWorker<Void, Void>() {
 
-		fishPackTableModel.setData(lists);
+			@Override
+			protected Void doInBackground() throws Exception {
+				Map<Integer, FishPack> FishPacks = fishPackController.searchFishPack(search);
+				List<FishPack> lists = new ArrayList<>(FishPacks.values());
+
+				fishPackTableModel.setData(lists);
+				
+				return null;
+			}
+		};
+		
+		updateTableWorker.execute();
 	}
 
 }

@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -30,6 +31,7 @@ import javax.swing.border.LineBorder;
 import ctrl.FishPackController;
 import exception.DataAccessException;
 import gui.Main;
+import gui.components.JDateTextField;
 import gui.components.JHintTextField;
 import gui.components.JRoundedButton;
 import gui.renderer.AquariumListCellRenderer;
@@ -279,6 +281,9 @@ public class CreateFishpackTab extends JPanel {
 	protected void aquariumSearchPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			List<Aquarium> aquariumList = new ArrayList<>(
+					// ændre metoden til at gøre det hele ud i et?
+					// eller gem stream objectet, da det måske er unødig konversion (til arraylist)
+					//fishPackController.searchFishSpecies("").values().parallelStream().forEach(fs -> comboBoxSpecies.addItem(fs))
 					fishPackController.searchAquarium(txtfAquarium.getText()).values());
 			SearchMathesChooser<Aquarium> chooser = new SearchMathesChooser<Aquarium>(new AquariumListCellRenderer(),
 					aquariumList);
