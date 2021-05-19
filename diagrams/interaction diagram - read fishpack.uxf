@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>540</x>
+      <y>280</y>
+      <w>410</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+1.3 getFishPack(String searchInput):Map&lt;Integer, FishPack&gt; </panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>500</x>
+      <y>180</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>_:FishPackGUI_
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>480</x>
+      <y>260</y>
+      <w>150</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>_:FishPackController_
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>90</x>
+      <y>230</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>_:FishPack_
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>250</x>
+      <y>550</y>
+      <w>160</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>_:FeedingPlan_
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>320</x>
+      <y>490</y>
+      <w>210</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+1.5 &lt;&lt;create&gt;&gt; FeedingPlan(...)</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>250</x>
+      <y>470</y>
+      <w>160</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>_:FeedingDB_
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>480</x>
+      <y>550</y>
+      <w>130</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>_:FishSpeciesDB_
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>530</x>
+      <y>570</y>
+      <w>260</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+1.7 *[i=1..*]: &lt;&lt;create&gt;&gt; FishSpecies(...)</panel_attributes>
+    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>480</x>
+      <y>700</y>
+      <w>120</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>_:FishSpecies_
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>830</x>
+      <y>480</y>
+      <w>150</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>_:Aquarium_
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>890</x>
+      <y>410</y>
+      <w>240</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+1.9 *[i=1..*]: &lt;&lt;create&gt;&gt; Aquarium(...)</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>830</x>
+      <y>390</y>
+      <w>150</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>_:AquariumDB_
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>490</x>
+      <y>350</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>_:FishPackDB_
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>310</x>
+      <y>170</y>
+      <w>210</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+1 refreshFishPackTable()</panel_attributes>
+    <additional_attributes>190.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>540</x>
+      <y>200</y>
+      <w>350</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+1.2 searchFishPack(String):Map&lt;Integer, FishPack&gt;
+</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>260</x>
+      <y>370</y>
+      <w>330</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+
+1.4 *[i=1..*]: buildObject(ResultSet rs): FeedingPlan</panel_attributes>
+    <additional_attributes>70.0;100.0;70.0;50.0;250.0;50.0;250.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>370</y>
+      <w>340</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+
+1.6 *[i=1..*]: buildObject(ResultSet rs): FishSpecies</panel_attributes>
+    <additional_attributes>140.0;180.0;140.0;80.0;190.0;80.0;190.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>590</x>
+      <y>350</y>
+      <w>360</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+
+1.8 *[i=1..*]: buildObject(ResultSet rs): Aquarium</panel_attributes>
+    <additional_attributes>310.0;40.0;90.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>190</x>
+      <y>240</y>
+      <w>320</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+
+1.10 *[i=1..*]: &lt;&lt;create&gt;&gt;(int fishPackId,
+String packNumber,String status,
+LocalDate birthday, FeedingPlan feedingPlan,
+FishSpecies fishSpecies,
+Period&lt;Aquarium&gt; aquarium)</panel_attributes>
+    <additional_attributes>10.0;10.0;300.0;120.0</additional_attributes>
+  </element>
+</diagram>
