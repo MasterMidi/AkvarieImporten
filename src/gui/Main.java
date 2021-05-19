@@ -68,7 +68,6 @@ public class Main extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 
 		viewport = new JPanel();
-		viewport.setBackground(Color.GREEN);
 		contentPane.add(viewport, BorderLayout.CENTER);
 		viewport.setLayout(new BorderLayout(0, 0));
 
