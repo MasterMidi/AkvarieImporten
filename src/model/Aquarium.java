@@ -1,9 +1,9 @@
 package model;
 
 public class Aquarium {
+	private int id;
 	private String number;
 	private Double size;
-	private int id;
 	private Location location;
 
 	public Aquarium(String number, Double size, Location location) {
