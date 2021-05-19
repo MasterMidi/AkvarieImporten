@@ -148,7 +148,7 @@ public class FishpackTab extends JPanel {
 			try {
 				refreshFishPackTable(searchInput);
 			} catch (SQLException | DataAccessException e) {
-				JOptionPane.showMessageDialog(contentTable, "Kunne ikke forbinde til databasen", "Fejl", JOptionPane.OK_OPTION);
+				JOptionPane.showMessageDialog(contentTable, "Kunne ikke forbinde til databasen, tjek internet forbindelsen", "Fejl", JOptionPane.OK_OPTION);
 			}
 		}
 		
