@@ -116,7 +116,6 @@ public class Main extends JFrame {
 		btnStatistics.setPreferredSize(new Dimension(120, 30));
 		btnStatistics.setBorderPainted(false);
 		btnStatistics.setHorizontalAlignment(SwingConstants.LEFT);
-		btnStatistics.setEnabled(false);
 		GridBagConstraints gbc_btnStatistics = new GridBagConstraints();
 		gbc_btnStatistics.insets = new Insets(0, 0, 5, 0);
 		gbc_btnStatistics.gridx = 0;
@@ -127,7 +126,6 @@ public class Main extends JFrame {
 		btnSpecies.setPreferredSize(new Dimension(120, 30));
 		btnSpecies.setBorderPainted(false);
 		btnSpecies.setHorizontalAlignment(SwingConstants.LEFT);
-		btnSpecies.setEnabled(false);
 		GridBagConstraints gbc_btnSpecies = new GridBagConstraints();
 		gbc_btnSpecies.insets = new Insets(0, 0, 5, 0);
 		gbc_btnSpecies.gridx = 0;
@@ -138,7 +136,6 @@ public class Main extends JFrame {
 		btnLocation.setPreferredSize(new Dimension(120, 30));
 		btnLocation.setBorderPainted(false);
 		btnLocation.setHorizontalAlignment(SwingConstants.LEFT);
-		btnLocation.setEnabled(false);
 		GridBagConstraints gbc_btnLocation = new GridBagConstraints();
 		gbc_btnLocation.insets = new Insets(0, 0, 5, 0);
 		gbc_btnLocation.gridx = 0;
@@ -146,10 +143,13 @@ public class Main extends JFrame {
 		menuPane.add(btnLocation, gbc_btnLocation);
 
 		JButton btnCalender = new JRoundedButton("Kalender");
+		btnCalender.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnCalender.setPreferredSize(new Dimension(120, 30));
 		btnCalender.setBorderPainted(false);
 		btnCalender.setHorizontalAlignment(SwingConstants.LEFT);
-		btnCalender.setEnabled(false);
 		GridBagConstraints gbc_btnCalender = new GridBagConstraints();
 		gbc_btnCalender.insets = new Insets(0, 0, 5, 0);
 		gbc_btnCalender.gridx = 0;
@@ -157,7 +157,6 @@ public class Main extends JFrame {
 		menuPane.add(btnCalender, gbc_btnCalender);
 
 		JButton btnFeedingPlan = new JRoundedButton("Fodreplan");
-		btnFeedingPlan.setEnabled(false);
 		btnFeedingPlan.setPreferredSize(new Dimension(120, 30));
 		btnFeedingPlan.setBorderPainted(false);
 		btnFeedingPlan.setHorizontalAlignment(SwingConstants.LEFT);
