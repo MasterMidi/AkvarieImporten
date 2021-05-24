@@ -40,6 +40,7 @@ import gui.renderer.SpeciesListCellRenderer;
 import model.Aquarium;
 import model.FeedingPlan;
 import model.FishSpecies;
+import util.DateValidator;
 
 public class CreateFishpackTab extends JPanel {
 	private JPanel viewport;
@@ -103,14 +104,14 @@ public class CreateFishpackTab extends JPanel {
 		gbc_txtfSpecies.gridx = 2;
 		gbc_txtfSpecies.gridy = 1;
 		viewport.add(txtfSpecies, gbc_txtfSpecies);
-		
+
 		btnSpecies = new JRoundedButton("🔎");
 		btnSpecies.setPreferredSize(new Dimension(43, 30));
 		btnSpecies.setBorderPainted(false);
 		btnSpecies.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				speciesSearchPressed(true);
-				
+
 			}
 		});
 		GridBagConstraints gbc_btnSpecies = new GridBagConstraints();
@@ -139,10 +140,11 @@ public class CreateFishpackTab extends JPanel {
 		viewport.add(lblNewLabel, gbc_lblNewLabel);
 
 		txtfBirthdate = new JHintTextField("yyyy-mm-dd");
+//		txtfBirthdate = new JDateTextField(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 		txtfBirthdate.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
-				validateDate();
+				validateDate(txtfBirthdate.getText());
 			}
 		});
 
@@ -153,21 +155,21 @@ public class CreateFishpackTab extends JPanel {
 		gbc_txtfBirthdate.gridx = 2;
 		gbc_txtfBirthdate.gridy = 3;
 		viewport.add(txtfBirthdate, gbc_txtfBirthdate);
-		
-				btnGenerateDate = new JRoundedButton("I dag");
-				btnGenerateDate.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						SetCurrentDate(e);
-					}
-				});
-				btnGenerateDate.setPreferredSize(new Dimension(120, 30));
-				btnGenerateDate.setBorderPainted(false);
-				GridBagConstraints gbc_btnGenerateDate = new GridBagConstraints();
-				gbc_btnGenerateDate.fill = GridBagConstraints.HORIZONTAL;
-				gbc_btnGenerateDate.insets = new Insets(0, 0, 5, 5);
-				gbc_btnGenerateDate.gridx = 4;
-				gbc_btnGenerateDate.gridy = 3;
-				viewport.add(btnGenerateDate, gbc_btnGenerateDate);
+
+		btnGenerateDate = new JRoundedButton("I dag");
+		btnGenerateDate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SetCurrentDate(e);
+			}
+		});
+		btnGenerateDate.setPreferredSize(new Dimension(120, 30));
+		btnGenerateDate.setBorderPainted(false);
+		GridBagConstraints gbc_btnGenerateDate = new GridBagConstraints();
+		gbc_btnGenerateDate.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnGenerateDate.insets = new Insets(0, 0, 5, 5);
+		gbc_btnGenerateDate.gridx = 4;
+		gbc_btnGenerateDate.gridy = 3;
+		viewport.add(btnGenerateDate, gbc_btnGenerateDate);
 
 		lblAquarium = new JLabel("Akvarie:");
 		lblAquarium.setHorizontalTextPosition(SwingConstants.RIGHT);
@@ -192,7 +194,7 @@ public class CreateFishpackTab extends JPanel {
 		gbc_txtfAquarium.gridx = 2;
 		gbc_txtfAquarium.gridy = 5;
 		viewport.add(txtfAquarium, gbc_txtfAquarium);
-		
+
 		btnAquarium = new JRoundedButton("🔎");
 		btnAquarium.setPreferredSize(new Dimension(43, 30));
 		btnAquarium.setBorderPainted(false);
@@ -239,7 +241,7 @@ public class CreateFishpackTab extends JPanel {
 		gbc_txtfFeedingPlan.gridx = 2;
 		gbc_txtfFeedingPlan.gridy = 7;
 		viewport.add(txtfFeedingPlan, gbc_txtfFeedingPlan);
-		
+
 		btnFeedingPlan = new JRoundedButton("🔎");
 		btnFeedingPlan.setPreferredSize(new Dimension(43, 30));
 		btnFeedingPlan.setBorderPainted(false);
@@ -292,7 +294,8 @@ public class CreateFishpackTab extends JPanel {
 	}
 
 	protected void SetCurrentDate(ActionEvent e) {
-//		txtfBirthdate.setText(LocalDate.now().format(new DateTimeFormatterBuilder().));
+		txtfBirthdate.setText(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+		validateDate(txtfBirthdate.getText());
 	}
 
 	protected void FinishPressed(ActionEvent e) {
@@ -312,12 +315,10 @@ public class CreateFishpackTab extends JPanel {
 		EventQueue.invokeLater(() -> Main.newView(FishpackTab.class));
 	}
 
-	private void validateDate() {
-		Pattern pattern = Pattern.compile("^(19|20)\\d\\d([- /.])(0[1-9]|1[012])\\2(0[1-9]|[12][0-9]|3[01])$");
-		Matcher matcher = pattern.matcher(txtfBirthdate.getText());
-		if (matcher.find()) {
+	private void validateDate(String date) {
+		if (DateValidator.validateDate(date)) {
 			txtfBirthdate.setBorder(new LineBorder(Color.green, 1));
-			fishPackController.setFishPackBirthday(LocalDate.parse(txtfBirthdate.getText()));
+			fishPackController.setFishPackBirthday(LocalDate.parse(date));
 		} else {
 			txtfBirthdate.setBorder(new LineBorder(Color.red, 1));
 		}
@@ -327,12 +328,14 @@ public class CreateFishpackTab extends JPanel {
 	private boolean checkIfEnter(KeyEvent e) {
 		return e.getKeyCode() == KeyEvent.VK_ENTER;
 	}
+
 	private void aquariumSearchPressed(boolean wasEnter) {
 		if (wasEnter) {
 			List<Aquarium> aquariumList = new ArrayList<>(
 					// ændre metoden til at gøre det hele ud i et?
 					// eller gem stream objectet, da det måske er unødig konversion (til arraylist)
-					//fishPackController.searchFishSpecies("").values().parallelStream().forEach(fs -> comboBoxSpecies.addItem(fs))
+					// fishPackController.searchFishSpecies("").values().parallelStream().forEach(fs
+					// -> comboBoxSpecies.addItem(fs))
 					fishPackController.searchAquarium(txtfAquarium.getText()).values());
 			SearchMathesChooser<Aquarium> chooser = new SearchMathesChooser<Aquarium>(new AquariumListCellRenderer(),
 					aquariumList);
@@ -384,6 +387,6 @@ public class CreateFishpackTab extends JPanel {
 	}
 
 	private void createFishPack() {
-		fishPackController.createEmptyFishPack();		
+		fishPackController.createEmptyFishPack();
 	}
 }

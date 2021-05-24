@@ -159,13 +159,29 @@ public class FishpackTab extends JPanel {
 			fishPackController = new FishPackController();
 			fishPackTableModel = new FishPackTableModel();
 			contentTable.setModel(fishPackTableModel);
-			refreshFishPackTable("");
 		} catch (DataAccessException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		} 
+
+		new Thread(() -> {
+			try {
+				do {
+					refreshFishPackTable(txtfSearch.getText());
+					Thread.sleep(10000);
+				} while(true);
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (DataAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}).start();
 	}
 
 	private void createFishpackPressed() {
@@ -178,7 +194,6 @@ public class FishpackTab extends JPanel {
 		}
 		
 		updateTableWorker = new SwingWorker<Void, Void>() {
-
 			@Override
 			protected Void doInBackground() throws Exception {
 				Map<Integer, FishPack> FishPacks = fishPackController.searchFishPack(search);
