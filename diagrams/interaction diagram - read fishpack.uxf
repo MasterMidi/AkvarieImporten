@@ -4,8 +4,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>856</x>
-      <y>216</y>
+      <x>976</x>
+      <y>280</y>
       <w>328</w>
       <h>72</h>
     </coordinates>
@@ -16,8 +16,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>824</x>
-      <y>136</y>
+      <x>944</x>
+      <y>200</y>
       <w>88</w>
       <h>24</h>
     </coordinates>
@@ -28,8 +28,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>808</x>
-      <y>200</y>
+      <x>928</x>
+      <y>264</y>
       <w>120</w>
       <h>24</h>
     </coordinates>
@@ -40,8 +40,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>496</x>
-      <y>176</y>
+      <x>616</x>
+      <y>240</y>
       <w>88</w>
       <h>24</h>
     </coordinates>
@@ -52,8 +52,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>624</x>
-      <y>432</y>
+      <x>744</x>
+      <y>496</y>
       <w>128</w>
       <h>24</h>
     </coordinates>
@@ -64,8 +64,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>680</x>
-      <y>384</y>
+      <x>800</x>
+      <y>448</y>
       <w>168</w>
       <h>64</h>
     </coordinates>
@@ -76,8 +76,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>624</x>
-      <y>368</y>
+      <x>744</x>
+      <y>432</y>
       <w>128</w>
       <h>24</h>
     </coordinates>
@@ -88,8 +88,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>808</x>
-      <y>432</y>
+      <x>928</x>
+      <y>496</y>
       <w>104</w>
       <h>24</h>
     </coordinates>
@@ -100,20 +100,20 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>848</x>
-      <y>448</y>
-      <w>208</w>
+      <x>968</x>
+      <y>512</y>
+      <w>168</w>
       <h>120</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-1.7 *[i=1..*]: &lt;&lt;create&gt;&gt; FishSpecies(...)</panel_attributes>
+1.7 &lt;&lt;create&gt;&gt; FishSpecies(...)</panel_attributes>
     <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>808</x>
-      <y>552</y>
+      <x>928</x>
+      <y>616</y>
       <w>96</w>
       <h>24</h>
     </coordinates>
@@ -124,8 +124,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1088</x>
-      <y>376</y>
+      <x>1208</x>
+      <y>440</y>
       <w>120</w>
       <h>24</h>
     </coordinates>
@@ -136,20 +136,20 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1136</x>
-      <y>320</y>
-      <w>192</w>
+      <x>1256</x>
+      <y>384</y>
+      <w>152</w>
       <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-1.9 *[i=1..*]: &lt;&lt;create&gt;&gt; Aquarium(...)</panel_attributes>
+1.9 &lt;&lt;create&gt;&gt; Aquarium(...)</panel_attributes>
     <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1088</x>
-      <y>304</y>
+      <x>1208</x>
+      <y>368</y>
       <w>120</w>
       <h>24</h>
     </coordinates>
@@ -160,8 +160,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>816</x>
-      <y>272</y>
+      <x>936</x>
+      <y>336</y>
       <w>88</w>
       <h>24</h>
     </coordinates>
@@ -172,8 +172,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>624</x>
-      <y>128</y>
+      <x>744</x>
+      <y>192</y>
       <w>216</w>
       <h>32</h>
     </coordinates>
@@ -184,8 +184,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>856</x>
-      <y>152</y>
+      <x>976</x>
+      <y>216</y>
       <w>344</w>
       <h>64</h>
     </coordinates>
@@ -197,8 +197,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>632</x>
-      <y>288</y>
+      <x>752</x>
+      <y>352</y>
       <w>264</w>
       <h>96</h>
     </coordinates>
@@ -210,8 +210,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>744</x>
-      <y>288</y>
+      <x>864</x>
+      <y>352</y>
       <w>272</w>
       <h>160</h>
     </coordinates>
@@ -223,8 +223,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>896</x>
-      <y>272</y>
+      <x>1016</x>
+      <y>336</y>
       <w>288</w>
       <h>48</h>
     </coordinates>
@@ -236,8 +236,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>576</x>
-      <y>184</y>
+      <x>696</x>
+      <y>248</y>
       <w>256</w>
       <h>128</h>
     </coordinates>
