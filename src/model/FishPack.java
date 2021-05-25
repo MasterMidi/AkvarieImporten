@@ -31,7 +31,9 @@ public class FishPack {
 		this.species = fishSpecies;
 
 		this.aquariumPeriods = new ArrayList<Period<Aquarium>>();
-		this.aquariumPeriods.add(aquarium);
+		if(aquarium != null) {
+			this.aquariumPeriods.add(aquarium);
+		}
 	}
 
 	public void setBirthDate(LocalDate birthDate) {
@@ -83,9 +85,12 @@ public class FishPack {
 		return this.packNumber;
 	}
 
-	public void setID(Integer id) {
+	public void setID(int id) {
 		this.id = id;
-
+	}
+	
+	public int getID() {
+		return id;
 	}
 
 }
