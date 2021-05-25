@@ -108,6 +108,15 @@ create table fish_pack(
     constraint fk_feeding_plan_id foreign key(feeding_plan_id) references feeding_plan(id),
 );
 
+create table [location](
+    id int primary key identity(1,1),
+    address varchar(50) not null,
+    zipcode int not null,
+    unique(address, zipcode),
+        constraint fk_zipcode_location foreign key(zipcode) references city(zipcode),
+
+);
+
 create table aquarium(
     id int primary key identity(1,1),
     location_id int not null,
@@ -115,6 +124,8 @@ create table aquarium(
     number varchar(50) not null,
     size int not null,
     unique(location_id, number),
+
+    constraint fk_location_aquarium foreign key(location_id) references location(id),
 );
 
 create table fish_pack_period(
@@ -147,17 +158,6 @@ create table expense(
     price int not null,
     date date not null,
     unique(unit, date),
-);
-
-
-
-create table [location](
-    id int primary key identity(1,1),
-    address varchar(50) not null,
-    zipcode int not null,
-    unique(address, zipcode),
-        constraint fk_zipcode_location foreign key(zipcode) references city(zipcode),
-
 );
 
 create table employee(
