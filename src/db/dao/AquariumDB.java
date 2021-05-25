@@ -29,7 +29,7 @@ public class AquariumDB implements IAquariumDB {
 	}
 
 	@Override
-	public Map<Integer, Aquarium> getAquarium(String searchInput) {
+	public Map<Integer, Aquarium> getAquarium(String searchInput) throws DataAccessException {
 
 		Map<Integer, Aquarium> res = null;
 
@@ -40,8 +40,8 @@ public class AquariumDB implements IAquariumDB {
 
 			res = buildObjects(rs);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+//			e.printStackTrace();
+			throw new DataAccessException("Could not retireve aquarium, check the query", e);
 		}
 
 		return res;

@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -11,14 +12,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.font.TextAttribute;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -31,7 +33,6 @@ import javax.swing.border.LineBorder;
 import ctrl.FishPackController;
 import exception.DataAccessException;
 import gui.Main;
-import gui.components.JDateTextField;
 import gui.components.JHintTextField;
 import gui.components.JRoundedButton;
 import gui.renderer.AquariumListCellRenderer;
@@ -41,6 +42,7 @@ import model.Aquarium;
 import model.FeedingPlan;
 import model.FishSpecies;
 import util.DateValidator;
+import javax.swing.border.BevelBorder;
 
 public class CreateFishpackTab extends JPanel {
 	private JPanel viewport;
@@ -64,21 +66,24 @@ public class CreateFishpackTab extends JPanel {
 	private JButton btnSpecies;
 	private JButton btnAquarium;
 	private JButton btnFeedingPlan;
+	private JLabel lblSpeciesChosen;
+	private JLabel lblAquariumChosen;
+	private JLabel lblFeedingPlanChosen;
 
 	/**
 	 * Create the panel.
 	 * 
 	 * @throws DataAccessException
 	 */
-	public CreateFishpackTab() throws DataAccessException {
+	public CreateFishpackTab() {
 		setLayout(new BorderLayout(0, 0));
 
 		viewport = new JPanel();
 		add(viewport);
 		GridBagLayout gbl_viewport = new GridBagLayout();
-		gbl_viewport.columnWidths = new int[] { 0, 0, 0, 0, 0, 0, 0 };
+		gbl_viewport.columnWidths = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
 		gbl_viewport.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-		gbl_viewport.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_viewport.columnWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		gbl_viewport.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		viewport.setLayout(gbl_viewport);
 
@@ -97,11 +102,20 @@ public class CreateFishpackTab extends JPanel {
 				speciesSearchPressed(checkIfEnter(e));
 			}
 		});
+		
+		lblSpeciesChosen = new JLabel("Art");
+		lblSpeciesChosen.setFont(new Font("bold", Font.BOLD, 12));
+		GridBagConstraints gbc_lblSpeciesChosen = new GridBagConstraints();
+		gbc_lblSpeciesChosen.insets = new Insets(0, 0, 5, 5);
+		gbc_lblSpeciesChosen.anchor = GridBagConstraints.WEST;
+		gbc_lblSpeciesChosen.gridx = 2;
+		gbc_lblSpeciesChosen.gridy = 1;
+		viewport.add(lblSpeciesChosen, gbc_lblSpeciesChosen);
 		txtfSpecies.setEditable(true);
 		GridBagConstraints gbc_txtfSpecies = new GridBagConstraints();
 		gbc_txtfSpecies.insets = new Insets(0, 0, 5, 5);
 		gbc_txtfSpecies.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtfSpecies.gridx = 2;
+		gbc_txtfSpecies.gridx = 3;
 		gbc_txtfSpecies.gridy = 1;
 		viewport.add(txtfSpecies, gbc_txtfSpecies);
 
@@ -116,7 +130,7 @@ public class CreateFishpackTab extends JPanel {
 		});
 		GridBagConstraints gbc_btnSpecies = new GridBagConstraints();
 		gbc_btnSpecies.insets = new Insets(0, 0, 5, 5);
-		gbc_btnSpecies.gridx = 3;
+		gbc_btnSpecies.gridx = 4;
 		gbc_btnSpecies.gridy = 1;
 		viewport.add(btnSpecies, gbc_btnSpecies);
 
@@ -127,11 +141,11 @@ public class CreateFishpackTab extends JPanel {
 		GridBagConstraints gbc_btnCreateSpecies = new GridBagConstraints();
 		gbc_btnCreateSpecies.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnCreateSpecies.insets = new Insets(0, 0, 5, 5);
-		gbc_btnCreateSpecies.gridx = 4;
+		gbc_btnCreateSpecies.gridx = 5;
 		gbc_btnCreateSpecies.gridy = 1;
 		viewport.add(btnCreateSpecies, gbc_btnCreateSpecies);
 
-		lblNewLabel = new JLabel("Dato");
+		lblNewLabel = new JLabel("Dato:");
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
@@ -152,7 +166,7 @@ public class CreateFishpackTab extends JPanel {
 		GridBagConstraints gbc_txtfBirthdate = new GridBagConstraints();
 		gbc_txtfBirthdate.insets = new Insets(0, 0, 5, 5);
 		gbc_txtfBirthdate.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtfBirthdate.gridx = 2;
+		gbc_txtfBirthdate.gridx = 3;
 		gbc_txtfBirthdate.gridy = 3;
 		viewport.add(txtfBirthdate, gbc_txtfBirthdate);
 
@@ -167,7 +181,7 @@ public class CreateFishpackTab extends JPanel {
 		GridBagConstraints gbc_btnGenerateDate = new GridBagConstraints();
 		gbc_btnGenerateDate.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnGenerateDate.insets = new Insets(0, 0, 5, 5);
-		gbc_btnGenerateDate.gridx = 4;
+		gbc_btnGenerateDate.gridx = 5;
 		gbc_btnGenerateDate.gridy = 3;
 		viewport.add(btnGenerateDate, gbc_btnGenerateDate);
 
@@ -188,10 +202,19 @@ public class CreateFishpackTab extends JPanel {
 				aquariumSearchPressed(checkIfEnter(e));
 			}
 		});
+		
+		lblAquariumChosen = new JLabel("Akvarie");
+		lblAquariumChosen.setFont(new Font("bold", Font.BOLD, 12));
+		GridBagConstraints gbc_lblAquariumChosen = new GridBagConstraints();
+		gbc_lblAquariumChosen.insets = new Insets(0, 0, 5, 5);
+		gbc_lblAquariumChosen.anchor = GridBagConstraints.WEST;
+		gbc_lblAquariumChosen.gridx = 2;
+		gbc_lblAquariumChosen.gridy = 5;
+		viewport.add(lblAquariumChosen, gbc_lblAquariumChosen);
 		GridBagConstraints gbc_txtfAquarium = new GridBagConstraints();
 		gbc_txtfAquarium.insets = new Insets(0, 0, 5, 5);
 		gbc_txtfAquarium.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtfAquarium.gridx = 2;
+		gbc_txtfAquarium.gridx = 3;
 		gbc_txtfAquarium.gridy = 5;
 		viewport.add(txtfAquarium, gbc_txtfAquarium);
 
@@ -205,7 +228,7 @@ public class CreateFishpackTab extends JPanel {
 		});
 		GridBagConstraints gbc_btnAquarium = new GridBagConstraints();
 		gbc_btnAquarium.insets = new Insets(0, 0, 5, 5);
-		gbc_btnAquarium.gridx = 3;
+		gbc_btnAquarium.gridx = 4;
 		gbc_btnAquarium.gridy = 5;
 		viewport.add(btnAquarium, gbc_btnAquarium);
 
@@ -216,7 +239,7 @@ public class CreateFishpackTab extends JPanel {
 		GridBagConstraints gbc_btnCreateAquarium = new GridBagConstraints();
 		gbc_btnCreateAquarium.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnCreateAquarium.insets = new Insets(0, 0, 5, 5);
-		gbc_btnCreateAquarium.gridx = 4;
+		gbc_btnCreateAquarium.gridx = 5;
 		gbc_btnCreateAquarium.gridy = 5;
 		viewport.add(btnCreateAquarium, gbc_btnCreateAquarium);
 
@@ -235,10 +258,19 @@ public class CreateFishpackTab extends JPanel {
 				FeedingPlanSearchpressed(checkIfEnter(e));
 			}
 		});
+		
+		lblFeedingPlanChosen = new JLabel("Fodderplan");
+		lblFeedingPlanChosen.setFont(new Font("bold", Font.BOLD, 12));
+		GridBagConstraints gbc_lblFeedingPlanChosen = new GridBagConstraints();
+		gbc_lblFeedingPlanChosen.insets = new Insets(0, 0, 5, 5);
+		gbc_lblFeedingPlanChosen.anchor = GridBagConstraints.WEST;
+		gbc_lblFeedingPlanChosen.gridx = 2;
+		gbc_lblFeedingPlanChosen.gridy = 7;
+		viewport.add(lblFeedingPlanChosen, gbc_lblFeedingPlanChosen);
 		GridBagConstraints gbc_txtfFeedingPlan = new GridBagConstraints();
 		gbc_txtfFeedingPlan.insets = new Insets(0, 0, 5, 5);
 		gbc_txtfFeedingPlan.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtfFeedingPlan.gridx = 2;
+		gbc_txtfFeedingPlan.gridx = 3;
 		gbc_txtfFeedingPlan.gridy = 7;
 		viewport.add(txtfFeedingPlan, gbc_txtfFeedingPlan);
 
@@ -252,7 +284,7 @@ public class CreateFishpackTab extends JPanel {
 		});
 		GridBagConstraints gbc_btnFeedingPlan = new GridBagConstraints();
 		gbc_btnFeedingPlan.insets = new Insets(0, 0, 5, 5);
-		gbc_btnFeedingPlan.gridx = 3;
+		gbc_btnFeedingPlan.gridx = 4;
 		gbc_btnFeedingPlan.gridy = 7;
 		viewport.add(btnFeedingPlan, gbc_btnFeedingPlan);
 
@@ -263,7 +295,7 @@ public class CreateFishpackTab extends JPanel {
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
-		gbc_btnNewButton.gridx = 4;
+		gbc_btnNewButton.gridx = 5;
 		gbc_btnNewButton.gridy = 7;
 		viewport.add(btnNewButton, gbc_btnNewButton);
 
@@ -304,6 +336,7 @@ public class CreateFishpackTab extends JPanel {
 			try {
 				f.get();
 			} catch (InterruptedException | ExecutionException ex) {
+				ex.printStackTrace();
 				JOptionPane.showMessageDialog(this, "Noget gik galt, kunne ikke gemme kuld i database", "Fejl",
 						JOptionPane.ERROR_MESSAGE);
 			}
@@ -312,7 +345,7 @@ public class CreateFishpackTab extends JPanel {
 	}
 
 	protected void CancelPressed(ActionEvent e) {
-		EventQueue.invokeLater(() -> Main.newView(FishpackTab.class));
+		EventQueue.invokeLater(() -> Main.setViewport(new FishpackTab()));
 	}
 
 	private void validateDate(String date) {
@@ -331,57 +364,92 @@ public class CreateFishpackTab extends JPanel {
 
 	private void aquariumSearchPressed(boolean wasEnter) {
 		if (wasEnter) {
-			List<Aquarium> aquariumList = new ArrayList<>(
-					// ændre metoden til at gøre det hele ud i et?
-					// eller gem stream objectet, da det måske er unødig konversion (til arraylist)
-					// fishPackController.searchFishSpecies("").values().parallelStream().forEach(fs
-					// -> comboBoxSpecies.addItem(fs))
-					fishPackController.searchAquarium(txtfAquarium.getText()).values());
-			SearchMathesChooser<Aquarium> chooser = new SearchMathesChooser<Aquarium>(new AquariumListCellRenderer(),
-					aquariumList);
-			chooser.setLocationRelativeTo(this);
-			chooser.setVisible(true);
-			chooser.callback(() -> {
-				Aquarium res = chooser.getValue();
-				txtfAquarium.setText(res.getNumber());
-				fishPackController.setAquarium(res.getId());
-			});
+			try {
+				List<Aquarium> aquariumList = new ArrayList<>(
+						fishPackController.searchAquarium(txtfAquarium.getText()).values());
+				if (!aquariumList.isEmpty()) {
+					SearchMathesChooser<Aquarium> chooser = new SearchMathesChooser<Aquarium>(
+							new AquariumListCellRenderer(), aquariumList, "Akvarier søgning " + txtfAquarium.getText());
+					chooser.setLocationRelativeTo(this);
+					chooser.setVisible(true);
+					chooser.callback(() -> {
+						Aquarium res = chooser.getValue();
+						txtfAquarium.setText(res.getNumber());
+						lblAquariumChosen.setText(res.getNumber());
+						fishPackController.setAquarium(res.getId());
+					});
+				} else {
+					JOptionPane.showMessageDialog(this,
+							txtfAquarium.getText()
+									+ " eksisterer ikke i systemet. Ønsker du at oprette et nyt akvarie?",
+							"Ingen resultater", JOptionPane.ERROR_MESSAGE);
+				}
+			} catch (DataAccessException e) {
+				// TODO Auto-generated catch block
+//				e.printStackTrace();
+			}
 		}
 	}
 
 	private void FeedingPlanSearchpressed(boolean wasEnter) {
 		if (wasEnter) {
-			List<FeedingPlan> feedingPlanList = new ArrayList<>(
-					fishPackController.searchFeedingplans(txtfFeedingPlan.getText()).values());
-			SearchMathesChooser<FeedingPlan> chooser = new SearchMathesChooser<>(new FeedingPlanListCellRenderer(),
-					feedingPlanList);
-			chooser.setLocationRelativeTo(this);
-			chooser.setVisible(true);
-			chooser.callback(() -> {
-				FeedingPlan res = chooser.getValue();
-				txtfFeedingPlan.setText(res.getName());
-				fishPackController.setFeedingPlan(res.getID());
-			});
+			try {
+				List<FeedingPlan> feedingPlanList = new ArrayList<>(
+						fishPackController.searchFeedingplans(txtfFeedingPlan.getText()).values());
+				if (!feedingPlanList.isEmpty()) {
+					SearchMathesChooser<FeedingPlan> chooser = new SearchMathesChooser<>(
+							new FeedingPlanListCellRenderer(), feedingPlanList,
+							"Fodderplan søgning " + txtfFeedingPlan.getText());
+					chooser.setLocationRelativeTo(this);
+					chooser.setVisible(true);
+					chooser.callback(() -> {
+						FeedingPlan res = chooser.getValue();
+						txtfFeedingPlan.setText(res.getName());
+						lblFeedingPlanChosen.setText(res.getName());
+						fishPackController.setFeedingPlan(res.getID());
+					});
+				} else {
+					JOptionPane.showMessageDialog(this,
+							txtfFeedingPlan.getText()
+									+ " eksisterer ikke i systemet. Ønsker du at oprette en ny fodderplan?",
+							"Ingen resultater", JOptionPane.ERROR_MESSAGE);
+				}
+			} catch (DataAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		}
 	}
 
 	private void speciesSearchPressed(boolean wasEnter) {
 		if (wasEnter) {
-			List<FishSpecies> speciesList = new ArrayList<>(
-					fishPackController.searchFishSpecies(txtfSpecies.getText()).values());
-			SearchMathesChooser<FishSpecies> chooser = new SearchMathesChooser<>(new SpeciesListCellRenderer(),
-					speciesList);
-			chooser.setLocationRelativeTo(this);
-			chooser.setVisible(true);
-			chooser.callback(() -> {
-				FishSpecies res = chooser.getValue();
-				txtfSpecies.setText(res.getName());
-				fishPackController.setFishSpecies(res.getId());
-			});
+			try {
+				List<FishSpecies> speciesList = new ArrayList<>(fishPackController.searchFishSpecies(txtfSpecies.getText()).values());
+				if (!speciesList.isEmpty()) {
+					SearchMathesChooser<FishSpecies> chooser = new SearchMathesChooser<>(new SpeciesListCellRenderer(),
+							speciesList, "Fiskeart søgning " + txtfSpecies.getText());
+					chooser.setLocationRelativeTo(this);
+					chooser.setVisible(true);
+					chooser.callback(() -> {
+						FishSpecies res = chooser.getValue();
+						txtfSpecies.setText(res.getName());
+						lblSpeciesChosen.setText(res.getName());
+						fishPackController.setFishSpecies(res.getId());
+					});
+				} else {
+					JOptionPane.showMessageDialog(this,
+							txtfSpecies.getText() + " eksisterer ikke i systemet. Ønsker du at oprette en ny art?",
+							"Ingen resultater", JOptionPane.ERROR_MESSAGE);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
-	private void init() throws DataAccessException {
+	private void init() {
 		fishPackController = new FishPackController();
 		createFishPack();
 	}

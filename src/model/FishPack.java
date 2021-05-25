@@ -14,24 +14,26 @@ public class FishPack {
 	private List<Period<Aquarium>> aquariumPeriods;
 
 	public FishPack() {
-		this.aquariumPeriods = new ArrayList<Period<Aquarium>>();
+		this(0, null, null, null, null, null, null);
 	}
 
 	public FishPack(LocalDate birthDate, FeedingPlan feedingPlan, FishSpecies species) {
-		this();
-		this.birthDate = birthDate;
-		this.feedingPlan = feedingPlan;
-		this.species = species;
+		this(0, null, null, birthDate, feedingPlan, species, null);
 	}
 
 	public FishPack(int id, String packNumber, String status, LocalDate birthday, FeedingPlan feedingPlan,
 			FishSpecies fishSpecies, Period<Aquarium> aquarium) {
-
-		this(birthday, feedingPlan, fishSpecies);
-		this.packNumber = packNumber;
 		this.id = id;
+		this.packNumber = packNumber;
 		this.status = status;
-		this.aquariumPeriods.add(aquarium);
+		this.birthDate = birthday;
+		this.feedingPlan = feedingPlan;
+		this.species = fishSpecies;
+
+		this.aquariumPeriods = new ArrayList<Period<Aquarium>>();
+		if(aquarium != null) {
+			this.aquariumPeriods.add(aquarium);
+		}
 	}
 
 	public void setBirthDate(LocalDate birthDate) {
@@ -83,9 +85,12 @@ public class FishPack {
 		return this.packNumber;
 	}
 
-	public void setID(Integer id) {
+	public void setID(int id) {
 		this.id = id;
-
+	}
+	
+	public int getID() {
+		return id;
 	}
 
 }

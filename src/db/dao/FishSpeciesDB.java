@@ -29,19 +29,15 @@ public class FishSpeciesDB implements IFishSpeciesDB {
 	}
 
 	@Override
-	public Map<Integer, FishSpecies> getFishSpecies(String searchInput) {
+	public Map<Integer, FishSpecies> getFishSpecies(String searchInput) throws SQLException {
 		Map<Integer, FishSpecies> res = null;
 
-		try {
+		psGetFishSpecies.setString(1, "%" + searchInput + "%");
+		
+		ResultSet rs = psGetFishSpecies.executeQuery();
+		
+		res = buildObjects(rs);
 
-			psGetFishSpecies.setString(1, "%" + searchInput + "%");
-
-			ResultSet rs = psGetFishSpecies.executeQuery();
-
-			res = buildObjects(rs);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 
 		return res;
 	}

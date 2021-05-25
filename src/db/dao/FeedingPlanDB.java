@@ -28,7 +28,7 @@ public class FeedingPlanDB implements IFeedingPlanDB {
 	}
 
 	@Override
-	public Map<Integer, FeedingPlan> getFeedingPlan(String searchInput) {
+	public Map<Integer, FeedingPlan> getFeedingPlan(String searchInput) throws DataAccessException {
 
 		Map<Integer, FeedingPlan> returnList = null;
 		try {
@@ -39,6 +39,7 @@ public class FeedingPlanDB implements IFeedingPlanDB {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new DataAccessException("Could not retireve feedingplan, check the query", e);
 		}
 		return returnList;
 	}

@@ -12,11 +12,11 @@ public class FeedingPlanController {
 	private Map<Integer, FeedingPlan> feedingPlanMatches;
 	private IFeedingPlanDB feedingPlanDB;
 
-	public FeedingPlanController() throws DataAccessException {
+	public FeedingPlanController() {
 		this.feedingPlanDB = Database.getInstance().feedingPlanDB();
 	}
 
-	public Map<Integer, FeedingPlan> searchFeedingPlan(String searchInput) {
+	public Map<Integer, FeedingPlan> searchFeedingPlan(String searchInput) throws DataAccessException {
 		feedingPlanMatches = feedingPlanDB.getFeedingPlan(searchInput);
 		return new HashMap<Integer, FeedingPlan>(feedingPlanMatches);
 	}
