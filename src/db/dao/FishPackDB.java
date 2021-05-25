@@ -22,29 +22,46 @@ public class FishPackDB implements IFishPackDB {
 	private static final String Q_INSERT_FISH_PACK = "INSERT INTO fish_pack (birthday, fish_specie_id, feeding_plan_id, status) VALUES (?, ?, ?, ?)";
 	private static final String Q_UPDATE_FISH_PACK = "UPDATE fish_pack SET pack_number = ? WHERE id = ?";
 	private static final String Q_INSERT_PERIOD = "INSERT INTO fish_pack_period (start_date, aquarium_id, fish_pack_id) VALUES (?,?,?)";
+	// @formatter:off
 	private static final String Q_GET_FISH_PACK = "SELECT fish_pack.id AS fish_pack_id, \r\n"
-			+ "fish_pack.birthday AS fish_pack_birthday, \r\n" + "fish_pack.pack_number AS fish_pack_number, \r\n"
-			+ "fish_pack.status AS fish_pack_status, \r\n" + "fish_pack.fish_specie_id AS species_id, \r\n"
-			+ "fish_pack.feeding_plan_id AS feeding_plan_id, \r\n" + "--FISHPACK PERIOD\r\n"
-			+ "fish_pack_period.id as period_id, \r\n" + "fish_pack_period.aquarium_id as period_aquarium_id, \r\n"
+			+ "fish_pack.birthday AS fish_pack_birthday, \r\n" 
+			+ "fish_pack.pack_number AS fish_pack_number, \r\n"
+			+ "fish_pack.status AS fish_pack_status, \r\n" 
+			+ "fish_pack.fish_specie_id AS species_id, \r\n"
+			+ "fish_pack.feeding_plan_id AS feeding_plan_id, \r\n" 
+			+ "--FISHPACK PERIOD\r\n"
+			+ "fish_pack_period.id as period_id, \r\n" 
+			+ "fish_pack_period.aquarium_id as period_aquarium_id, \r\n"
 			+ "fish_pack_period.end_date as period_end_date, \r\n"
-			+ "fish_pack_period.start_date as period_start_date,\r\n" + "--AQUARIUM\r\n"
-			+ "aquarium.id AS aquarium_id, \r\n" + "aquarium.location_id AS aquarium_location_id, \r\n"
-			+ "aquarium.expense_id AS aquarium_expense_id, \r\n" + "aquarium.number AS aquarium_number, \r\n"
-			+ "aquarium.size AS aquarium_size,\r\n" + "--FEEDINGPLAN\r\n" + "feeding_plan.id AS feeding_plan_id, \r\n"
-			+ "feeding_plan.name AS feeding_plan_name, \r\n" + "feeding_plan.interval AS feeding_plan_interval, \r\n"
-			+ "feeding_plan.amount AS feeding_plan_amount,\r\n" + "--FISH SPECIES\r\n"
-			+ "fish_species.id AS species_id, \r\n" + "fish_species.name AS species_name, \r\n"
+			+ "fish_pack_period.start_date as period_start_date,\r\n" 
+			+ "--AQUARIUM\r\n"
+			+ "aquarium.id AS aquarium_id, \r\n" 
+			+ "aquarium.location_id AS aquarium_location_id, \r\n"
+			+ "aquarium.expense_id AS aquarium_expense_id, \r\n" 
+			+ "aquarium.number AS aquarium_number, \r\n"
+			+ "aquarium.size AS aquarium_size,\r\n" 
+			+ "--FEEDINGPLAN\r\n" 
+			+ "feeding_plan.id AS feeding_plan_id, \r\n"
+			+ "feeding_plan.name AS feeding_plan_name, \r\n" 
+			+ "feeding_plan.interval AS feeding_plan_interval, \r\n"
+			+ "feeding_plan.amount AS feeding_plan_amount,\r\n" 
+			+ "--FISH SPECIES\r\n"
+			+ "fish_species.id AS species_id, \r\n" 
+			+ "fish_species.name AS species_name, \r\n"
 			+ "fish_species.average_eggs AS species_average_eggs, \r\n"
 			+ "fish_species.birth_size AS species_birth_size, \r\n"
 			+ "fish_species.grow_rate AS species_grow_rate, \r\n"
-			+ "fish_species.minimum_sale_size AS species_minimum_sale_size,\r\n" + "--LOCATION\r\n"
-			+ "[location].address AS aquarium_location_address\r\n" + "FROM fish_pack\r\n"
+			+ "fish_species.minimum_sale_size AS species_minimum_sale_size,\r\n" 
+			+ "--LOCATION\r\n"
+			+ "[location].address AS aquarium_location_address\r\n" 
+			+ "FROM fish_pack\r\n"
 			+ "JOIN fish_pack_period ON fish_pack_period.id = (SELECT TOP 1 id FROM fish_pack_period WHERE end_date is null AND fish_pack_id = fish_pack.id ORDER BY fish_pack_period.start_date DESC)\r\n"
 			+ "JOIN aquarium ON aquarium.id = fish_pack_period.aquarium_id\r\n"
 			+ "JOIN feeding_plan ON fish_pack.feeding_plan_id = feeding_plan.id\r\n"
 			+ "JOIN fish_species ON fish_pack.fish_specie_id = fish_species.id\r\n"
-			+ "JOIN [location] ON [location].id = aquarium.location_id\r\n" + "WHERE pack_number LIKE ?";
+			+ "JOIN [location] ON [location].id = aquarium.location_id\r\n" 
+			+ "WHERE pack_number LIKE ?";
+	// @formatter:on
 
 	private PreparedStatement psInsertFishPack;
 	private PreparedStatement psUpdateFishPack;
@@ -98,7 +115,6 @@ public class FishPackDB implements IFishPackDB {
 			fishpacks.put(fishPack.getID(), fishPack);
 		}
 
-//		System.out.println("PLEASE NOTICE! FishPackDB.getFishPack havent been implemented yet. ");
 		return fishpacks;
 	}
 
