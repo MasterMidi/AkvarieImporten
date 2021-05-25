@@ -20,7 +20,7 @@ public class FishPackController {
 	private IFishPackDB fishPackDB;
 	private FishPack fishPack;
 
-	public FishPackController() throws DataAccessException {
+	public FishPackController() {
 		this.aquariumController = new AquariumController();
 		this.feedingPlanController = new FeedingPlanController();
 		this.fishSpeciesController = new FishSpeciesController();
@@ -31,7 +31,7 @@ public class FishPackController {
 		this.fishPack = new FishPack();
 	}
 
-	public Map<Integer, FishSpecies> searchFishSpecies(String searchInput) {
+	public Map<Integer, FishSpecies> searchFishSpecies(String searchInput) throws SQLException {
 		return fishSpeciesController.searchFishSpecies(searchInput);
 	}
 

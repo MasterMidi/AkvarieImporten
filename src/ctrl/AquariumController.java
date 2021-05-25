@@ -12,7 +12,7 @@ public class AquariumController {
 	private Map<Integer, Aquarium> aquariumMatches;
 	private IAquariumDB aquariumDB;
 
-	public AquariumController() throws DataAccessException {
+	public AquariumController() {
 		this.aquariumDB = Database.getInstance().aquariumDB();
 	}
 

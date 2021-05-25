@@ -12,7 +12,7 @@ public class FeedingPlanController {
 	private Map<Integer, FeedingPlan> feedingPlanMatches;
 	private IFeedingPlanDB feedingPlanDB;
 
-	public FeedingPlanController() throws DataAccessException {
+	public FeedingPlanController() {
 		this.feedingPlanDB = Database.getInstance().feedingPlanDB();
 	}
 

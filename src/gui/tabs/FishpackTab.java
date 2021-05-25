@@ -1,9 +1,11 @@
 package gui.tabs;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -18,6 +20,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingWorker;
+import javax.swing.border.TitledBorder;
 
 import ctrl.FishPackController;
 import exception.DataAccessException;
@@ -25,10 +28,6 @@ import gui.Main;
 import gui.components.JRoundedButton;
 import gui.renderer.FishPackTableModel;
 import model.FishPack;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import javax.swing.border.TitledBorder;
 
 public class FishpackTab extends JPanel {
 	private JTable contentTable;
@@ -159,14 +158,9 @@ public class FishpackTab extends JPanel {
 	}
 
 	private void init() {
-		try {
-			fishPackController = new FishPackController();
-			fishPackTableModel = new FishPackTableModel();
-			contentTable.setModel(fishPackTableModel);
-		} catch (DataAccessException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		fishPackController = new FishPackController();
+		fishPackTableModel = new FishPackTableModel();
+		contentTable.setModel(fishPackTableModel);
 
 		new Thread(() -> {
 			try {
@@ -189,7 +183,7 @@ public class FishpackTab extends JPanel {
 	}
 
 	private void createFishpackPressed() {
-		EventQueue.invokeLater(() -> Main.newView(CreateFishpackTab.class));
+		EventQueue.invokeLater(() -> Main.setViewport(new CreateFishpackTab()));
 	}
 
 	private void refreshFishPackTable(String search) throws SQLException, DataAccessException {

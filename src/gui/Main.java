@@ -1,7 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
@@ -11,7 +11,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
@@ -26,12 +25,10 @@ import env.ENV;
 import exception.DataAccessException;
 import gui.components.JRoundedButton;
 import gui.tabs.FishpackTab;
-import java.awt.Component;
 
 public class Main extends JFrame {
 
 	private JPanel contentPane;
-	private JPanel fishpackTab;
 	private static JPanel viewport;
 
 	/**
@@ -159,7 +156,6 @@ public class Main extends JFrame {
 		gbc_btnFeedingPlan.gridy = 7;
 		menuPane.add(btnFeedingPlan, gbc_btnFeedingPlan);
 
-		
 		init();
 	}
 
@@ -175,35 +171,12 @@ public class Main extends JFrame {
 	}
 
 	private void btnFishpackPressed() {
-		EventQueue.invokeLater(() -> newView(FishpackTab.class));
+		EventQueue.invokeLater(() -> setViewport(new FishpackTab()));
 	}
 
-	/**
-	 * Instantiates a new windows from the given class, using the class' empty constructor.
-	 * Removes the previous windows, and replaces it with the new one.
-	 * @param view
-	 */
-	public static void newView(Class view) {
-		try {
-			viewport.removeAll();
-			// Creates a new object by finding a constructor from the class the matches the inputs given to the method getDeclaredConstructor()
-			// Since there are no arguments, it means it will use the empty constructor, and instantiates the object using that one.
-			JPanel panel = (JPanel) view.getDeclaredConstructor().newInstance();
-			viewport.add(panel, BorderLayout.CENTER);
-			viewport.updateUI();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			e.printStackTrace();
-		} catch (NoSuchMethodException e) {
-			e.printStackTrace();
-		} catch (SecurityException e) {
-			e.printStackTrace();
-		}
+	public static void setViewport(JPanel view) {
+		viewport.removeAll();
+		viewport.add(view, BorderLayout.CENTER);
+		viewport.updateUI();
 	}
-
 }
