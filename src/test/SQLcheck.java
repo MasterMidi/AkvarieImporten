@@ -61,7 +61,7 @@ public class SQLcheck {
 	public void testFishPackInsertController() throws DataAccessException, SQLException {
 		
 		FishPackController ctrl = new FishPackController();
-		ctrl.createEmptyFishPack();
+		ctrl.createFishPack();
 		ctrl.searchAquarium("1");
 		ctrl.setAquarium(1);
 		ctrl.searchFishSpecies("fiskeart");

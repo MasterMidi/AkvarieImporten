@@ -393,6 +393,6 @@ public class CreateFishpackTab extends JPanel {
 	}
 
 	private void createFishPack() {
-		fishPackController.createEmptyFishPack();
+		fishPackController.createFishPack();
 	}
 }

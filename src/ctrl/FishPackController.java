@@ -27,7 +27,7 @@ public class FishPackController {
 		this.fishPackDB = Database.getInstance().fishPackDB();
 	}
 
-	public void createEmptyFishPack() {
+	public void createFishPack() {
 		this.fishPack = new FishPack();
 	}
 

@@ -4,19 +4,19 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>520</x>
+      <x>976</x>
       <y>280</y>
       <w>328</w>
       <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-1.3 getFishPack(String searchInput):Map&lt;Integer, FishPack&gt; </panel_attributes>
+1.3 getFishPack(searchInput:String):Map&lt;Integer, FishPack&gt; </panel_attributes>
     <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>488</x>
+      <x>944</x>
       <y>200</y>
       <w>88</w>
       <h>24</h>
@@ -28,7 +28,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>472</x>
+      <x>928</x>
       <y>264</y>
       <w>120</w>
       <h>24</h>
@@ -40,7 +40,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>160</x>
+      <x>616</x>
       <y>240</y>
       <w>88</w>
       <h>24</h>
@@ -52,7 +52,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>288</x>
+      <x>744</x>
       <y>496</y>
       <w>128</w>
       <h>24</h>
@@ -64,7 +64,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>344</x>
+      <x>800</x>
       <y>448</y>
       <w>168</w>
       <h>64</h>
@@ -76,7 +76,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>288</x>
+      <x>744</x>
       <y>432</y>
       <w>128</w>
       <h>24</h>
@@ -88,7 +88,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>472</x>
+      <x>928</x>
       <y>496</y>
       <w>104</w>
       <h>24</h>
@@ -100,19 +100,19 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>512</x>
+      <x>968</x>
       <y>512</y>
-      <w>208</w>
+      <w>168</w>
       <h>120</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-1.7 *[i=1..*]: &lt;&lt;create&gt;&gt; FishSpecies(...)</panel_attributes>
+1.7 &lt;&lt;create&gt;&gt; FishSpecies(...)</panel_attributes>
     <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>472</x>
+      <x>928</x>
       <y>616</y>
       <w>96</w>
       <h>24</h>
@@ -124,7 +124,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>752</x>
+      <x>1208</x>
       <y>440</y>
       <w>120</w>
       <h>24</h>
@@ -136,19 +136,19 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>800</x>
+      <x>1256</x>
       <y>384</y>
-      <w>192</w>
+      <w>152</w>
       <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-1.9 *[i=1..*]: &lt;&lt;create&gt;&gt; Aquarium(...)</panel_attributes>
+1.9 &lt;&lt;create&gt;&gt; Aquarium(...)</panel_attributes>
     <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>752</x>
+      <x>1208</x>
       <y>368</y>
       <w>120</w>
       <h>24</h>
@@ -160,7 +160,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>480</x>
+      <x>936</x>
       <y>336</y>
       <w>88</w>
       <h>24</h>
@@ -172,7 +172,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>288</x>
+      <x>744</x>
       <y>192</y>
       <w>216</w>
       <h>32</h>
@@ -184,70 +184,70 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>520</x>
+      <x>976</x>
       <y>216</y>
-      <w>280</w>
+      <w>344</w>
       <h>64</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-1.2 searchFishPack(String):Map&lt;Integer, FishPack&gt;
+1.2 searchFishPack(searchInput:String):Map&lt;Integer, FishPack&gt;
 </panel_attributes>
     <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>296</x>
+      <x>752</x>
       <y>352</y>
       <w>264</w>
       <h>96</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 
-1.4 *[i=1..*]: buildObject(ResultSet rs): FeedingPlan</panel_attributes>
+1.4 *[i=1..*]: buildObject(rs:ResultSet): FeedingPlan</panel_attributes>
     <additional_attributes>70.0;100.0;70.0;50.0;250.0;50.0;250.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>408</x>
+      <x>864</x>
       <y>352</y>
       <w>272</w>
       <h>160</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 
-1.6 *[i=1..*]: buildObject(ResultSet rs): FishSpecies</panel_attributes>
+1.6 *[i=1..*]: buildObject(rs:ResultSet): FishSpecies</panel_attributes>
     <additional_attributes>140.0;180.0;140.0;80.0;190.0;80.0;190.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>560</x>
+      <x>1016</x>
       <y>336</y>
       <w>288</w>
       <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 
-1.8 *[i=1..*]: buildObject(ResultSet rs): Aquarium</panel_attributes>
+1.8 *[i=1..*]: buildObject(rs:ResultSet): Aquarium</panel_attributes>
     <additional_attributes>310.0;40.0;90.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>240</x>
+      <x>696</x>
       <y>248</y>
       <w>256</w>
       <h>128</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 
-1.10 *[i=1..*]: &lt;&lt;create&gt;&gt;(int fishPackId,
-String packNumber,String status,
-LocalDate birthday, FeedingPlan feedingPlan,
-FishSpecies fishSpecies,
-Period&lt;Aquarium&gt; aquarium)</panel_attributes>
+1.10 *[i=1..*]: &lt;&lt;create&gt;&gt;(fishPackId:int,
+packNumber:String,status:String,
+birthday:LocalDate, feedingPlan:FeedingPlan,
+fishSpecies:FishSpecies,
+aquarium:Period&lt;Aquarium&gt;)</panel_attributes>
     <additional_attributes>10.0;10.0;300.0;120.0</additional_attributes>
   </element>
 </diagram>
