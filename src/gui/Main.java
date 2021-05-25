@@ -89,7 +89,6 @@ public class Main extends JFrame {
 		btnAquarium.setPreferredSize(new Dimension(120, 30));
 		btnAquarium.setBorderPainted(false);
 		btnAquarium.setHorizontalAlignment(SwingConstants.LEFT);
-//		btnAquarium.setEnabled(false);
 		GridBagConstraints gbc_btnAquarium = new GridBagConstraints();
 		gbc_btnAquarium.insets = new Insets(0, 0, 5, 0);
 		gbc_btnAquarium.gridx = 0;
@@ -142,10 +141,6 @@ public class Main extends JFrame {
 		menuPane.add(btnLocation, gbc_btnLocation);
 
 		JButton btnCalender = new JRoundedButton("Kalender");
-		btnCalender.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		btnCalender.setPreferredSize(new Dimension(120, 30));
 		btnCalender.setBorderPainted(false);
 		btnCalender.setHorizontalAlignment(SwingConstants.LEFT);
