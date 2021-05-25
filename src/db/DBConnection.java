@@ -168,19 +168,20 @@ public class DBConnection {
 	}
 
 	public Connection getConnection() {
-		// TODO: ability to reopen connection?
 		return connection;
 	}
 
 	/**
 	 * Closes connection object. Use when the program wont need the connection
 	 * anymore (can't be reopened)
+	 * @throws DataAccessException 
 	 */
-	public void disconnect() {
+	public void disconnect() throws DataAccessException {
 		try {
 			connection.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			throw new DataAccessException("Could not close DB connection", e);
 		}
 	}
 }

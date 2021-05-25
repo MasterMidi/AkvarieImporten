@@ -16,7 +16,7 @@ public class FeedingPlanController {
 		this.feedingPlanDB = Database.getInstance().feedingPlanDB();
 	}
 
-	public Map<Integer, FeedingPlan> searchFeedingPlan(String searchInput) {
+	public Map<Integer, FeedingPlan> searchFeedingPlan(String searchInput) throws DataAccessException {
 		feedingPlanMatches = feedingPlanDB.getFeedingPlan(searchInput);
 		return new HashMap<Integer, FeedingPlan>(feedingPlanMatches);
 	}

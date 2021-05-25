@@ -16,7 +16,7 @@ public class AquariumController {
 		this.aquariumDB = Database.getInstance().aquariumDB();
 	}
 
-	public HashMap<Integer, Aquarium> searchAquarium(String searchInput) {
+	public HashMap<Integer, Aquarium> searchAquarium(String searchInput) throws DataAccessException {
 		aquariumMatches = aquariumDB.getAquarium(searchInput);
 		return new HashMap<Integer, Aquarium>(aquariumMatches);
 	}

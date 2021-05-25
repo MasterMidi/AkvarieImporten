@@ -17,8 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -31,7 +29,6 @@ import javax.swing.border.LineBorder;
 import ctrl.FishPackController;
 import exception.DataAccessException;
 import gui.Main;
-import gui.components.JDateTextField;
 import gui.components.JHintTextField;
 import gui.components.JRoundedButton;
 import gui.renderer.AquariumListCellRenderer;
@@ -304,6 +301,7 @@ public class CreateFishpackTab extends JPanel {
 			try {
 				f.get();
 			} catch (InterruptedException | ExecutionException ex) {
+				ex.printStackTrace();
 				JOptionPane.showMessageDialog(this, "Noget gik galt, kunne ikke gemme kuld i database", "Fejl",
 						JOptionPane.ERROR_MESSAGE);
 			}
@@ -331,30 +329,38 @@ public class CreateFishpackTab extends JPanel {
 
 	private void aquariumSearchPressed(boolean wasEnter) {
 		if (wasEnter) {
-			List<Aquarium> aquariumList = new ArrayList<>(
-					// ændre metoden til at gøre det hele ud i et?
-					// eller gem stream objectet, da det måske er unødig konversion (til arraylist)
-					// fishPackController.searchFishSpecies("").values().parallelStream().forEach(fs
-					// -> comboBoxSpecies.addItem(fs))
-					fishPackController.searchAquarium(txtfAquarium.getText()).values());
-			SearchMathesChooser<Aquarium> chooser = new SearchMathesChooser<Aquarium>(new AquariumListCellRenderer(),
-					aquariumList);
-			chooser.setLocationRelativeTo(this);
-			chooser.setVisible(true);
-			chooser.callback(() -> {
-				Aquarium res = chooser.getValue();
-				txtfAquarium.setText(res.getNumber());
-				fishPackController.setAquarium(res.getId());
-			});
+			List<Aquarium> aquariumList = null;
+			try {
+				aquariumList = new ArrayList<>(fishPackController.searchAquarium(txtfAquarium.getText()).values());
+				SearchMathesChooser<Aquarium> chooser = new SearchMathesChooser<Aquarium>(
+						new AquariumListCellRenderer(), aquariumList, "Akvarier søgning " + txtfAquarium.getText());
+				chooser.setLocationRelativeTo(this);
+				chooser.setVisible(true);
+				chooser.callback(() -> {
+					Aquarium res = chooser.getValue();
+					txtfAquarium.setText(res.getNumber());
+					fishPackController.setAquarium(res.getId());
+				});
+			} catch (DataAccessException e) {
+				// TODO Auto-generated catch block
+//				e.printStackTrace();
+				JOptionPane.showMessageDialog(this, txtfAquarium.getText() + " Eksisterer ikke i systemet. Ønsker du at oprette et nyt akvarie?", "Ingen resultater", JOptionPane.ERROR_MESSAGE);
+			}
 		}
 	}
 
 	private void FeedingPlanSearchpressed(boolean wasEnter) {
 		if (wasEnter) {
-			List<FeedingPlan> feedingPlanList = new ArrayList<>(
-					fishPackController.searchFeedingplans(txtfFeedingPlan.getText()).values());
+			List<FeedingPlan> feedingPlanList = null;
+			try {
+				feedingPlanList = new ArrayList<>(
+						fishPackController.searchFeedingplans(txtfFeedingPlan.getText()).values());
+			} catch (DataAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			SearchMathesChooser<FeedingPlan> chooser = new SearchMathesChooser<>(new FeedingPlanListCellRenderer(),
-					feedingPlanList);
+					feedingPlanList, "Fodderplan søgning " + txtfFeedingPlan.getText());
 			chooser.setLocationRelativeTo(this);
 			chooser.setVisible(true);
 			chooser.callback(() -> {
@@ -370,7 +376,7 @@ public class CreateFishpackTab extends JPanel {
 			List<FishSpecies> speciesList = new ArrayList<>(
 					fishPackController.searchFishSpecies(txtfSpecies.getText()).values());
 			SearchMathesChooser<FishSpecies> chooser = new SearchMathesChooser<>(new SpeciesListCellRenderer(),
-					speciesList);
+					speciesList, "Fiskeart søgning " + txtfSpecies.getText());
 			chooser.setLocationRelativeTo(this);
 			chooser.setVisible(true);
 			chooser.callback(() -> {

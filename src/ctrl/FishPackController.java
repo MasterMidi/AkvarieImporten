@@ -44,7 +44,7 @@ public class FishPackController {
 		this.fishPack.setSpecies(fishSpecies);
 	}
 
-	public Map<Integer, Aquarium> searchAquarium(String searchInput) {
+	public Map<Integer, Aquarium> searchAquarium(String searchInput) throws DataAccessException {
 		return aquariumController.searchAquarium(searchInput);
 	}
 
@@ -54,7 +54,7 @@ public class FishPackController {
 
 	}
 
-	public Map<Integer, FeedingPlan> searchFeedingplans(String searchInput) {
+	public Map<Integer, FeedingPlan> searchFeedingplans(String searchInput) throws DataAccessException {
 		return feedingPlanController.searchFeedingPlan(searchInput);
 	}
 
