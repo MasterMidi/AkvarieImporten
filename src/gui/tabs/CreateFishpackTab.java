@@ -364,7 +364,7 @@ public class CreateFishpackTab extends JPanel {
 				List<Aquarium> aquariumList = new ArrayList<>(
 						fishPackController.searchAquarium(txtfAquarium.getText()).values());
 				if (!aquariumList.isEmpty()) {
-					SearchMathesChooser<Aquarium> chooser = new SearchMathesChooser<Aquarium>(
+					SearchMatchesChooser<Aquarium> chooser = new SearchMatchesChooser<Aquarium>(
 							new AquariumListCellRenderer(), aquariumList, "Akvarier søgning " + txtfAquarium.getText());
 					chooser.setLocationRelativeTo(this);
 					chooser.setVisible(true);
@@ -393,7 +393,7 @@ public class CreateFishpackTab extends JPanel {
 				List<FeedingPlan> feedingPlanList = new ArrayList<>(
 						fishPackController.searchFeedingplans(txtfFeedingPlan.getText()).values());
 				if (!feedingPlanList.isEmpty()) {
-					SearchMathesChooser<FeedingPlan> chooser = new SearchMathesChooser<>(
+					SearchMatchesChooser<FeedingPlan> chooser = new SearchMatchesChooser<>(
 							new FeedingPlanListCellRenderer(), feedingPlanList,
 							"Fodderplan søgning " + txtfFeedingPlan.getText());
 					chooser.setLocationRelativeTo(this);
@@ -423,7 +423,7 @@ public class CreateFishpackTab extends JPanel {
 			try {
 				List<FishSpecies> speciesList = new ArrayList<>(fishPackController.searchFishSpecies(txtfSpecies.getText()).values());
 				if (!speciesList.isEmpty()) {
-					SearchMathesChooser<FishSpecies> chooser = new SearchMathesChooser<>(new SpeciesListCellRenderer(),
+					SearchMatchesChooser<FishSpecies> chooser = new SearchMatchesChooser<>(new SpeciesListCellRenderer(),
 							speciesList, "Fiskeart søgning " + txtfSpecies.getText());
 					chooser.setLocationRelativeTo(this);
 					chooser.setVisible(true);

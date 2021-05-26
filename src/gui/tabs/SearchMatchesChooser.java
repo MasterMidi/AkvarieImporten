@@ -19,7 +19,7 @@ import javax.swing.border.EmptyBorder;
 import gui.ICallback;
 import gui.components.JRoundedButton;
 
-public class SearchMathesChooser<T> extends JDialog implements ICallback<T> {
+public class SearchMatchesChooser<T> extends JDialog implements ICallback<T> {
 
 	private final JPanel contentPanel = new JPanel();
 	private JList<T> list;
@@ -30,10 +30,10 @@ public class SearchMathesChooser<T> extends JDialog implements ICallback<T> {
 	/**
 	 * Create the dialog.
 	 * 
-	 * @param speciesList
+	 * @param inputList
 	 * @param string
 	 */
-	public SearchMathesChooser(DefaultListCellRenderer cellRenderer, List<T> speciesList, String title) {
+	public SearchMatchesChooser(DefaultListCellRenderer cellRenderer, List<T> inputList, String title) {
 		setTitle(title);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
@@ -81,7 +81,7 @@ public class SearchMathesChooser<T> extends JDialog implements ICallback<T> {
 		btnCancel.setActionCommand("Cancel");
 		buttonPane.add(btnCancel);
 
-		init(cellRenderer, speciesList);
+		init(cellRenderer, inputList);
 	}
 
 	protected void cancelClicked(ActionEvent e) {
@@ -96,10 +96,10 @@ public class SearchMathesChooser<T> extends JDialog implements ICallback<T> {
 		cancelClicked(e);
 	}
 
-	private void init(DefaultListCellRenderer cellRenderer, List<T> speciesList) {
+	private void init(DefaultListCellRenderer cellRenderer, List<T> inputList) {
 		list.setCellRenderer(cellRenderer);
 		DefaultListModel<T> listModel = new DefaultListModel<T>();
-		listModel.addAll(speciesList);
+		listModel.addAll(inputList);
 		list.setModel(listModel);
 	}
 
