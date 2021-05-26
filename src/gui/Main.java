@@ -57,6 +57,8 @@ public class Main extends JFrame {
 	 * @throws InterruptedException
 	 */
 	public Main() throws IOException, InterruptedException {
+		setMinimumSize(new Dimension(800, 500));
+		setPreferredSize(new Dimension(1000, 700));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 757, 456);
 		contentPane = new JPanel();

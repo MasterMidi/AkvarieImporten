@@ -43,6 +43,8 @@ import model.FeedingPlan;
 import model.FishSpecies;
 import util.DateValidator;
 import javax.swing.border.BevelBorder;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class CreateFishpackTab extends JPanel {
 	private JPanel viewport;
@@ -66,9 +68,6 @@ public class CreateFishpackTab extends JPanel {
 	private JButton btnSpecies;
 	private JButton btnAquarium;
 	private JButton btnFeedingPlan;
-	private JLabel lblSpeciesChosen;
-	private JLabel lblAquariumChosen;
-	private JLabel lblFeedingPlanChosen;
 
 	/**
 	 * Create the panel.
@@ -81,9 +80,9 @@ public class CreateFishpackTab extends JPanel {
 		viewport = new JPanel();
 		add(viewport);
 		GridBagLayout gbl_viewport = new GridBagLayout();
-		gbl_viewport.columnWidths = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
+		gbl_viewport.columnWidths = new int[] { 0, 0, 0, 0, 0, 0, 0 };
 		gbl_viewport.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-		gbl_viewport.columnWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_viewport.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		gbl_viewport.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		viewport.setLayout(gbl_viewport);
 
@@ -96,26 +95,23 @@ public class CreateFishpackTab extends JPanel {
 		viewport.add(lblSpecies, gbc_lblSpecies);
 
 		txtfSpecies = new JTextField();
+		txtfSpecies.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtfSpecies.setEnabled(true);
+			}
+		});
 		txtfSpecies.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				speciesSearchPressed(checkIfEnter(e));
 			}
 		});
-		
-		lblSpeciesChosen = new JLabel("Art");
-		lblSpeciesChosen.setFont(new Font("bold", Font.BOLD, 12));
-		GridBagConstraints gbc_lblSpeciesChosen = new GridBagConstraints();
-		gbc_lblSpeciesChosen.insets = new Insets(0, 0, 5, 5);
-		gbc_lblSpeciesChosen.anchor = GridBagConstraints.WEST;
-		gbc_lblSpeciesChosen.gridx = 2;
-		gbc_lblSpeciesChosen.gridy = 1;
-		viewport.add(lblSpeciesChosen, gbc_lblSpeciesChosen);
 		txtfSpecies.setEditable(true);
 		GridBagConstraints gbc_txtfSpecies = new GridBagConstraints();
 		gbc_txtfSpecies.insets = new Insets(0, 0, 5, 5);
 		gbc_txtfSpecies.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtfSpecies.gridx = 3;
+		gbc_txtfSpecies.gridx = 2;
 		gbc_txtfSpecies.gridy = 1;
 		viewport.add(txtfSpecies, gbc_txtfSpecies);
 
@@ -125,12 +121,11 @@ public class CreateFishpackTab extends JPanel {
 		btnSpecies.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				speciesSearchPressed(true);
-
 			}
 		});
 		GridBagConstraints gbc_btnSpecies = new GridBagConstraints();
 		gbc_btnSpecies.insets = new Insets(0, 0, 5, 5);
-		gbc_btnSpecies.gridx = 4;
+		gbc_btnSpecies.gridx = 3;
 		gbc_btnSpecies.gridy = 1;
 		viewport.add(btnSpecies, gbc_btnSpecies);
 
@@ -141,7 +136,7 @@ public class CreateFishpackTab extends JPanel {
 		GridBagConstraints gbc_btnCreateSpecies = new GridBagConstraints();
 		gbc_btnCreateSpecies.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnCreateSpecies.insets = new Insets(0, 0, 5, 5);
-		gbc_btnCreateSpecies.gridx = 5;
+		gbc_btnCreateSpecies.gridx = 4;
 		gbc_btnCreateSpecies.gridy = 1;
 		viewport.add(btnCreateSpecies, gbc_btnCreateSpecies);
 
@@ -154,6 +149,12 @@ public class CreateFishpackTab extends JPanel {
 		viewport.add(lblNewLabel, gbc_lblNewLabel);
 
 		txtfBirthdate = new JHintTextField("yyyy-mm-dd");
+		txtfBirthdate.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtfBirthdate.setEnabled(true);
+			}
+		});
 //		txtfBirthdate = new JDateTextField(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 		txtfBirthdate.addKeyListener(new KeyAdapter() {
 			@Override
@@ -166,7 +167,7 @@ public class CreateFishpackTab extends JPanel {
 		GridBagConstraints gbc_txtfBirthdate = new GridBagConstraints();
 		gbc_txtfBirthdate.insets = new Insets(0, 0, 5, 5);
 		gbc_txtfBirthdate.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtfBirthdate.gridx = 3;
+		gbc_txtfBirthdate.gridx = 2;
 		gbc_txtfBirthdate.gridy = 3;
 		viewport.add(txtfBirthdate, gbc_txtfBirthdate);
 
@@ -181,7 +182,7 @@ public class CreateFishpackTab extends JPanel {
 		GridBagConstraints gbc_btnGenerateDate = new GridBagConstraints();
 		gbc_btnGenerateDate.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnGenerateDate.insets = new Insets(0, 0, 5, 5);
-		gbc_btnGenerateDate.gridx = 5;
+		gbc_btnGenerateDate.gridx = 4;
 		gbc_btnGenerateDate.gridy = 3;
 		viewport.add(btnGenerateDate, gbc_btnGenerateDate);
 
@@ -196,25 +197,22 @@ public class CreateFishpackTab extends JPanel {
 		viewport.add(lblAquarium, gbc_lblAquarium);
 
 		txtfAquarium = new JTextField();
+		txtfAquarium.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtfAquarium.setEnabled(true);
+			}
+		});
 		txtfAquarium.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				aquariumSearchPressed(checkIfEnter(e));
 			}
 		});
-		
-		lblAquariumChosen = new JLabel("Akvarie");
-		lblAquariumChosen.setFont(new Font("bold", Font.BOLD, 12));
-		GridBagConstraints gbc_lblAquariumChosen = new GridBagConstraints();
-		gbc_lblAquariumChosen.insets = new Insets(0, 0, 5, 5);
-		gbc_lblAquariumChosen.anchor = GridBagConstraints.WEST;
-		gbc_lblAquariumChosen.gridx = 2;
-		gbc_lblAquariumChosen.gridy = 5;
-		viewport.add(lblAquariumChosen, gbc_lblAquariumChosen);
 		GridBagConstraints gbc_txtfAquarium = new GridBagConstraints();
 		gbc_txtfAquarium.insets = new Insets(0, 0, 5, 5);
 		gbc_txtfAquarium.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtfAquarium.gridx = 3;
+		gbc_txtfAquarium.gridx = 2;
 		gbc_txtfAquarium.gridy = 5;
 		viewport.add(txtfAquarium, gbc_txtfAquarium);
 
@@ -228,7 +226,7 @@ public class CreateFishpackTab extends JPanel {
 		});
 		GridBagConstraints gbc_btnAquarium = new GridBagConstraints();
 		gbc_btnAquarium.insets = new Insets(0, 0, 5, 5);
-		gbc_btnAquarium.gridx = 4;
+		gbc_btnAquarium.gridx = 3;
 		gbc_btnAquarium.gridy = 5;
 		viewport.add(btnAquarium, gbc_btnAquarium);
 
@@ -239,7 +237,7 @@ public class CreateFishpackTab extends JPanel {
 		GridBagConstraints gbc_btnCreateAquarium = new GridBagConstraints();
 		gbc_btnCreateAquarium.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnCreateAquarium.insets = new Insets(0, 0, 5, 5);
-		gbc_btnCreateAquarium.gridx = 5;
+		gbc_btnCreateAquarium.gridx = 4;
 		gbc_btnCreateAquarium.gridy = 5;
 		viewport.add(btnCreateAquarium, gbc_btnCreateAquarium);
 
@@ -252,25 +250,22 @@ public class CreateFishpackTab extends JPanel {
 		viewport.add(lblFeedingPlan, gbc_lblFeedingPlan);
 
 		txtfFeedingPlan = new JTextField();
+		txtfFeedingPlan.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtfFeedingPlan.setEnabled(true);
+			}
+		});
 		txtfFeedingPlan.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				FeedingPlanSearchpressed(checkIfEnter(e));
 			}
 		});
-		
-		lblFeedingPlanChosen = new JLabel("Fodderplan");
-		lblFeedingPlanChosen.setFont(new Font("bold", Font.BOLD, 12));
-		GridBagConstraints gbc_lblFeedingPlanChosen = new GridBagConstraints();
-		gbc_lblFeedingPlanChosen.insets = new Insets(0, 0, 5, 5);
-		gbc_lblFeedingPlanChosen.anchor = GridBagConstraints.WEST;
-		gbc_lblFeedingPlanChosen.gridx = 2;
-		gbc_lblFeedingPlanChosen.gridy = 7;
-		viewport.add(lblFeedingPlanChosen, gbc_lblFeedingPlanChosen);
 		GridBagConstraints gbc_txtfFeedingPlan = new GridBagConstraints();
 		gbc_txtfFeedingPlan.insets = new Insets(0, 0, 5, 5);
 		gbc_txtfFeedingPlan.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtfFeedingPlan.gridx = 3;
+		gbc_txtfFeedingPlan.gridx = 2;
 		gbc_txtfFeedingPlan.gridy = 7;
 		viewport.add(txtfFeedingPlan, gbc_txtfFeedingPlan);
 
@@ -284,7 +279,7 @@ public class CreateFishpackTab extends JPanel {
 		});
 		GridBagConstraints gbc_btnFeedingPlan = new GridBagConstraints();
 		gbc_btnFeedingPlan.insets = new Insets(0, 0, 5, 5);
-		gbc_btnFeedingPlan.gridx = 4;
+		gbc_btnFeedingPlan.gridx = 3;
 		gbc_btnFeedingPlan.gridy = 7;
 		viewport.add(btnFeedingPlan, gbc_btnFeedingPlan);
 
@@ -295,7 +290,7 @@ public class CreateFishpackTab extends JPanel {
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
-		gbc_btnNewButton.gridx = 5;
+		gbc_btnNewButton.gridx = 4;
 		gbc_btnNewButton.gridy = 7;
 		viewport.add(btnNewButton, gbc_btnNewButton);
 
@@ -351,6 +346,7 @@ public class CreateFishpackTab extends JPanel {
 	private void validateDate(String date) {
 		if (DateValidator.validateDate(date)) {
 			txtfBirthdate.setBorder(new LineBorder(Color.green, 1));
+			txtfBirthdate.setEnabled(false);
 			fishPackController.setFishPackBirthday(LocalDate.parse(date));
 		} else {
 			txtfBirthdate.setBorder(new LineBorder(Color.red, 1));
@@ -375,7 +371,7 @@ public class CreateFishpackTab extends JPanel {
 					chooser.callback(() -> {
 						Aquarium res = chooser.getValue();
 						txtfAquarium.setText(res.getNumber());
-						lblAquariumChosen.setText(res.getNumber());
+						txtfAquarium.setEnabled(false);
 						fishPackController.setAquarium(res.getId());
 					});
 				} else {
@@ -405,7 +401,7 @@ public class CreateFishpackTab extends JPanel {
 					chooser.callback(() -> {
 						FeedingPlan res = chooser.getValue();
 						txtfFeedingPlan.setText(res.getName());
-						lblFeedingPlanChosen.setText(res.getName());
+						txtfFeedingPlan.setEnabled(false);
 						fishPackController.setFeedingPlan(res.getID());
 					});
 				} else {
@@ -434,7 +430,7 @@ public class CreateFishpackTab extends JPanel {
 					chooser.callback(() -> {
 						FishSpecies res = chooser.getValue();
 						txtfSpecies.setText(res.getName());
-						lblSpeciesChosen.setText(res.getName());
+						txtfSpecies.setEnabled(false);
 						fishPackController.setFishSpecies(res.getId());
 					});
 				} else {

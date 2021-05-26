@@ -9,6 +9,9 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +31,10 @@ import gui.Main;
 import gui.components.JRoundedButton;
 import gui.renderer.FishPackTableModel;
 import model.FishPack;
+import javax.swing.JLabel;
+import java.awt.Font;
+import java.awt.Color;
+import javax.swing.SwingConstants;
 
 public class FishpackTab extends JPanel {
 	private JTable contentTable;
@@ -36,6 +43,7 @@ public class FishpackTab extends JPanel {
 	private JTextField txtfSearch;
 
 	private SwingWorker<Void, Void> updateTableWorker;
+	private JLabel lblUpdateTimestamp;
 
 	/**
 	 * Create the panel.
@@ -85,12 +93,18 @@ public class FishpackTab extends JPanel {
 				try {
 					refreshFishPackTable(txtfSearch.getText());
 				} catch (SQLException | DataAccessException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Kunne ikke opdaterer tabelen, tjek din internet forbindelse", "Kunne ikke opdaterer", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
 		panel.add(btnNewButton, BorderLayout.CENTER);
+		
+		lblUpdateTimestamp = new JLabel("now");
+		lblUpdateTimestamp.setVerticalAlignment(SwingConstants.BOTTOM);
+		lblUpdateTimestamp.setForeground(Color.GRAY);
+		lblUpdateTimestamp.setFont(new Font("Tahoma", Font.ITALIC, 8));
+		panel.add(lblUpdateTimestamp);
 
 		JPanel ContentPane = new JPanel();
 		add(ContentPane, BorderLayout.CENTER);
@@ -103,7 +117,8 @@ public class FishpackTab extends JPanel {
 		scrollPane.setViewportView(contentTable);
 
 		JPanel southPanel = new JPanel();
-		southPanel.setBorder(new TitledBorder(null, "S\u00F8gning", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		southPanel
+				.setBorder(new TitledBorder(null, "S\u00F8gning", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		add(southPanel, BorderLayout.SOUTH);
 		GridBagLayout gbl_southPanel = new GridBagLayout();
 		gbl_southPanel.columnWidths = new int[] { 324, 0, 0 };
@@ -154,7 +169,6 @@ public class FishpackTab extends JPanel {
 						"Kunne ikke forbinde til databasen, tjek internet forbindelsen", "Fejl", JOptionPane.OK_OPTION);
 			}
 		}
-
 	}
 
 	private void init() {
@@ -171,13 +185,13 @@ public class FishpackTab extends JPanel {
 
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+//				e.printStackTrace();
 			} catch (DataAccessException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+//				e.printStackTrace();
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+//				e.printStackTrace();
 			}
 		}).start();
 	}
@@ -187,23 +201,29 @@ public class FishpackTab extends JPanel {
 	}
 
 	private void refreshFishPackTable(String search) throws SQLException, DataAccessException {
-		if (updateTableWorker != null && !updateTableWorker.isDone()) {
-			updateTableWorker.cancel(true);
+		if (updateTableWorker == null || updateTableWorker.isDone()) {
+			updateTableWorker = new SwingWorker<Void, Void>() {
+				@Override
+				protected Void doInBackground() throws Exception {
+
+					int selection = contentTable.getSelectedRow();
+
+					Map<Integer, FishPack> FishPacks = fishPackController.searchFishPack(search);
+					List<FishPack> lists = new ArrayList<>(FishPacks.values());
+
+					fishPackTableModel.setData(lists);
+
+					if (selection != -1 && selection < contentTable.getRowCount()) {
+						contentTable.setRowSelectionInterval(selection, selection);
+					}
+					
+					lblUpdateTimestamp.setText("Sidst opdateret " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("hh:mm")) + " ");
+					
+					return null;
+				}
+			};
 		}
-
-		updateTableWorker = new SwingWorker<Void, Void>() {
-			@Override
-			protected Void doInBackground() throws Exception {
-				Map<Integer, FishPack> FishPacks = fishPackController.searchFishPack(search);
-				List<FishPack> lists = new ArrayList<>(FishPacks.values());
-
-				fishPackTableModel.setData(lists);
-
-				return null;
-			}
-		};
 
 		updateTableWorker.execute();
 	}
-
 }
