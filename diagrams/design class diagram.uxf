@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>3</zoom_level>
+  <zoom_level>7</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>291</x>
-      <y>204</y>
-      <w>138</w>
-      <h>84</h>
+      <x>532</x>
+      <y>182</y>
+      <w>322</w>
+      <h>196</h>
     </coordinates>
     <panel_attributes>FishPackController
 -
@@ -32,10 +32,10 @@
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>135</x>
-      <y>129</y>
-      <w>300</w>
-      <h>162</h>
+      <x>168</x>
+      <y>7</y>
+      <w>700</w>
+      <h>378</h>
     </coordinates>
     <panel_attributes>ctrl
 fg=blue</panel_attributes>
@@ -44,10 +44,10 @@ fg=blue</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>147</x>
-      <y>297</y>
-      <w>507</w>
-      <h>429</h>
+      <x>196</x>
+      <y>399</y>
+      <w>1197</w>
+      <h>1106</h>
     </coordinates>
     <panel_attributes>db
 fg=blue</panel_attributes>
@@ -56,10 +56,10 @@ fg=blue</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>105</x>
-      <y>735</y>
-      <w>648</w>
-      <h>144</h>
+      <x>98</x>
+      <y>1540</y>
+      <w>1512</w>
+      <h>336</h>
     </coordinates>
     <panel_attributes>model
 fg=blue</panel_attributes>
@@ -68,10 +68,10 @@ fg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>147</x>
-      <y>216</y>
-      <w>132</w>
-      <h>48</h>
+      <x>196</x>
+      <y>210</y>
+      <w>308</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>FishSpeciesController
 -
@@ -86,10 +86,10 @@ fg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>150</x>
-      <y>468</y>
-      <w>126</w>
-      <h>48</h>
+      <x>203</x>
+      <y>798</y>
+      <w>294</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>IFishSpeciesDB
 -
@@ -102,21 +102,21 @@ fg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>201</x>
-      <y>513</y>
-      <w>9</w>
-      <h>156</h>
+      <x>322</x>
+      <y>903</y>
+      <w>21</w>
+      <h>469</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;500.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;650.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>285</x>
-      <y>534</y>
-      <w>234</w>
-      <h>108</h>
+      <x>518</x>
+      <y>952</y>
+      <w>546</w>
+      <h>252</h>
     </coordinates>
     <panel_attributes>DBConnection
 -
@@ -146,10 +146,10 @@ _+ resetConnection(): DBConnection_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>147</x>
-      <y>141</y>
-      <w>126</w>
-      <h>48</h>
+      <x>196</x>
+      <y>35</y>
+      <w>294</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>AquariumController
 -
@@ -163,10 +163,10 @@ _+ resetConnection(): DBConnection_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>291</x>
-      <y>141</y>
-      <w>135</w>
-      <h>48</h>
+      <x>532</x>
+      <y>35</y>
+      <w>315</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>FeedingPlanController
 -
@@ -180,10 +180,10 @@ _+ resetConnection(): DBConnection_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>405</x>
-      <y>468</y>
-      <w>117</w>
-      <h>48</h>
+      <x>798</x>
+      <y>798</y>
+      <w>273</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>IFishPackDB
 -
@@ -195,21 +195,21 @@ _+ resetConnection(): DBConnection_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>456</x>
-      <y>513</y>
-      <w>78</w>
-      <h>147</h>
+      <x>917</x>
+      <y>903</y>
+      <w>182</w>
+      <h>448</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;40.0;240.0;40.0;240.0;460.0;30.0;460.0;30.0;470.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0;240.0;40.0;240.0;460.0;130.0;460.0;130.0;620.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>525</x>
-      <y>468</y>
-      <w>126</w>
-      <h>48</h>
+      <x>1078</x>
+      <y>798</y>
+      <w>294</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>IFeedingPlan
 -
@@ -221,21 +221,21 @@ _+ resetConnection(): DBConnection_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>591</x>
-      <y>513</y>
-      <w>9</w>
-      <h>159</h>
+      <x>1232</x>
+      <y>903</y>
+      <w>21</w>
+      <h>476</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;510.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;660.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>108</x>
-      <y>747</y>
-      <w>222</w>
-      <h>60</h>
+      <x>105</x>
+      <y>1568</y>
+      <w>518</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>FishSpecies
 -
@@ -255,10 +255,10 @@ _+ resetConnection(): DBConnection_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>333</x>
-      <y>747</y>
-      <w>111</w>
-      <h>60</h>
+      <x>630</x>
+      <y>1568</y>
+      <w>259</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>Aquarium
 -
@@ -279,10 +279,10 @@ _+ resetConnection(): DBConnection_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>453</x>
-      <y>747</y>
-      <w>165</w>
-      <h>111</h>
+      <x>910</x>
+      <y>1568</y>
+      <w>385</w>
+      <h>259</h>
     </coordinates>
     <panel_attributes>FishPack
 -
@@ -313,10 +313,10 @@ feedingPlan:FeedingPlan,fishSpecies:FishSpecies, aquarium:Period&lt;Aquarium&gt;
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>624</x>
-      <y>783</y>
-      <w>123</w>
-      <h>51</h>
+      <x>1309</x>
+      <y>1652</y>
+      <w>287</w>
+      <h>119</h>
     </coordinates>
     <panel_attributes>FeedingPlan
 -
@@ -335,10 +335,10 @@ feedingPlan:FeedingPlan,fishSpecies:FishSpecies, aquarium:Period&lt;Aquarium&gt;
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>279</x>
-      <y>468</y>
-      <w>120</w>
-      <h>48</h>
+      <x>504</x>
+      <y>798</y>
+      <w>280</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>IAquariumDB
 -
@@ -350,109 +350,109 @@ feedingPlan:FeedingPlan,fishSpecies:FishSpecies, aquarium:Period&lt;Aquarium&gt;
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>273</x>
-      <y>513</y>
-      <w>78</w>
-      <h>156</h>
+      <x>490</x>
+      <y>903</y>
+      <w>182</w>
+      <h>469</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>240.0;10.0;240.0;40.0;10.0;40.0;10.0;460.0;230.0;460.0;230.0;500.0</additional_attributes>
+    <additional_attributes>240.0;10.0;240.0;40.0;10.0;40.0;10.0;460.0;120.0;460.0;120.0;650.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>351</x>
-      <y>639</y>
-      <w>9</w>
-      <h>30</h>
+      <x>602</x>
+      <y>1197</y>
+      <w>21</w>
+      <h>175</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;230.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>450</x>
-      <y>639</y>
-      <w>9</w>
-      <h>21</h>
+      <x>945</x>
+      <y>1197</y>
+      <w>21</w>
+      <h>154</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;200.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>240</x>
-      <y>573</y>
-      <w>51</w>
-      <h>96</h>
+      <x>413</x>
+      <y>1043</y>
+      <w>119</w>
+      <h>329</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>150.0;10.0;10.0;10.0;10.0;300.0</additional_attributes>
+    <additional_attributes>150.0;10.0;10.0;10.0;10.0;450.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>516</x>
-      <y>573</y>
-      <w>54</w>
-      <h>99</h>
+      <x>1057</x>
+      <y>1043</y>
+      <w>126</w>
+      <h>336</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;160.0;10.0;160.0;310.0</additional_attributes>
+    <additional_attributes>10.0;10.0;160.0;10.0;160.0;460.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>213</x>
-      <y>708</y>
-      <w>9</w>
-      <h>45</h>
+      <x>350</x>
+      <y>1463</y>
+      <w>21</w>
+      <h>119</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;150.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>387</x>
-      <y>708</y>
-      <w>9</w>
-      <h>45</h>
+      <x>756</x>
+      <y>1463</y>
+      <w>21</w>
+      <h>119</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;150.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>504</x>
-      <y>717</y>
-      <w>9</w>
-      <h>36</h>
+      <x>1029</x>
+      <y>1484</y>
+      <w>21</w>
+      <h>98</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>585</x>
-      <y>711</y>
-      <w>60</w>
-      <h>78</h>
+      <x>1218</x>
+      <y>1470</y>
+      <w>140</w>
+      <h>196</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>180.0;240.0;180.0;70.0;10.0;70.0;10.0;10.0</additional_attributes>
+    <additional_attributes>180.0;260.0;180.0;80.0;10.0;80.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>423</x>
-      <y>168</y>
-      <w>177</w>
-      <h>306</h>
+      <x>840</x>
+      <y>98</y>
+      <w>413</w>
+      <h>714</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>570.0;1000.0;570.0;10.0;10.0;10.0</additional_attributes>
@@ -460,10 +460,10 @@ feedingPlan:FeedingPlan,fishSpecies:FishSpecies, aquarium:Period&lt;Aquarium&gt;
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>342</x>
-      <y>288</y>
-      <w>126</w>
-      <h>186</h>
+      <x>651</x>
+      <y>378</y>
+      <w>294</w>
+      <h>434</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>400.0;600.0;400.0;540.0;10.0;540.0;10.0;10.0</additional_attributes>
@@ -471,10 +471,10 @@ feedingPlan:FeedingPlan,fishSpecies:FishSpecies, aquarium:Period&lt;Aquarium&gt;
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>213</x>
-      <y>186</y>
-      <w>135</w>
-      <h>288</h>
+      <x>350</x>
+      <y>140</y>
+      <w>315</w>
+      <h>672</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>430.0;940.0;430.0;880.0;240.0;880.0;240.0;60.0;10.0;60.0;10.0;10.0</additional_attributes>
@@ -482,10 +482,10 @@ feedingPlan:FeedingPlan,fishSpecies:FishSpecies, aquarium:Period&lt;Aquarium&gt;
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>216</x>
-      <y>261</y>
-      <w>9</w>
-      <h>213</h>
+      <x>357</x>
+      <y>315</y>
+      <w>21</w>
+      <h>497</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;690.0;10.0;10.0</additional_attributes>
@@ -493,10 +493,10 @@ feedingPlan:FeedingPlan,fishSpecies:FishSpecies, aquarium:Period&lt;Aquarium&gt;
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>345</x>
-      <y>186</y>
-      <w>9</w>
-      <h>24</h>
+      <x>658</x>
+      <y>140</y>
+      <w>21</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
@@ -504,10 +504,10 @@ feedingPlan:FeedingPlan,fishSpecies:FishSpecies, aquarium:Period&lt;Aquarium&gt;
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>276</x>
-      <y>237</y>
-      <w>21</w>
-      <h>9</h>
+      <x>497</x>
+      <y>259</y>
+      <w>49</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;50.0;10.0</additional_attributes>
@@ -515,10 +515,10 @@ feedingPlan:FeedingPlan,fishSpecies:FishSpecies, aquarium:Period&lt;Aquarium&gt;
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>240</x>
-      <y>186</y>
-      <w>78</w>
-      <h>24</h>
+      <x>413</x>
+      <y>140</y>
+      <w>182</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;40.0;240.0;40.0;240.0;60.0</additional_attributes>
@@ -526,54 +526,54 @@ feedingPlan:FeedingPlan,fishSpecies:FishSpecies, aquarium:Period&lt;Aquarium&gt;
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>426</x>
-      <y>225</y>
-      <w>246</w>
-      <h>528</h>
+      <x>847</x>
+      <y>231</y>
+      <w>574</w>
+      <h>1351</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>350.0;1740.0;350.0;1680.0;800.0;1680.0;800.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>350.0;1910.0;350.0;1870.0;800.0;1870.0;800.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>138</x>
-      <y>165</y>
-      <w>225</w>
-      <h>588</h>
+      <x>168</x>
+      <y>91</y>
+      <w>532</w>
+      <h>1491</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>730.0;1940.0;730.0;1880.0;10.0;1880.0;10.0;10.0;30.0;10.0</additional_attributes>
+    <additional_attributes>740.0;2110.0;740.0;2050.0;10.0;2050.0;20.0;10.0;40.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>129</x>
-      <y>240</y>
-      <w>24</w>
-      <h>513</h>
+      <x>154</x>
+      <y>266</y>
+      <w>56</w>
+      <h>1316</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;1690.0;10.0;10.0;60.0;10.0</additional_attributes>
+    <additional_attributes>10.0;1860.0;10.0;10.0;60.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>423</x>
-      <y>156</y>
-      <w>318</w>
-      <h>633</h>
+      <x>840</x>
+      <y>70</y>
+      <w>742</w>
+      <h>1596</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>1040.0;2090.0;1040.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>1040.0;2260.0;1040.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>615</x>
-      <y>795</y>
-      <w>15</w>
-      <h>9</h>
+      <x>1288</x>
+      <y>1680</y>
+      <w>35</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>30.0;10.0;10.0;10.0</additional_attributes>
@@ -581,10 +581,10 @@ feedingPlan:FeedingPlan,fishSpecies:FishSpecies, aquarium:Period&lt;Aquarium&gt;
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>294</x>
-      <y>804</y>
-      <w>216</w>
-      <h>63</h>
+      <x>539</x>
+      <y>1701</y>
+      <w>504</w>
+      <h>147</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;190.0;700.0;190.0;700.0;180.0</additional_attributes>
@@ -592,10 +592,10 @@ feedingPlan:FeedingPlan,fishSpecies:FishSpecies, aquarium:Period&lt;Aquarium&gt;
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>162</x>
-      <y>663</y>
-      <w>111</w>
-      <h>48</h>
+      <x>231</x>
+      <y>1358</y>
+      <w>259</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>FishSpeciesDB
 -
@@ -612,10 +612,10 @@ _- buildObject(rs:ResultSet): FishSpecies_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>411</x>
-      <y>654</y>
-      <w>111</w>
-      <h>66</h>
+      <x>812</x>
+      <y>1337</y>
+      <w>259</w>
+      <h>154</h>
     </coordinates>
     <panel_attributes>FishPackDB
 -
@@ -637,10 +637,10 @@ _- Q_GET_FISK_PACK : String_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>534</x>
-      <y>666</y>
-      <w>111</w>
-      <h>48</h>
+      <x>1099</x>
+      <y>1365</y>
+      <w>259</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>FeedingPlanDB
 -
@@ -656,10 +656,10 @@ _- buildObject(rs:ResultSet): FeedingPlan_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>285</x>
-      <y>663</y>
-      <w>114</w>
-      <h>48</h>
+      <x>518</x>
+      <y>1358</y>
+      <w>266</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>AquariumDB
 -
@@ -675,10 +675,10 @@ _- buildObject(rs:ResultSet): Aquarium_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1293</x>
-      <y>357</y>
-      <w>9</w>
-      <h>30</h>
+      <x>2870</x>
+      <y>539</y>
+      <w>21</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
@@ -686,10 +686,10 @@ _- buildObject(rs:ResultSet): Aquarium_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1293</x>
-      <y>294</y>
-      <w>9</w>
-      <h>24</h>
+      <x>2870</x>
+      <y>392</y>
+      <w>21</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
@@ -697,10 +697,10 @@ _- buildObject(rs:ResultSet): Aquarium_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1293</x>
-      <y>426</y>
-      <w>9</w>
-      <h>27</h>
+      <x>2870</x>
+      <y>700</y>
+      <w>21</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
     <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
@@ -708,10 +708,10 @@ _- buildObject(rs:ResultSet): Aquarium_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>681</x>
-      <y>744</y>
-      <w>51</w>
-      <h>27</h>
+      <x>1442</x>
+      <y>1561</y>
+      <w>119</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>Food
 -
@@ -724,21 +724,21 @@ _- buildObject(rs:ResultSet): Aquarium_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>639</x>
-      <y>684</y>
-      <w>54</w>
-      <h>66</h>
+      <x>1351</x>
+      <y>1407</y>
+      <w>119</w>
+      <h>168</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>160.0;200.0;160.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>150.0;220.0;150.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>705</x>
-      <y>768</y>
-      <w>9</w>
-      <h>21</h>
+      <x>1498</x>
+      <y>1617</y>
+      <w>21</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
@@ -746,10 +746,10 @@ _- buildObject(rs:ResultSet): Aquarium_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>318</x>
-      <y>813</y>
-      <w>93</w>
-      <h>45</h>
+      <x>595</x>
+      <y>1722</y>
+      <w>217</w>
+      <h>105</h>
     </coordinates>
     <panel_attributes>Period&lt;T&gt;
 -
@@ -766,10 +766,10 @@ _- buildObject(rs:ResultSet): Aquarium_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>408</x>
-      <y>831</y>
-      <w>51</w>
-      <h>9</h>
+      <x>805</x>
+      <y>1764</y>
+      <w>119</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;150.0;10.0</additional_attributes>
@@ -777,10 +777,10 @@ _- buildObject(rs:ResultSet): Aquarium_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>381</x>
-      <y>804</y>
-      <w>9</w>
-      <h>15</h>
+      <x>742</x>
+      <y>1701</y>
+      <w>21</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
@@ -788,10 +788,10 @@ _- buildObject(rs:ResultSet): Aquarium_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>858</x>
-      <y>300</y>
-      <w>9</w>
-      <h>21</h>
+      <x>1855</x>
+      <y>406</y>
+      <w>21</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
@@ -799,10 +799,10 @@ _- buildObject(rs:ResultSet): Aquarium_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>885</x>
-      <y>327</y>
-      <w>57</w>
-      <h>9</h>
+      <x>1918</x>
+      <y>469</y>
+      <w>133</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;170.0;10.0</additional_attributes>
@@ -810,10 +810,10 @@ _- buildObject(rs:ResultSet): Aquarium_
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1176</x>
-      <y>240</y>
-      <w>240</w>
-      <h>273</h>
+      <x>2597</x>
+      <y>266</y>
+      <w>560</w>
+      <h>637</h>
     </coordinates>
     <panel_attributes>Highlight DAO pattern</panel_attributes>
     <additional_attributes/>
@@ -821,10 +821,10 @@ _- buildObject(rs:ResultSet): Aquarium_
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>783</x>
-      <y>231</y>
-      <w>324</w>
-      <h>138</h>
+      <x>1680</x>
+      <y>245</y>
+      <w>756</w>
+      <h>322</h>
     </coordinates>
     <panel_attributes>Highlight type-paramatrisering</panel_attributes>
     <additional_attributes/>
@@ -832,10 +832,10 @@ _- buildObject(rs:ResultSet): Aquarium_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>360</x>
-      <y>342</y>
-      <w>84</w>
-      <h>69</h>
+      <x>693</x>
+      <y>504</y>
+      <w>196</w>
+      <h>161</h>
     </coordinates>
     <panel_attributes>DataBase
 -
@@ -857,10 +857,10 @@ _- buildObject(rs:ResultSet): Aquarium_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>216</x>
-      <y>381</y>
-      <w>150</w>
-      <h>93</h>
+      <x>357</x>
+      <y>595</y>
+      <w>350</w>
+      <h>217</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;290.0;480.0;10.0</additional_attributes>
@@ -868,10 +868,10 @@ _- buildObject(rs:ResultSet): Aquarium_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>354</x>
-      <y>408</y>
-      <w>33</w>
-      <h>66</h>
+      <x>679</x>
+      <y>658</y>
+      <w>77</w>
+      <h>154</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;200.0;90.0;10.0</additional_attributes>
@@ -879,10 +879,10 @@ _- buildObject(rs:ResultSet): Aquarium_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>417</x>
-      <y>408</y>
-      <w>24</w>
-      <h>66</h>
+      <x>826</x>
+      <y>658</y>
+      <w>56</w>
+      <h>154</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>60.0;200.0;10.0;10.0</additional_attributes>
@@ -890,10 +890,10 @@ _- buildObject(rs:ResultSet): Aquarium_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>441</x>
-      <y>381</y>
-      <w>132</w>
-      <h>93</h>
+      <x>882</x>
+      <y>595</y>
+      <w>308</w>
+      <h>217</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>420.0;290.0;10.0;10.0</additional_attributes>
@@ -901,10 +901,10 @@ _- buildObject(rs:ResultSet): Aquarium_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>423</x>
-      <y>177</y>
-      <w>21</w>
-      <h>171</h>
+      <x>840</x>
+      <y>119</y>
+      <w>49</w>
+      <h>399</h>
     </coordinates>
     <panel_attributes>lt=.&gt;</panel_attributes>
     <additional_attributes>10.0;10.0;50.0;10.0;50.0;550.0</additional_attributes>
@@ -912,10 +912,10 @@ _- buildObject(rs:ResultSet): Aquarium_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>426</x>
-      <y>240</y>
-      <w>12</w>
-      <h>108</h>
+      <x>847</x>
+      <y>266</y>
+      <w>28</w>
+      <h>252</h>
     </coordinates>
     <panel_attributes>lt=.&gt;</panel_attributes>
     <additional_attributes>10.0;10.0;20.0;10.0;20.0;340.0</additional_attributes>
@@ -923,10 +923,10 @@ _- buildObject(rs:ResultSet): Aquarium_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>270</x>
-      <y>126</y>
-      <w>192</w>
-      <h>240</h>
+      <x>483</x>
+      <y>0</y>
+      <w>448</w>
+      <h>560</h>
     </coordinates>
     <panel_attributes>lt=.&gt;</panel_attributes>
     <additional_attributes>10.0;120.0;40.0;120.0;40.0;10.0;620.0;10.0;620.0;780.0;580.0;780.0</additional_attributes>
@@ -934,10 +934,10 @@ _- buildObject(rs:ResultSet): Aquarium_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>264</x>
-      <y>261</y>
-      <w>102</w>
-      <h>105</h>
+      <x>469</x>
+      <y>315</y>
+      <w>238</w>
+      <h>245</h>
     </coordinates>
     <panel_attributes>lt=.&gt;</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;330.0;320.0;330.0</additional_attributes>
@@ -945,10 +945,10 @@ _- buildObject(rs:ResultSet): Aquarium_
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>783</x>
-      <y>393</y>
-      <w>306</w>
-      <h>207</h>
+      <x>1680</x>
+      <y>623</y>
+      <w>714</w>
+      <h>483</h>
     </coordinates>
     <panel_attributes>Highlight brug af controllers</panel_attributes>
     <additional_attributes/>
@@ -956,10 +956,10 @@ _- buildObject(rs:ResultSet): Aquarium_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>921</x>
-      <y>543</y>
-      <w>87</w>
-      <h>30</h>
+      <x>2002</x>
+      <y>973</y>
+      <w>203</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;80.0;270.0;80.0;270.0;10.0</additional_attributes>
@@ -967,10 +967,10 @@ _- buildObject(rs:ResultSet): Aquarium_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>921</x>
-      <y>504</y>
-      <w>27</w>
-      <h>9</h>
+      <x>2002</x>
+      <y>882</y>
+      <w>63</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
@@ -978,10 +978,10 @@ _- buildObject(rs:ResultSet): Aquarium_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>921</x>
-      <y>441</y>
-      <w>84</w>
-      <h>27</h>
+      <x>2002</x>
+      <y>735</y>
+      <w>196</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;260.0;10.0;260.0;70.0</additional_attributes>
@@ -989,10 +989,10 @@ _- buildObject(rs:ResultSet): Aquarium_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>396</x>
-      <y>681</y>
-      <w>21</w>
-      <h>9</h>
+      <x>777</x>
+      <y>1400</y>
+      <w>49</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;50.0;10.0</additional_attributes>
@@ -1000,10 +1000,10 @@ _- buildObject(rs:ResultSet): Aquarium_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>246</x>
-      <y>708</y>
-      <w>171</w>
-      <h>15</h>
+      <x>427</x>
+      <y>1463</y>
+      <w>399</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;30.0;550.0;30.0</additional_attributes>
@@ -1011,10 +1011,10 @@ _- buildObject(rs:ResultSet): Aquarium_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>519</x>
-      <y>687</y>
-      <w>21</w>
-      <h>9</h>
+      <x>1064</x>
+      <y>1414</y>
+      <w>49</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=.&gt;</panel_attributes>
     <additional_attributes>10.0;10.0;50.0;10.0</additional_attributes>
@@ -1022,10 +1022,10 @@ _- buildObject(rs:ResultSet): Aquarium_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>792</x>
-      <y>243</y>
-      <w>111</w>
-      <h>60</h>
+      <x>1701</x>
+      <y>273</y>
+      <w>259</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>Aquarium
 -
@@ -1046,10 +1046,10 @@ _- buildObject(rs:ResultSet): Aquarium_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>795</x>
-      <y>315</y>
-      <w>93</w>
-      <h>45</h>
+      <x>1708</x>
+      <y>441</y>
+      <w>217</w>
+      <h>105</h>
     </coordinates>
     <panel_attributes>Period&lt;T&gt;
 -
@@ -1066,10 +1066,10 @@ _- buildObject(rs:ResultSet): Aquarium_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>936</x>
-      <y>249</y>
-      <w>165</w>
-      <h>111</h>
+      <x>2037</x>
+      <y>287</y>
+      <w>385</w>
+      <h>259</h>
     </coordinates>
     <panel_attributes>FishPack
 -
@@ -1100,10 +1100,10 @@ feedingPlan:FeedingPlan,fishSpecies:FishSpecies, aquarium:Period&lt;Aquarium&gt;
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>798</x>
-      <y>480</y>
-      <w>126</w>
-      <h>48</h>
+      <x>1715</x>
+      <y>826</y>
+      <w>294</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>AquariumController
 -
@@ -1117,10 +1117,10 @@ feedingPlan:FeedingPlan,fishSpecies:FishSpecies, aquarium:Period&lt;Aquarium&gt;
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>789</x>
-      <y>414</y>
-      <w>135</w>
-      <h>48</h>
+      <x>1694</x>
+      <y>672</y>
+      <w>315</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>FeedingPlanController
 -
@@ -1134,10 +1134,10 @@ feedingPlan:FeedingPlan,fishSpecies:FishSpecies, aquarium:Period&lt;Aquarium&gt;
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>792</x>
-      <y>543</y>
-      <w>132</w>
-      <h>48</h>
+      <x>1701</x>
+      <y>973</y>
+      <w>308</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>FishSpeciesController
 -
@@ -1152,10 +1152,10 @@ feedingPlan:FeedingPlan,fishSpecies:FishSpecies, aquarium:Period&lt;Aquarium&gt;
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>942</x>
-      <y>462</y>
-      <w>138</w>
-      <h>84</h>
+      <x>2051</x>
+      <y>784</y>
+      <w>322</w>
+      <h>196</h>
     </coordinates>
     <panel_attributes>FishPackController
 -
@@ -1180,10 +1180,10 @@ feedingPlan:FeedingPlan,fishSpecies:FishSpecies, aquarium:Period&lt;Aquarium&gt;
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1233</x>
-      <y>249</y>
-      <w>132</w>
-      <h>48</h>
+      <x>2730</x>
+      <y>287</y>
+      <w>308</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>FishSpeciesController
 -
@@ -1198,10 +1198,10 @@ feedingPlan:FeedingPlan,fishSpecies:FishSpecies, aquarium:Period&lt;Aquarium&gt;
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1236</x>
-      <y>312</y>
-      <w>126</w>
-      <h>48</h>
+      <x>2737</x>
+      <y>434</y>
+      <w>294</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>IFishSpeciesDB
 -
@@ -1214,10 +1214,10 @@ feedingPlan:FeedingPlan,fishSpecies:FishSpecies, aquarium:Period&lt;Aquarium&gt;
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1242</x>
-      <y>381</y>
-      <w>111</w>
-      <h>48</h>
+      <x>2751</x>
+      <y>595</y>
+      <w>259</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>FishSpeciesDB
 -
@@ -1234,10 +1234,10 @@ _- buildObject(rs:ResultSet): FishSpecies_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1185</x>
-      <y>447</y>
-      <w>222</w>
-      <h>60</h>
+      <x>2618</x>
+      <y>749</y>
+      <w>518</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>FishSpecies
 -
@@ -1253,5 +1253,102 @@ _- buildObject(rs:ResultSet): FishSpecies_
 + setId(id:int): void
 + getName(): String</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>413</x>
+      <y>329</y>
+      <w>147</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>IFeedingPlan
+-
+-
++ getFeedingPlan(searchInput:String):Map&lt;Integer, FeedingPlan&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>637</x>
+      <y>1239</y>
+      <w>294</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>DataAccessException
+-
+_- serialVersionUID: long_
+-
++ &lt;&lt;create&gt;&gt;DataAccessException(message:String, e:Throwable)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>770</x>
+      <y>1197</y>
+      <w>21</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>868</x>
+      <y>1295</y>
+      <w>21</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>700</x>
+      <y>1295</y>
+      <w>21</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>448</x>
+      <y>1267</y>
+      <w>203</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>270.0;10.0;10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>924</x>
+      <y>1267</y>
+      <w>217</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;290.0;10.0;290.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>882</x>
+      <y>574</y>
+      <w>511</w>
+      <h>693</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>70.0;970.0;710.0;970.0;710.0;10.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
